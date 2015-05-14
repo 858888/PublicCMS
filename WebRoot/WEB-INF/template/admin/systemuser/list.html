@@ -1,0 +1,91 @@
+<@d_systemUserList startDateRegistered=queryStartDateRegistered endDateRegistered=queryEndDateRegistered startLastLoginDate=queryStartLastLoginDate endLastLoginDate=queryEndLastLoginDate 
+			superuserAccess=querySuperuserAccess emailChecked=queryEmailChecked name=queryName 
+			disable=queryDisable 
+			orderField=orderField orderType=orderType pageNo=pageNum count=numPerPage>
+<form id="pagerForm" method="post">
+	<#include "../include_page/queryParamters.html"/>
+</form>
+<div class="pageHeader">
+	<form onsubmit="return navTabSearch(this);" method="post">
+	<div class="searchBar">
+		<table class="searchContent">
+			<tr>
+				<td>
+					名称：<input type="text" name="queryName" value="${queryName!}" />
+				</td>
+				<td>
+					<select class="combox" name="queryStatus">
+						<option value=""${(queryStatus??&&""==queryStatus)?string(' selected="true"','')}>用户状态</option>
+						<option value="0"${(queryStatus??&&"0"==queryStatus)?string(' selected="true"','')}>正常</option>
+						<option value="1"${(queryStatus??&&"1"==queryStatus)?string(' selected="true"','')}>禁用</option>
+					</select>
+				</td>
+				<td>
+					<select class="combox" name="querySuperuserAccess">
+						<option value=""${(querySuperuserAccess??&&""==querySuperuserAccess)?string(' selected="true"','')}>用户身份</option>
+						<option value="0"${(querySuperuserAccess??&&"0"==querySuperuserAccess)?string(' selected="true"','')}>普通用户</option>
+						<option value="1"${(querySuperuserAccess??&&"1"==querySuperuserAccess)?string(' selected="true"','')}>超级管理员</option>
+					</select>
+				</td>
+				<td>
+					已验证邮箱：<input type="text" name="queryEmailChecked" value="${queryEmailChecked!}" />
+				</td>
+				<td>
+					<label>注册日期：</label>
+					<input type="text" name="queryStartDateRegistered" class="date" dateFmt="yyyy-MM-dd" maxDate="{%y}-%M-{%d}" value="${queryStartDateRegistered!}" />
+					-
+					<input type="text" name="queryEndDateRegistered" class="date" dateFmt="yyyy-MM-dd" maxDate="{%y}-%M-{%d}" value="${queryEndDateRegistered!}" />
+				</td>
+				<td>
+					<label>上次登录日期：</label>
+					<input type="text" name="queryStartLastLoginDate" class="date" dateFmt="yyyy-MM-dd" maxDate="{%y}-%M-{%d}" value="${queryStartLastLoginDate!}" />
+					-
+					<input type="text" name="queryEndLastLoginDate" class="date" dateFmt="yyyy-MM-dd" maxDate="{%y}-%M-{%d}" value="${queryEndLastLoginDate!}" />
+				</td>
+			</tr>
+		</table>
+		<#include "../include_page/searchBar.html"/>
+	</div>
+	</form>
+</div>
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="edit" href="systemuser/password.html?navTabId=${navTabId!}&id={sid}" target="dialog"><span>修改密码</span></a></li>
+			<li><a class="add" href="systemuser/enable.do?id={sid}" title="确定要启用该用户吗?" target="ajaxTodo"><span>启用</span></a></li>
+			<li><a class="delete" href="systemuser/disable.do?id={sid}" title="确定要禁用该用户吗?" target="ajaxTodo"><span>禁用</span></a></li>
+		</ul>
+	</div>
+	<table class="table" width="100%" layoutH="137">
+		<thead>
+			<tr>
+				<th>用户名</th>
+				<th>用户昵称</th>
+				<th>邮箱</th>
+				<th>已验证邮箱</th>
+				<th>已禁用</th>
+				<th orderField="lastLoginDate" class="<#if orderField??&&'lastLoginDate'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">上次登录日期</th>
+				<th>上次登录IP</th>
+				<th orderField="loginCount" class="<#if orderField??&&'loginCount'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">登录次数</th>
+				<th orderField="dateRegistered" class="<#if orderField??&&'dateRegistered'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">注册日期</th>
+			</tr>
+		</thead>
+		<tbody>
+			<#list t_page.list as a>
+			<tr target="sid" rel="${a.id}">
+				<td>${a.name}</td>
+				<td>${a.nickName}${(a.superuserAccess)?string('[<font color="red">超级管理员</font>]','')}</td>
+				<td>${a.email}</td>
+				<td>${a.emailChecked!}</td>
+				<td>${(a.disable)?string('<font color="red">禁用</font>','正常')}</td>
+				<td>${a.lastLoginDate!}</td>
+				<td>${a.lastLoginIp!}</td>
+				<td>${a.loginCount!}</td>
+				<td>${a.dateRegistered}</td>
+			</tr>
+			</#list>
+		</tbody>
+	</table>
+<#include "../include_page/page.html"/>
+</div>
+</@d_systemUserList>

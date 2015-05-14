@@ -1,0 +1,67 @@
+<#if !queryIsDisable??><#assign queryIsDisable="0"/></#if>
+<@d_siteList startCreateDate=queryStartCreateDate endCreateDate=queryEndCreateDate isDisable=queryIsDisable 
+			orderField=orderField orderType=orderType pageNo=pageNum count=numPerPage>
+<form id="pagerForm" method="post">
+	<#include "../include_page/queryParamters.html"/>
+</form>
+<div class="pageHeader">
+	<form onsubmit="return navTabSearch(this);" method="post">
+	<div class="searchBar">
+		<table class="searchContent">
+			<tr>
+				<td>
+					<label>已删除：</label><#include "../include_page/queryIsDisable.html"/>
+				</td>
+				<td>
+					<label>创建日期：</label>
+					<input type="text" name="queryStartCreateDate" class="date" dateFmt="yyyy-MM-dd" maxDate="{%y}-%M-{%d}" value="${queryStartCreateDate!}" />
+					-
+					<input type="text" name="queryEndCreateDate" class="date" dateFmt="yyyy-MM-dd" maxDate="{%y}-%M-{%d}" value="${queryEndCreateDate!}" />
+				</td>
+			</tr>
+		</table>
+		<#include "../include_page/searchBar.html"/>
+	</div>
+	</form>
+</div>
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="add" href="cmsSite/add.html" target="dialog"><span>添加</span></a></li>
+			<li><a class="edit" href="cmsSite/add.html?navTabId=${navTabId!}&id={sid}" target="dialog"><span>修改</span></a></li>
+			<li><a class="delete" href="cmsSite/delete.do?id={sid}" title="确定要删除该条记录吗?" target="ajaxTodo"><span>删除</span></a></li>
+		</ul>
+	</div>
+	<table class="table" width="100%" layoutH="137">
+		<thead>
+			<tr>
+				<th>站点名称</th>
+				<th>站点简称</th>
+				<th>页面路径</th>
+				<th>动态站点路径</th>
+				<th>站点访问地址</th>
+				<th>附近路径</th>
+				<th>用户数</th>
+				<th orderField="createDate" class="<#if orderField??&&'createDate'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">创建日期</th>
+				<th>已删除</th>
+			</tr>
+		</thead>
+		<tbody>
+			<#list t_page.list as a>
+			<tr target="sid" rel="${a.id}">
+				<td>${a.name!}</td>
+				<td>${a.shortName!}</td>
+				<td>${a.htmlPath!}</td>
+				<td>${a.dynamicSitePath!}</td>
+				<td>${a.sitePath!}</td>
+				<td>${a.attachmentPath!}</td>
+				<td>${a.users!}</td>
+				<td>${a.createDate!}</td>
+				<td>${a.isDisable!}</td>
+			</tr>
+			</#list>
+		</tbody>
+	</table>
+<#include "../include_page/page.html"/>
+</div>
+</@d_siteList>

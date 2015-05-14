@@ -1,0 +1,7 @@
+<input type="hidden" name="pageNum" value="${(t_page.pageNo)!}" />
+<input type="hidden" name="numPerPage" value="${(t_page.pageSize)!}" />
+<input type="hidden" name="orderField" value="${orderField!}" />
+<input type="hidden" name="orderType" value="${orderType!}" />
+<#list .data_model?keys as pkey><#if pkey?starts_with('query')>
+	<input type="hidden" name="${pkey?html}" value="${(.data_model[pkey])?html}"/>
+</#if></#list>

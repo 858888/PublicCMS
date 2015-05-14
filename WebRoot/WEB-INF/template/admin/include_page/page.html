@@ -1,0 +1,15 @@
+<#if t_page??>
+<div class="panelBar">
+	<div class="pages">
+		<span>显示</span>
+		<select class="combox" name="numPerPage" onchange="navTabPageBreak({numPerPage:this.value})">
+			<option value="20"<#if t_page.pageSize==20> selected="true"</#if>>20</option>
+			
+			<option value="50"${(t_page.pageSize=50)?string(' selected="true"','')}>50</option>
+			<option value="100"${(t_page.pageSize=100)?string(' selected="true"','')}>100</option>
+		</select>
+		<span>条，共${t_page.totalCount}条</span>
+	</div>
+	<div class="pagination" targetType="navTab" totalCount="${t_page.totalCount}" numPerPage="${t_page.pageSize}" pageNumShown="10" currentPage="${t_page.pageNo}"></div>
+</div>
+</#if>

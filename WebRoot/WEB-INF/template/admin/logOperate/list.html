@@ -1,0 +1,63 @@
+<@d_logOperateList content=queryContent operate=queryOperate 
+			userId=queryUserId startCreateDate=queryStartCreateDate endCreateDate=queryEndCreateDate 
+			orderField=orderField orderType=orderType pageNo=pageNum count=numPerPage>
+<form id="pagerForm" method="post">
+	<#include "../include_page/queryParamters.html"/>
+</form>
+<div class="pageHeader">
+	<form onsubmit="return navTabSearch(this);" method="post">
+	<div class="searchBar">
+		<table class="searchContent">
+			<tr>
+				<td>
+					内容：<input type="text" name="queryContent" value="${queryContent!}" />
+				</td>
+				<td>
+					操作：<input type="text" name="queryOperate" value="${queryOperate!}" />
+				</td>
+				<td>
+					用户：<input type="text" name="queryUserId" value="${queryUserId!}" />
+				</td>
+				<td>
+					<label>操作日期：</label>
+					<input type="text" name="queryStartCreateDate" class="date" dateFmt="yyyy-MM-dd" maxDate="{%y}-%M-{%d}" value="${queryStartCreateDate!}" />
+					-
+					<input type="text" name="queryEndCreateDate" class="date" dateFmt="yyyy-MM-dd" maxDate="{%y}-%M-{%d}" value="${queryEndCreateDate!}" />
+				</td>
+			</tr>
+		</table>
+		<#include "../include_page/searchBar.html"/>
+	</div>
+	</form>
+</div>
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="add" href="logOperate/add.html" target="dialog"><span>添加</span></a></li>
+			<li><a class="edit" href="logOperate/add.html?navTabId=${navTabId!}&id={sid}" target="dialog"><span>修改</span></a></li>
+			<li><a class="delete" href="logOperate/delete.do?id={sid}" title="确定要删除该条记录吗?" target="ajaxTodo"><span>删除</span></a></li>
+		</ul>
+	</div>
+	<table class="table" width="100%" layoutH="137">
+		<thead>
+			<tr>
+				<th>用户</th>
+				<th>操作</th>
+				<th orderField="createDate" class="<#if orderField??&&'createDate'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">操作日期</th>
+				<th>内容</th>
+			</tr>
+		</thead>
+		<tbody>
+			<#list t_page.list as a>
+			<tr target="sid" rel="${a.id}">
+				<td>${a.userId!}</td>
+				<td>${a.operate!}</td>
+				<td>${a.createDate!}</td>
+				<td>${a.content!}</td>
+			</tr>
+			</#list>
+		</tbody>
+	</table>
+<#include "../include_page/page.html"/>
+</div>
+</@d_logOperateList>

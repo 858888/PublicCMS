@@ -1,0 +1,66 @@
+<@d_chapter id=id><#assign a=t_bean/></@d_chapter>
+<div class="pageContent">
+	<form method="post" action="cmsChapter/save.do?callbackType=closeCurrent" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+		<input name="id" type="hidden" value="${id!}" />
+		<div class="pageFormContent" layoutH="57">
+			<dl>
+				<dt>内容：</dt>
+				<dd><input class="required" name="contentId" type="text" size="30" value="${(a.contentId)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>父章节：</dt>
+				<dd><input class="required" name="parentId" type="text" size="30" value="${(a.parentId)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>标题：</dt>
+				<dd><input class="required" name="title" type="text" size="30" value="${(a.title)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>图片：</dt>
+				<dd><input class="required" name="image" type="text" size="30" value="${(a.image)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>描述：</dt>
+				<dd><input class="required" name="description" type="text" size="30" value="${(a.description)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>扩展字段1：</dt>
+				<dd><input class="required" name="extend1" type="text" size="30" value="${(a.extend1)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>扩展字段2：</dt>
+				<dd><input class="required" name="extend2" type="text" size="30" value="${(a.extend2)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>扩展字段3：</dt>
+				<dd><input class="required" name="extend3" type="text" size="30" value="${(a.extend3)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>扩展字段4：</dt>
+				<dd><input class="required" name="extend4" type="text" size="30" value="${(a.extend4)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>扩展数字字段1：</dt>
+				<dd><input class="required" name="extendNumber1" type="text" size="30" value="${(a.extendNumber1)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>扩展数字字段2：</dt>
+				<dd><input class="required" name="extendNumber2" type="text" size="30" value="${(a.extendNumber2)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>扩展数字字段3：</dt>
+				<dd><input class="required" name="extendNumber3" type="text" size="30" value="${(a.extendNumber3)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>扩展数字字段4：</dt>
+				<dd><input class="required" name="extendNumber4" type="text" size="30" value="${(a.extendNumber4)!}"/></dd>
+			</dl>
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+</div>

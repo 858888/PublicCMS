@@ -1,0 +1,50 @@
+<#if !queryIsDisable??><#assign queryIsDisable="0"/></#if>
+<@d_modelList isDisable=queryIsDisable pageNo=pageNum count=numPerPage>
+<form id="pagerForm" method="post">
+	<#include "../include_page/queryParamters.html"/>
+</form>
+<div class="pageHeader">
+	<form onsubmit="return navTabSearch(this);" method="post">
+	<div class="searchBar">
+		<table class="searchContent">
+			<tr>
+				<td>
+					<label>已删除：</label><#include "../include_page/queryIsDisable.html"/>
+				</td>
+			</tr>
+		</table>
+		<#include "../include_page/searchBar.html"/>
+	</div>
+	</form>
+</div>
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="add" href="cmsModel/add.html" target="dialog"><span>添加</span></a></li>
+			<li><a class="edit" href="cmsModel/add.html?navTabId=${navTabId!}&id={sid}" target="dialog"><span>修改</span></a></li>
+			<li><a class="delete" href="cmsModel/delete.do?id={sid}" title="确定要删除该条记录吗?" target="ajaxTodo"><span>删除</span></a></li>
+		</ul>
+	</div>
+	<table class="table" width="100%" layoutH="137">
+		<thead>
+			<tr>
+				<th>名称</th>
+				<th>模板路径</th>
+				<th>模板路径1</th>
+				<th>已删除</th>
+			</tr>
+		</thead>
+		<tbody>
+			<#list t_page.list as a>
+			<tr target="sid" rel="${a.id}">
+				<td>${a.name!}</td>
+				<td>${a.templatePath!}</td>
+				<td>${a.templatePath1!}</td>
+				<td>${a.isDisable!}</td>
+			</tr>
+			</#list>
+		</tbody>
+	</table>
+<#include "../include_page/page.html"/>
+</div>
+</@d_modelList>

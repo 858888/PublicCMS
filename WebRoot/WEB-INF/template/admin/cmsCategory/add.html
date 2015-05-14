@@ -1,0 +1,94 @@
+<@d_category id=id><#assign a=t_bean/></@d_category>
+<div class="pageContent">
+	<form method="post" action="cmsCategory/save.do?callbackType=closeCurrent" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+		<input name="id" type="hidden" value="${id!}" />
+		<div class="pageFormContent" layoutH="57">
+			<dl>
+				<dt>站点：</dt>
+				<dd><input class="required" name="siteId" type="text" size="30" value="${(a.siteId)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>名称：</dt>
+				<dd><input class="required" name="name" type="text" size="30" value="${(a.name)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>父分类：</dt>
+				<dd><input class="required" name="parentId" type="text" size="30" value="${(a.parentId)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>英文名：</dt>
+				<dd><input class="required" name="englishName" type="text" size="30" value="${(a.englishName)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>路径：</dt>
+				<dd><input class="required" name="path" type="text" size="30" value="${(a.path)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>列表路径：</dt>
+				<dd><input class="required" name="listPath" type="text" size="30" value="${(a.listPath)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>路径1：</dt>
+				<dd><input class="required" name="path1" type="text" size="30" value="${(a.path1)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>列表路径1：</dt>
+				<dd><input class="required" name="listPath1" type="text" size="30" value="${(a.listPath1)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>内容路径：</dt>
+				<dd><input class="required" name="contentPath" type="text" size="30" value="${(a.contentPath)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>内容路径1：</dt>
+				<dd><input class="required" name="contentPath1" type="text" size="30" value="${(a.contentPath1)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>每页数据：</dt>
+				<dd><input class="required" name="pageSize" type="text" size="30" value="${(a.pageSize)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>内容数：</dt>
+				<dd><input class="required" name="contents" type="text" size="30" value="${(a.contents)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>扩展字段1：</dt>
+				<dd><input class="required" name="extend1" type="text" size="30" value="${(a.extend1)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>扩展字段2：</dt>
+				<dd><input class="required" name="extend2" type="text" size="30" value="${(a.extend2)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>扩展字段3：</dt>
+				<dd><input class="required" name="extend3" type="text" size="30" value="${(a.extend3)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>扩展字段4：</dt>
+				<dd><input class="required" name="extend4" type="text" size="30" value="${(a.extend4)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>扩展数字字段1：</dt>
+				<dd><input class="required" name="extendNumber1" type="text" size="30" value="${(a.extendNumber1)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>扩展数字字段2：</dt>
+				<dd><input class="required" name="extendNumber2" type="text" size="30" value="${(a.extendNumber2)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>扩展数字字段3：</dt>
+				<dd><input class="required" name="extendNumber3" type="text" size="30" value="${(a.extendNumber3)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>扩展数字字段4：</dt>
+				<dd><input class="required" name="extendNumber4" type="text" size="30" value="${(a.extendNumber4)!}"/></dd>
+			</dl>
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+</div>

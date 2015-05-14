@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管理后台登陆页面</title>
+    <link rel="stylesheet" href="${base}/resource/admin/login/login.css">
+    <script type="text/javascript" src="${base}/resource/admin/js/jquery-1.7.2.js"></script>
+</head>
+<body onload="document.getElementsByTagName('input')[0].focus();">
+<div class="login_body">
+    <div class="login_form clearfix">
+		<form action="login.do" method="post">
+	        <p><input type="text" name="username" class="textInput" placeholder="帐号"/></p>
+	        <p><input type="password" name="password" class="textInput" placeholder="密码"/></p>
+	        <p>
+	        	<input type="submit" value="登  录"/>
+	        	<input type="hidden" name="returnUrl" value="${returnUrl!''?html}"/>
+	        </p>
+		</form>
+    </div>
+    <p class="login_msg">
+    	<#if error??>
+			<@t.m error/>
+		</#if>
+		<#if message??>
+			<@t.m "message."+message/>
+		</#if>
+    </p>
+</div>
+</body>
+</html>

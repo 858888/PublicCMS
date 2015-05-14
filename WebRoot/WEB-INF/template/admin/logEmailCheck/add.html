@@ -1,0 +1,34 @@
+<@d_logEmailCheck id=id><#assign a=t_bean/></@d_logEmailCheck>
+<div class="pageContent">
+	<form method="post" action="logEmailCheck/save.do?callbackType=closeCurrent" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+		<input name="id" type="hidden" value="${id!}" />
+		<div class="pageFormContent" layoutH="57">
+			<dl>
+				<dt>用户：</dt>
+				<dd><input class="required" name="userId" type="text" size="30" value="${(a.userId)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>邮件地址：</dt>
+				<dd><input class="required" name="email" type="text" size="30" value="${(a.email)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>验证码：</dt>
+				<dd><input class="required" name="code" type="text" size="30" value="${(a.code)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>创建日期：</dt>
+				<dd><input class="required" name="createDate" type="text" size="30" class="date" dateFmt="yyyy-MM-dd HH:mm:ss" value="${(a.createDate)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>验证通过：</dt>
+				<dd><input class="required" name="checked" type="text" size="30" value="${(a.checked)!}"/></dd>
+			</dl>
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+</div>

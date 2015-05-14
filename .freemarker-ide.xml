@@ -1,0 +1,9 @@
+<config>
+	<context-values>
+		<resource path="">
+			<value key="user" object-class="com.sanluan.cms.entities.system.SystemUser"/>
+		</resource>
+	</context-values>
+	<macro-library>
+	</macro-library>
+</config>

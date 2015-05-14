@@ -1,0 +1,57 @@
+<@d_guestBookList userId=queryUserId userName=queryserName startCreateDate=queryStartCreateDate endCreateDate=queryEndCreateDate pageNo=pageNum count=numPerPage>
+<form id="pagerForm" method="post">
+	<#include "../include_page/queryParamters.html"/>
+</form>
+<div class="pageHeader">
+	<form onsubmit="return navTabSearch(this);" method="post">
+	<div class="searchBar">
+		<table class="searchContent">
+			<tr>
+				<td>
+					用户ID：<input type="text" name="queryUserId" value="${queryUserId!}" />
+				</td>
+				<td>
+					用户昵称：<input type="text" name="queryUserName" value="${queryUserName!}" />
+				</td>
+				<td>
+					<label>开始填写时间：</label><input type="text" name="queryStartCreateDate" class="date" dateFmt="yyyy-MM-dd" minDate="2014-11-01" maxDate="{%y}-%M-{%d}" value="${queryStartCreateDate!}" />
+				</td>
+				<td>
+					<label>结束填写时间：</label><input type="text" name="queryEndCreateDate" class="date" dateFmt="yyyy-MM-dd" minDate="2014-11-01" maxDate="{%y}-%M-{%d}" value="${queryEndCreateDate!}" />
+				</td>
+			</tr>
+		</table>
+		<#include "../include_page/searchBar.html"/>
+	</div>
+	</form>
+</div>
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+		</ul>
+	</div>
+	<table class="table" width="100%" layoutH="137">
+		<thead>
+			<tr>
+				<th width="50">用户ID</th>
+				<th width="50">用户昵称</th>
+				<th width="50">联系方式</th>
+				<th width="200">留言内容</th>
+				<th width="100">填写时间</th>
+			</tr>
+		</thead>
+		<tbody>
+			<#list t_page.list as a>
+			<tr target="sid" rel="${a.id}">
+				<td><#if a.userId??><@d_user id=a.userId>${t_bean.name}</@d_user></#if></td>
+				<td>${a.userName}</td>
+				<td title="${a.contact?html}"><@t.cut a.contact?html 30></@t.cut></td>
+				<td title="${a.content?html}"><@t.cut a.content?html 40></@t.cut></td>
+				<td>${a.createDate!}</td>
+			</tr>
+			</#list>
+		</tbody>
+	</table>
+<#include "../include_page/page.html"/>
+</div>
+</@d_guestBookList>

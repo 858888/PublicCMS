@@ -1,0 +1,134 @@
+<#if !queryIsDisable??><#assign queryIsDisable="0"/></#if>
+<@d_contentList extendNumber3=queryExtendNumber3 extendNumber4=queryExtendNumber4 
+			status=queryStatus extend1=queryExtend1 categoryId=queryCategoryId 
+			extend3=queryExtend3 extend2=queryExtend2 extend4=queryExtend4 
+			isDisable=queryIsDisable modelId=queryModelId title=queryTitle 
+			userId=queryUserId extendNumber2=queryExtendNumber2 startPublishDate=queryStartPublishDate endPublishDate=queryEndPublishDate 
+			extendNumber1=queryExtendNumber1 orderField=orderField orderType=orderType pageNo=pageNum count=numPerPage>
+<form id="pagerForm" method="post">
+	<#include "../include_page/queryParamters.html"/>
+</form>
+<div class="pageHeader">
+	<form onsubmit="return navTabSearch(this);" method="post">
+	<div class="searchBar">
+		<table class="searchContent">
+			<tr>
+				<td>
+					<label>已删除：</label><#include "../include_page/queryIsDisable.html"/>
+				</td>
+				<td>
+					状态：<input type="text" name="queryStatus" value="${queryStatus!}" />
+				</td>
+				<td>
+					分类：<input type="text" name="queryCategoryId" value="${queryCategoryId!}" />
+				</td>
+				<td>
+					模型：<input type="text" name="queryModelId" value="${queryModelId!}" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					标题：<input type="text" name="queryTitle" value="${queryTitle!}" />
+				</td>
+				<td>
+					发布用户：<input type="text" name="queryUserId" value="${queryUserId!}" />
+				</td>
+				<td>
+					<label>发布日期：</label>
+					<input type="text" name="queryStartPublishDate" class="date" dateFmt="yyyy-MM-dd" maxDate="{%y}-%M-{%d}" value="${queryStartPublishDate!}" />
+					-
+					<input type="text" name="queryEndPublishDate" class="date" dateFmt="yyyy-MM-dd" maxDate="{%y}-%M-{%d}" value="${queryEndPublishDate!}" />
+				</td>
+				<#--
+				<td>
+					扩展字段1：<input type="text" name="queryExtend1" value="${queryExtend1!}" />
+				</td>
+				<td>
+					扩展字段2：<input type="text" name="queryExtend2" value="${queryExtend2!}" />
+				</td>
+				<td>
+					扩展字段3：<input type="text" name="queryExtend3" value="${queryExtend3!}" />
+				</td>
+				<td>
+					扩展字段4：<input type="text" name="queryExtend4" value="${queryExtend4!}" />
+				</td>
+				<td>
+					扩展数字字段1：<input type="text" name="queryExtendNumber1" value="${queryExtendNumber1!}" />
+				</td>
+				<td>
+					扩展数字字段2：<input type="text" name="queryExtendNumber2" value="${queryExtendNumber2!}" />
+				</td>
+				<td>
+					扩展数字字段3：<input type="text" name="queryExtendNumber3" value="${queryExtendNumber3!}" />
+				</td>
+				<td>
+					扩展数字字段4：<input type="text" name="queryExtendNumber4" value="${queryExtendNumber4!}" />
+				</td>
+				-->
+			</tr>
+		</table>
+		<#include "../include_page/searchBar.html"/>
+	</div>
+	</form>
+</div>
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="add" href="cmsContent/add.html" target="dialog"><span>添加</span></a></li>
+			<li><a class="edit" href="cmsContent/add.html?navTabId=${navTabId!}&id={sid}" target="dialog"><span>修改</span></a></li>
+			<li><a class="delete" href="cmsContent/delete.do?id={sid}" title="确定要删除该条记录吗?" target="ajaxTodo"><span>删除</span></a></li>
+		</ul>
+	</div>
+	<table class="table" width="100%" layoutH="137">
+		<thead>
+			<tr>
+				<th>标题</th>
+				<th>发布用户</th>
+				<th>分类</th>
+				<th>模型</th>
+				<th orderField="scores" class="<#if orderField??&&'scores'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">分数</th>
+				<th orderField="comments" class="<#if orderField??&&'comments'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">评论数</th>
+				<th orderField="clicks" class="<#if orderField??&&'clicks'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">点击数</th>
+				<th orderField="publishDate" class="<#if orderField??&&'publishDate'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">发布日期</th>
+				<th>创建日期</th>
+				<th>状态</th>
+				<th>已删除</th>
+				<#-- <th>扩展字段1</th>
+				<th>扩展字段2</th>
+				<th>扩展字段3</th>
+				<th>扩展字段4</th>
+				<th>扩展数字字段1</th>
+				<th>扩展数字字段2</th>
+				<th>扩展数字字段3</th>
+				<th>扩展数字字段4</th> -->
+			</tr>
+		</thead>
+		<tbody>
+			<#list t_page.list as a>
+			<tr target="sid" rel="${a.id}">
+				<td>${(a.isCopied?string('[转载]',''))!}${a.title!}</td>
+				<td><@d_systemUser id=a.userId>${(t_bean.name)!}</@d_systemUser></td>
+				<td><@d_category id=a.categoryId>${(t_bean.name)!}</@d_category></td>
+				<td><@d_model id=a.modelId>${(t_bean.name)!}</@d_model></td>
+				<td>${a.scores!}</td>
+				<td>${a.comments!}</td>
+				<td>${a.clicks!}</td>
+				<td>${a.publishDate!}</td>
+				<td>${a.createDate!}</td>
+				<td><@t.m 'status.content.'+a.status/></td>
+				<td>${(a.isDisable?string('已删除',''))!}</td>
+				<#-- <td>${a.extend1!}</td>
+				<td>${a.extend2!}</td>
+				<td>${a.extend3!}</td>
+				<td>${a.extend4!}</td>
+				<td>${a.extendNumber1!}</td>
+				<td>${a.extendNumber2!}</td>
+				<td>${a.extendNumber3!}</td>
+				<td>${a.extendNumber4!}</td> -->
+			</tr>
+			</#list>
+		</tbody>
+	</table>
+<#include "../include_page/page.html"/>
+</div>
+</@d_contentList>

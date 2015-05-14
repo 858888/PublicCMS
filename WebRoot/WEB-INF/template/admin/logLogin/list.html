@@ -1,0 +1,70 @@
+<@d_logLoginList result=queryResult userId=queryUserId 
+			name=queryName startCreateDate=queryStartCreateDate endCreateDate=queryEndCreateDate ip=queryIp 
+			orderField=orderField orderType=orderType pageNo=pageNum count=numPerPage>
+<form id="pagerForm" method="post">
+	<#include "../include_page/queryParamters.html"/>
+</form>
+<div class="pageHeader">
+	<form onsubmit="return navTabSearch(this);" method="post">
+	<div class="searchBar">
+		<table class="searchContent">
+			<tr>
+				<td>
+					登录结果：<input type="text" name="queryResult" value="${queryResult!}" />
+				</td>
+				<td>
+					用户：<input type="text" name="queryUserId" value="${queryUserId!}" />
+				</td>
+				<td>
+					用户名：<input type="text" name="queryName" value="${queryName!}" />
+				</td>
+				<td>
+					<label>登录日期：</label>
+					<input type="text" name="queryStartCreateDate" class="date" dateFmt="yyyy-MM-dd" maxDate="{%y}-%M-{%d}" value="${queryStartCreateDate!}" />
+					-
+					<input type="text" name="queryEndCreateDate" class="date" dateFmt="yyyy-MM-dd" maxDate="{%y}-%M-{%d}" value="${queryEndCreateDate!}" />
+				</td>
+				<td>
+					IP：<input type="text" name="queryIp" value="${queryIp!}" />
+				</td>
+			</tr>
+		</table>
+		<#include "../include_page/searchBar.html"/>
+	</div>
+	</form>
+</div>
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="add" href="logLogin/add.html" target="dialog"><span>添加</span></a></li>
+			<li><a class="edit" href="logLogin/add.html?navTabId=${navTabId!}&id={sid}" target="dialog"><span>修改</span></a></li>
+			<li><a class="delete" href="logLogin/delete.do?id={sid}" title="确定要删除该条记录吗?" target="ajaxTodo"><span>删除</span></a></li>
+		</ul>
+	</div>
+	<table class="table" width="100%" layoutH="137">
+		<thead>
+			<tr>
+				<th>用户名</th>
+				<th>用户</th>
+				<th>IP</th>
+				<th>登录结果</th>
+				<th orderField="createDate" class="<#if orderField??&&'createDate'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">登录日期</th>
+				<th>错误密码</th>
+			</tr>
+		</thead>
+		<tbody>
+			<#list t_page.list as a>
+			<tr target="sid" rel="${a.id}">
+				<td>${a.name!}</td>
+				<td>${a.userId!}</td>
+				<td>${a.ip!}</td>
+				<td>${a.result!}</td>
+				<td>${a.createDate!}</td>
+				<td>${a.errorPassword!}</td>
+			</tr>
+			</#list>
+		</tbody>
+	</table>
+<#include "../include_page/page.html"/>
+</div>
+</@d_logLoginList>

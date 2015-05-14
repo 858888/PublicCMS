@@ -1,0 +1,46 @@
+<@d_modelExtend id=id><#assign a=t_bean/></@d_modelExtend>
+<div class="pageContent">
+	<form method="post" action="cmsModelExtend/save.do?callbackType=closeCurrent" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+		<input name="id" type="hidden" value="${id!}" />
+		<div class="pageFormContent" layoutH="57">
+			<dl>
+				<dt>模型：</dt>
+				<dd><input class="required" name="modelId" type="text" size="30" value="${(a.modelId)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>扩展类型：</dt>
+				<dd><input class="required" name="extendType" type="text" size="30" value="${(a.extendType)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>名称：</dt>
+				<dd><input class="required" name="name" type="text" size="30" value="${(a.name)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>描述：</dt>
+				<dd><input class="required" name="description" type="text" size="30" value="${(a.description)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>类型：</dt>
+				<dd><input class="required" name="type" type="text" size="30" value="${(a.type)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>字段：</dt>
+				<dd><input class="required" name="code" type="text" size="30" value="${(a.code)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>表单类型：</dt>
+				<dd><input class="required" name="inputType" type="text" size="30" value="${(a.inputType)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>默认值：</dt>
+				<dd><input class="required" name="defaultValue" type="text" size="30" value="${(a.defaultValue)!}"/></dd>
+			</dl>
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+</div>

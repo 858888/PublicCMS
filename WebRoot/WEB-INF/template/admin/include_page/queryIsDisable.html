@@ -1,0 +1,4 @@
+<select class="combox" name="queryIsDisable">
+	<option value="0"${(queryIsDisable??&&"0"==queryIsDisable)?string(' selected="true"','')}>正常</option>
+	<option value="1"${(queryIsDisable??&&"1"==queryIsDisable)?string(' selected="true"','')}>已删除</option>
+</select>
