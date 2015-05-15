@@ -101,7 +101,8 @@
 		</property>
 	</bean>
 	<bean class="com.sanluan.cms.logic.component.StaticComponent">
-		<property name="templateLoaderPath" value="E:/template"/>
+		<property name="templateLoaderPath" value="E:/template/"/>
+		<property name="templateDataPath" value="E:/templateData/"/>
 		<property name="staticFileDirectory" value="E:/site/"/>
 	</bean>
 	<bean class="com.sanluan.common.handler.FreeMarkerExtendHandler">

@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.sanluan.cms.entities.cms.CmsCategory;
 import com.sanluan.cms.entities.cms.CmsContent;
 import com.sanluan.cms.entities.cms.CmsModel;
+import com.sanluan.cms.entities.cms.CmsSite;
 import com.sanluan.cms.logic.component.StaticComponent;
 import com.sanluan.cms.logic.service.cms.CmsCategoryService;
 import com.sanluan.cms.logic.service.cms.CmsContentService;
 import com.sanluan.cms.logic.service.cms.CmsModelService;
+import com.sanluan.cms.logic.service.cms.CmsSiteService;
 import com.sanluan.common.base.BaseController;
 
 @Controller
@@ -21,6 +23,8 @@ import com.sanluan.common.base.BaseController;
 public class CmsContentController extends BaseController {
 	@Autowired
 	private CmsContentService service;
+	@Autowired
+	private CmsSiteService siteService;
 	@Autowired
 	private CmsModelService modelService;
 	@Autowired
@@ -35,13 +39,14 @@ public class CmsContentController extends BaseController {
 		} else {
 			service.save(entity);
 		}
+		CmsSite cmsSite = siteService.getEntity(entity.getSiteId());
 		CmsModel cmsModel = modelService.getEntity(entity.getModelId());
 		CmsCategory cmsCategory = categoryService.getEntity(entity.getCategoryId());
 		if (virifyCustom("static",
-				!staticComponent.createStaticFile(cmsModel.getTemplatePath(), cmsCategory.getContentPath(), request, model),
+				!staticComponent.createStaticFile(cmsModel.getTemplatePath(), cmsCategory.getContentPath(), cmsSite, model),
 				model)
 				|| virifyCustom("static1", !staticComponent.createStaticFile(cmsModel.getTemplatePath1(),
-						cmsCategory.getContentPath1(), request, model), model)) {
+						cmsCategory.getContentPath1(), cmsSite, model), model)) {
 			return "common/ajaxError";
 		}
 		return "common/ajaxDone";
@@ -51,13 +56,14 @@ public class CmsContentController extends BaseController {
 	public String publish(Integer id, HttpServletRequest request, ModelMap model) {
 		CmsContent entity = service.getEntity(id);
 		if (null != entity) {
+			CmsSite cmsSite = siteService.getEntity(entity.getSiteId());
 			CmsModel cmsModel = modelService.getEntity(entity.getModelId());
 			CmsCategory cmsCategory = categoryService.getEntity(entity.getCategoryId());
 			if (virifyCustom("static",
-					!staticComponent.createStaticFile(cmsModel.getTemplatePath(), cmsCategory.getContentPath(), request, model),
+					!staticComponent.createStaticFile(cmsModel.getTemplatePath(), cmsCategory.getContentPath(), cmsSite, model),
 					model)
 					|| virifyCustom("static1", !staticComponent.createStaticFile(cmsModel.getTemplatePath1(),
-							cmsCategory.getContentPath1(), request, model), model)) {
+							cmsCategory.getContentPath1(), cmsSite, model), model)) {
 				return "common/ajaxError";
 			}
 		}
