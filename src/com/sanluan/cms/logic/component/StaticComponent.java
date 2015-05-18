@@ -15,8 +15,6 @@ import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.ResourceLoader;
@@ -41,7 +39,6 @@ public class StaticComponent {
 
 	private ObjectMapper objectMapper = new ObjectMapper();
 	private ResourceLoader resourceLoader = new DefaultResourceLoader();
-	private Logger log = LoggerFactory.getLogger(getClass());
 
 	@Autowired
 	private FreeMarkerConfigurer freeMarkerConfigurer;
@@ -70,7 +67,6 @@ public class StaticComponent {
 		try {
 			map = objectMapper.readValue(new File(dirPath + "/metadata.data"), Map.class);
 		} catch (IOException e) {
-			log.error(e.getMessage());
 		}
 		try {
 			DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get(dirPath));
@@ -84,14 +80,14 @@ public class StaticComponent {
 						description = (String) infoMap.get("description");
 				}
 				if (attrs.isDirectory()) {
-					dirList.add(new FileInfo(fileName, description, true, attrs));
+					if (!fileName.toLowerCase().endsWith("include"))
+						dirList.add(new FileInfo(fileName, description, true, attrs));
 				} else {
 					if (!"metadata.data".equalsIgnoreCase(fileName))
 						fileList.add(new FileInfo(fileName, description, false, attrs));
 				}
 			}
 		} catch (IOException e) {
-			log.error(e.getMessage());
 		}
 		dirList.addAll(fileList);
 		return dirList;
@@ -114,7 +110,7 @@ public class StaticComponent {
 	}
 
 	public String getDataFilePath(String templatePath) {
-		if (null==templateDataPath) {
+		if (null == templateDataPath) {
 			try {
 				templateDataPath = resourceLoader.getResource("/data/").getFile().getAbsolutePath();
 			} catch (IOException e) {
@@ -122,9 +118,9 @@ public class StaticComponent {
 		}
 		return templateDataPath + templatePath + ".data";
 	}
-	
+
 	public String getHtmlFilePath(String filePath) {
-		if (null==staticFileDirectory) {
+		if (null == staticFileDirectory) {
 			try {
 				staticFileDirectory = resourceLoader.getResource("/static/").getFile().getAbsolutePath();
 			} catch (IOException e) {
@@ -132,9 +128,9 @@ public class StaticComponent {
 		}
 		return staticFileDirectory + filePath;
 	}
-	
+
 	public String getTemplateFilePath(String templatePath) {
-		if (null==templateLoaderPath) {
+		if (null == templateLoaderPath) {
 			try {
 				templateLoaderPath = resourceLoader.getResource("/template/").getFile().getAbsolutePath();
 			} catch (IOException e) {

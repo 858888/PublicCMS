@@ -42,7 +42,6 @@
 				<th>附近路径</th>
 				<th>用户数</th>
 				<th orderField="createDate" class="<#if orderField??&&'createDate'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">创建日期</th>
-				<th>已删除</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -56,7 +55,6 @@
 				<td>${a.attachmentPath!}</td>
 				<td>${a.users!}</td>
 				<td>${a.createDate!}</td>
-				<td>${a.isDisable!}</td>
 			</tr>
 			</#list>
 		</tbody>
