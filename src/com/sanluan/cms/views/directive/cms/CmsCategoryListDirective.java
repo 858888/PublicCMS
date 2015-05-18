@@ -19,7 +19,11 @@ public class CmsCategoryListDirective extends BaseDirective {
 
 	@Override
 	public void execute(DirectiveHandler handler) throws TemplateException, IOException {
-		PageHandler page = service.getPage(handler.getInteger("extendNumber3"), handler.getInteger("extendNumber4"), handler.getInteger("parentId"), handler.getInteger("siteId"), handler.getString("extend1"), handler.getString("name"), handler.getString("extend3"), handler.getString("extend2"), handler.getString("extend4"), handler.getInteger("extendNumber2"), handler.getBoolean("isDisable"), handler.getInteger("extendNumber1"), handler.getInteger("pageNo",1), handler.getInteger("count",20));
+		PageHandler page = service.getPage(handler.getInteger("extendNumber3"), handler.getInteger("extendNumber4"),
+				handler.getInteger("parentId"), handler.getInteger("siteId"), handler.getString("extend1"),
+				handler.getString("name"), handler.getString("extend3"), handler.getString("extend2"),
+				handler.getString("extend4"), handler.getInteger("extendNumber2"), handler.getBoolean("isDisable", false),
+				handler.getInteger("extendNumber1"), handler.getInteger("pageNo", 1), handler.getInteger("count", 20));
 		handler.put("page", page).render();
 	}
 

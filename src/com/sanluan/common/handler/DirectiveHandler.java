@@ -139,6 +139,20 @@ public class DirectiveHandler {
 
 	/**
 	 * @param name
+	 * @param defaultValue
+	 * @return
+	 * @throws TemplateException
+	 */
+	public String getString(String name, String defaultValue) throws TemplateException {
+		String result = getString(name);
+		if (null == result)
+			return defaultValue;
+		else
+			return result;
+	}
+
+	/**
+	 * @param name
 	 * 
 	 * @return
 	 * @throws TemplateException
@@ -343,6 +357,20 @@ public class DirectiveHandler {
 			return null;
 		}
 		return StringUtils.split(str, ',');
+	}
+
+	/**
+	 * @param name
+	 * @param defaultValue
+	 * @return
+	 * @throws TemplateException
+	 */
+	public Boolean getBoolean(String name, Boolean defaultValue) throws TemplateException {
+		Boolean result = getBoolean(name);
+		if (null == result)
+			return defaultValue;
+		else
+			return result;
 	}
 
 	/**

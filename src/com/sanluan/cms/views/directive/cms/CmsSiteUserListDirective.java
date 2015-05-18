@@ -19,7 +19,9 @@ public class CmsSiteUserListDirective extends BaseDirective {
 
 	@Override
 	public void execute(DirectiveHandler handler) throws TemplateException, IOException {
-		PageHandler page = service.getPage(handler.getInteger("siteId"), handler.getInteger("userId"), handler.getBoolean("isAdmin"), handler.getBoolean("isDisable"), handler.getInteger("pageNo",1), handler.getInteger("count",20));
+		PageHandler page = service.getPage(handler.getInteger("siteId"), handler.getInteger("userId"),
+				handler.getBoolean("isAdmin"), handler.getBoolean("isDisable", false), handler.getInteger("pageNo", 1),
+				handler.getInteger("count", 20));
 		handler.put("page", page).render();
 	}
 

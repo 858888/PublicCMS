@@ -23,10 +23,6 @@
 		<servlet-name>default</servlet-name>
 		<url-pattern>/resource/*</url-pattern>
 	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>default</servlet-name>
-		<url-pattern>/favicon.ico</url-pattern>
-	</servlet-mapping>
 	<servlet>
 		<servlet-name>AdminServlet</servlet-name>
 		<servlet-class>com.sanluan.common.servlet.ErrorToNotFoundDispatcherServlet</servlet-class>
@@ -38,7 +34,11 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>AdminServlet</servlet-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>*.html</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AdminServlet</servlet-name>
+		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>

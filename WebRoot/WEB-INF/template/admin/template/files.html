@@ -1,0 +1,32 @@
+<div class="pageContent">
+	<table class="table" width="100%" layoutH="0">
+		<thead>
+			<tr>
+				<th>文件名</th>
+				<th>描述</th>
+				<th>创建时间</th>
+				<th>修改时间</th>
+				<th>文件大小</th>
+			</tr>
+		</thead>
+		<tbody>
+			<@d_templateTree path=queryPath+"/include">
+				<#list t_list as a>
+					<tr>
+						<td>
+						<#if a.isDirectory>
+							<a href="template/files.html?navTabId=files&queryPath=${queryPath+'/'+a.fileName}" target="navTab" rel="files">[目录]${a.fileName}</a>	
+						<#else>
+							<a href="template/files.html?navTabId=files&queryPath=${queryPath+'/'+a.fileName}" target="navTab" rel="files">[文件]${a.fileName}</a>
+						</#if>
+						</td>
+						<td>${a.description!}</td>
+						<td>${a.creationTime?datetime}</td>
+						<td>${a.lastModifiedTime?datetime}</td>
+						<td>${a.size}</td>
+					</tr>
+				</#list>
+			</@d_templateTree>
+		</tbody>
+	</table>
+</div>

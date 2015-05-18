@@ -1,4 +1,3 @@
-<#if !queryIsDisable??><#assign queryIsDisable="0"/></#if>
 <@d_siteUserList siteId=querySiteId userId=queryUserId isAdmin=queryIsAdmin isDisable=queryIsDisable pageNo=pageNum count=numPerPage>
 <form id="pagerForm" method="post">
 	<#include "../include_page/queryParamters.html"/>
