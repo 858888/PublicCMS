@@ -2,7 +2,6 @@ package com.sanluan.cms.logic.dao.cms;
 
 // Generated 2015-5-8 16:50:23 by SourceMaker
 
-
 import org.springframework.stereotype.Repository;
 
 import com.sanluan.cms.entities.cms.CmsCategoryModel;
@@ -22,6 +21,13 @@ public class CmsCategoryModelDao extends BaseDao<CmsCategoryModel> {
 		}
 		queryMaker.append("order by bean.id desc");
 		return getPage(queryMaker, pageNo, pageSize);
+	}
+
+	public CmsCategoryModel getEntity(int modelId, int categoryId) {
+		QueryHandler queryMaker = getQueryMaker("from CmsCategoryModel bean");
+		queryMaker.condition("bean.modelId = :modelId").setParameter("modelId", modelId);
+		queryMaker.condition("bean.categoryId = :categoryId").setParameter("categoryId", categoryId);
+		return getEntity(queryMaker);
 	}
 
 	@Override

@@ -33,7 +33,7 @@ public class CmsContent implements java.io.Serializable {
 	@MyColumn(title = "站点", condition = true)
 	private String siteId;
 	@MyColumn(title = "分类", condition = true)
-	private String categoryId;
+	private int categoryId;
 	@MyColumn(title = "模型", condition = true)
 	private int modelId;
 	@MyColumn(title = "是否转载")
@@ -86,7 +86,7 @@ public class CmsContent implements java.io.Serializable {
 	public CmsContent() {
 	}
 
-	public CmsContent(String title, int userId, String categoryId, int modelId, boolean isCopied, String description,
+	public CmsContent(String title, int userId, int categoryId, int modelId, boolean isCopied, String description,
 			int chapters, int scores, int comments, int clicks, Date publishDate, Date createDate, int status, boolean isDisable) {
 		this.title = title;
 		this.userId = userId;
@@ -104,7 +104,7 @@ public class CmsContent implements java.io.Serializable {
 		this.isDisable = isDisable;
 	}
 
-	public CmsContent(String title, int userId, String categoryId, int modelId, boolean isCopied, String source, String author,
+	public CmsContent(String title, int userId, int categoryId, int modelId, boolean isCopied, String source, String author,
 			String editor, String url, String description, String cover, int chapters, int scores, int comments, int clicks,
 			Date publishDate, Date createDate, int status, boolean isDisable, String extend1, String extend2, String extend3,
 			String extend4, Integer extendNumber1, Integer extendNumber2, Integer extendNumber3, Integer extendNumber4) {
@@ -176,11 +176,11 @@ public class CmsContent implements java.io.Serializable {
 	}
 
 	@Column(name = "category_id", nullable = false)
-	public String getCategoryId() {
+	public int getCategoryId() {
 		return this.categoryId;
 	}
 
-	public void setCategoryId(String categoryId) {
+	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
 	}
 

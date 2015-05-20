@@ -8,10 +8,11 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sanluan.cms.entities.cms.CmsCategory;
+import com.sanluan.cms.entities.cms.CmsCategoryModel;
 import com.sanluan.cms.entities.cms.CmsContent;
-import com.sanluan.cms.entities.cms.CmsModel;
 import com.sanluan.cms.entities.cms.CmsSite;
 import com.sanluan.cms.logic.component.StaticComponent;
+import com.sanluan.cms.logic.service.cms.CmsCategoryModelService;
 import com.sanluan.cms.logic.service.cms.CmsCategoryService;
 import com.sanluan.cms.logic.service.cms.CmsContentService;
 import com.sanluan.cms.logic.service.cms.CmsModelService;
@@ -28,6 +29,8 @@ public class CmsContentController extends BaseController {
 	@Autowired
 	private CmsModelService modelService;
 	@Autowired
+	private CmsCategoryModelService categoryModelService;
+	@Autowired
 	private CmsCategoryService categoryService;
 	@Autowired
 	private StaticComponent staticComponent;
@@ -40,12 +43,12 @@ public class CmsContentController extends BaseController {
 			service.save(entity);
 		}
 		CmsSite cmsSite = siteService.getEntity(entity.getSiteId());
-		CmsModel cmsModel = modelService.getEntity(entity.getModelId());
 		CmsCategory cmsCategory = categoryService.getEntity(entity.getCategoryId());
+		CmsCategoryModel categoryModel = categoryModelService.getEntity(entity.getModelId(), entity.getCategoryId());
 		if (virifyCustom("static",
-				!staticComponent.createStaticFile(cmsModel.getTemplatePath(), cmsCategory.getContentPath(), cmsSite, model),
+				!staticComponent.createStaticFile(categoryModel.getTemplatePath(), cmsCategory.getContentPath(), cmsSite, model),
 				model)
-				|| virifyCustom("static1", !staticComponent.createStaticFile(cmsModel.getTemplatePath1(),
+				|| virifyCustom("static1", !staticComponent.createStaticFile(categoryModel.getTemplatePath1(),
 						cmsCategory.getContentPath1(), cmsSite, model), model)) {
 			return "common/ajaxError";
 		}
@@ -57,12 +60,11 @@ public class CmsContentController extends BaseController {
 		CmsContent entity = service.getEntity(id);
 		if (null != entity) {
 			CmsSite cmsSite = siteService.getEntity(entity.getSiteId());
-			CmsModel cmsModel = modelService.getEntity(entity.getModelId());
+			CmsCategoryModel categoryModel = categoryModelService.getEntity(entity.getModelId(), entity.getCategoryId());
 			CmsCategory cmsCategory = categoryService.getEntity(entity.getCategoryId());
-			if (virifyCustom("static",
-					!staticComponent.createStaticFile(cmsModel.getTemplatePath(), cmsCategory.getContentPath(), cmsSite, model),
-					model)
-					|| virifyCustom("static1", !staticComponent.createStaticFile(cmsModel.getTemplatePath1(),
+			if (virifyCustom("static", !staticComponent.createStaticFile(categoryModel.getTemplatePath(),
+					cmsCategory.getContentPath(), cmsSite, model), model)
+					|| virifyCustom("static1", !staticComponent.createStaticFile(categoryModel.getTemplatePath1(),
 							cmsCategory.getContentPath1(), cmsSite, model), model)) {
 				return "common/ajaxError";
 			}

@@ -23,6 +23,12 @@ public class CmsCategoryModelService extends BaseService<CmsCategoryModel, CmsCa
 	public PageHandler getPage(Integer modelId, Integer categoryId, int pageNo, int pageSize) {
 		return dao.getPage(modelId, categoryId, pageNo, pageSize);
 	}
+	
+
+	@Transactional(readOnly = true)
+	public CmsCategoryModel getEntity(int modelId, int categoryId) {
+		return dao.getEntity(modelId, categoryId);
+	}
 
 	@Override
 	protected CmsCategoryModelDao getDao() {
