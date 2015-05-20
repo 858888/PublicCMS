@@ -29,8 +29,6 @@ public class CmsModel implements java.io.Serializable {
 	private String chapterName;
 	@MyColumn(title = "模板路径")
 	private String templatePath;
-	@MyColumn(title = "模板路径1")
-	private String templatePath1;
 	@MyColumn(title = "已删除", condition = true)
 	private boolean isDisable;
 
@@ -43,11 +41,10 @@ public class CmsModel implements java.io.Serializable {
 		this.isDisable = isDisable;
 	}
 
-	public CmsModel(String name, String chapterName, String templatePath, String templatePath1, boolean isDisable) {
+	public CmsModel(String name, String chapterName, String templatePath, boolean isDisable) {
 		this.name = name;
 		this.chapterName = chapterName;
 		this.templatePath = templatePath;
-		this.templatePath1 = templatePath1;
 		this.isDisable = isDisable;
 	}
 
@@ -87,15 +84,6 @@ public class CmsModel implements java.io.Serializable {
 
 	public void setTemplatePath(String templatePath) {
 		this.templatePath = templatePath;
-	}
-
-	@Column(name = "template_path1", length = 200)
-	public String getTemplatePath1() {
-		return this.templatePath1;
-	}
-
-	public void setTemplatePath1(String templatePath1) {
-		this.templatePath1 = templatePath1;
 	}
 
 	@Column(name = "is_disable", nullable = false)

@@ -36,14 +36,8 @@ public class CmsCategory implements java.io.Serializable {
 	private String path;
 	@MyColumn(title = "列表路径")
 	private String listPath;
-	@MyColumn(title = "路径1")
-	private String path1;
-	@MyColumn(title = "列表路径1")
-	private String listPath1;
 	@MyColumn(title = "内容路径")
 	private String contentPath;
-	@MyColumn(title = "内容路径1")
-	private String contentPath1;
 	@MyColumn(title = "每页数据")
 	private Integer pageSize;
 	private boolean userParentCategoryExtend;
@@ -89,7 +83,7 @@ public class CmsCategory implements java.io.Serializable {
 	}
 
 	public CmsCategory(int siteId, String name, Integer parentId, String childIds, String englishName, String path,
-			String listPath, String path1, String listPath1, String contentPath, String contentPath1, Integer pageSize,
+			String listPath, String contentPath,  Integer pageSize,
 			boolean userParentCategoryExtend, boolean userParentContentExtend, boolean userParentChapterExtend,
 			boolean isDisable, int contents, String extend1, String extend2, String extend3, String extend4,
 			Integer extendNumber1, Integer extendNumber2, Integer extendNumber3, Integer extendNumber4) {
@@ -100,10 +94,7 @@ public class CmsCategory implements java.io.Serializable {
 		this.englishName = englishName;
 		this.path = path;
 		this.listPath = listPath;
-		this.path1 = path1;
-		this.listPath1 = listPath1;
 		this.contentPath = contentPath;
-		this.contentPath1 = contentPath1;
 		this.pageSize = pageSize;
 		this.userParentCategoryExtend = userParentCategoryExtend;
 		this.userParentContentExtend = userParentContentExtend;
@@ -194,24 +185,6 @@ public class CmsCategory implements java.io.Serializable {
 		this.listPath = listPath;
 	}
 
-	@Column(name = "path1", length = 200)
-	public String getPath1() {
-		return this.path1;
-	}
-
-	public void setPath1(String path1) {
-		this.path1 = path1;
-	}
-
-	@Column(name = "list_path1", length = 200)
-	public String getListPath1() {
-		return this.listPath1;
-	}
-
-	public void setListPath1(String listPath1) {
-		this.listPath1 = listPath1;
-	}
-
 	@Column(name = "content_path", nullable = false, length = 500)
 	public String getContentPath() {
 		return this.contentPath;
@@ -219,15 +192,6 @@ public class CmsCategory implements java.io.Serializable {
 
 	public void setContentPath(String contentPath) {
 		this.contentPath = contentPath;
-	}
-
-	@Column(name = "content_path1", length = 500)
-	public String getContentPath1() {
-		return this.contentPath1;
-	}
-
-	public void setContentPath1(String contentPath1) {
-		this.contentPath1 = contentPath1;
 	}
 
 	@Column(name = "page_size")

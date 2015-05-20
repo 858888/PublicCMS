@@ -47,9 +47,7 @@ public class CmsContentController extends BaseController {
 		CmsCategoryModel categoryModel = categoryModelService.getEntity(entity.getModelId(), entity.getCategoryId());
 		if (virifyCustom("static",
 				!staticComponent.createStaticFile(categoryModel.getTemplatePath(), cmsCategory.getContentPath(), cmsSite, model),
-				model)
-				|| virifyCustom("static1", !staticComponent.createStaticFile(categoryModel.getTemplatePath1(),
-						cmsCategory.getContentPath1(), cmsSite, model), model)) {
+				model)) {
 			return "common/ajaxError";
 		}
 		return "common/ajaxDone";
@@ -63,9 +61,7 @@ public class CmsContentController extends BaseController {
 			CmsCategoryModel categoryModel = categoryModelService.getEntity(entity.getModelId(), entity.getCategoryId());
 			CmsCategory cmsCategory = categoryService.getEntity(entity.getCategoryId());
 			if (virifyCustom("static", !staticComponent.createStaticFile(categoryModel.getTemplatePath(),
-					cmsCategory.getContentPath(), cmsSite, model), model)
-					|| virifyCustom("static1", !staticComponent.createStaticFile(categoryModel.getTemplatePath1(),
-							cmsCategory.getContentPath1(), cmsSite, model), model)) {
+					cmsCategory.getContentPath(), cmsSite, model), model)) {
 				return "common/ajaxError";
 			}
 		}
