@@ -6,12 +6,12 @@
 		<#list t_list as a>
 		<li>
 			<#local queryPath=path+'/'+a.fileName>
-			<#if a.isDirectory><a>${a.description!a.fileName}</a>
+			<#if a.isDirectory><a>${a.description!}</a>
 				<ul>
 					<@buildTree queryPath/>
 				</ul>
 			<#else>
-				<a href="template/files.html?navTabId=files&queryPath=${queryPath}" target="navTab">${a.description!a.fileName}</a>
+				<a href="template/files.html?navTabId=files&queryPath=${queryPath}" target="navTab">${a.description!}</a>
 			</#if>
 		</li>
 		</#list>

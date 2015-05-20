@@ -10,6 +10,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -51,8 +52,8 @@ public class StaticComponent {
 				model = (ModelMap) model.clone();
 				model.put(CONTEXT_BASE, site.getSitePath());
 				model.put("site", site);
-				FreeMarkerUtils.makeFileByFile(templatePath, getHtmlFilePath(site.getHtmlPath() + filePath),
-						freeMarkerConfigurer.getConfiguration(), model);
+				FreeMarkerUtils.makeFileByFile(templatePath, getHtmlFilePath(site.getHtmlPath() + filePath), getConfiguration(),
+						model);
 			}
 			return true;
 		} catch (Exception e) {
@@ -73,18 +74,23 @@ public class StaticComponent {
 			for (Path entry : stream) {
 				BasicFileAttributes attrs = Files.readAttributes(entry, BasicFileAttributes.class);
 				String fileName = entry.getFileName().toString();
-				String description = null;
+				String description = fileName;
+				String path = fileName;
 				if (null != map) {
 					Map<?, ?> infoMap = (Map<?, ?>) map.get(fileName);
-					if (null != infoMap)
-						description = (String) infoMap.get("description");
+					if (null != infoMap) {
+						if (null != infoMap.get("description"))
+							description = (String) infoMap.get("description");
+						if (null != infoMap.get("path"))
+							path = (String) infoMap.get("path");
+					}
 				}
 				if (attrs.isDirectory()) {
-					if (!fileName.toLowerCase().endsWith("include"))
-						dirList.add(new FileInfo(fileName, description, true, attrs));
+					if (!fileName.toLowerCase().endsWith(".include"))
+						dirList.add(new FileInfo(fileName, path, description, true, attrs));
 				} else {
 					if (!"metadata.data".equalsIgnoreCase(fileName))
-						fileList.add(new FileInfo(fileName, description, false, attrs));
+						fileList.add(new FileInfo(fileName, path, description, false, attrs));
 				}
 			}
 		} catch (IOException e) {
@@ -140,14 +146,6 @@ public class StaticComponent {
 	}
 
 	/**
-	 * @param staticFileDirectory
-	 *            the staticFileDirectory to set
-	 */
-	public void setStaticFileDirectory(String staticFileDirectory) {
-		this.staticFileDirectory = staticFileDirectory;
-	}
-
-	/**
 	 * @return the configuration
 	 */
 	public Configuration getConfiguration() {
@@ -157,6 +155,8 @@ public class StaticComponent {
 				if (StringUtils.isNotBlank(templateLoaderPath)) {
 					configuration = (Configuration) configuration.clone();
 					configuration.setDirectoryForTemplateLoading(new File(templateLoaderPath));
+					configuration.setAutoImports(new HashMap<String, String>());
+					configuration.setAutoIncludes(new ArrayList<String>());
 				}
 			} catch (IOException e) {
 			}
@@ -165,10 +165,24 @@ public class StaticComponent {
 	}
 
 	/**
+	 * @param staticFileDirectory
+	 *            the staticFileDirectory to set
+	 */
+	public void setStaticFileDirectory(String staticFileDirectory) {
+		if (null != staticFileDirectory && !(staticFileDirectory.endsWith("/") || staticFileDirectory.endsWith("\\"))) {
+			staticFileDirectory += "/";
+		}
+		this.staticFileDirectory = staticFileDirectory;
+	}
+
+	/**
 	 * @param templateLoaderPath
 	 *            the templateLoaderPath to set
 	 */
 	public void setTemplateLoaderPath(String templateLoaderPath) {
+		if (null != templateLoaderPath && !(templateLoaderPath.endsWith("/") || templateLoaderPath.endsWith("\\"))) {
+			templateLoaderPath += "/";
+		}
 		this.templateLoaderPath = templateLoaderPath;
 	}
 
@@ -177,6 +191,9 @@ public class StaticComponent {
 	 *            the templateDataPath to set
 	 */
 	public void setTemplateDataPath(String templateDataPath) {
+		if (null != templateDataPath && !(templateDataPath.endsWith("/") || templateDataPath.endsWith("\\"))) {
+			templateDataPath += "/";
+		}
 		this.templateDataPath = templateDataPath;
 	}
 

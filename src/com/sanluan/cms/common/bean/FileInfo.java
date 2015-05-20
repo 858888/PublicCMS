@@ -5,6 +5,7 @@ import java.util.Date;
 
 public class FileInfo {
 	private String fileName;
+	private String path;
 	private String description;
 	private boolean isDirectory;
 	private Date lastModifiedTime;
@@ -12,14 +13,16 @@ public class FileInfo {
 	private Date creationTime;
 	private long size;
 
-	public FileInfo(String fileName, String description, boolean isDirectory) {
+	public FileInfo(String fileName, String path, String description, boolean isDirectory) {
 		this.fileName = fileName;
+		this.path = path;
 		this.description = description;
 		this.isDirectory = isDirectory;
 	}
 
-	public FileInfo(String fileName, String description, boolean isDirectory, BasicFileAttributes attrs) {
+	public FileInfo(String fileName, String path, String description, boolean isDirectory, BasicFileAttributes attrs) {
 		this.fileName = fileName;
+		this.path = path;
 		this.description = description;
 		this.isDirectory = isDirectory;
 		this.lastModifiedTime = new Date(attrs.lastModifiedTime().toMillis());
@@ -131,5 +134,20 @@ public class FileInfo {
 	 */
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	/**
+	 * @return the path
+	 */
+	public String getPath() {
+		return path;
+	}
+
+	/**
+	 * @param path
+	 *            the path to set
+	 */
+	public void setPath(String path) {
+		this.path = path;
 	}
 }
