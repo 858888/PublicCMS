@@ -30,8 +30,8 @@ public class CmsChapter implements java.io.Serializable {
 	private Integer id;
 	@MyColumn(title = "内容", condition = true)
 	private int contentId;
-	@MyColumn(title = "父章节", condition = true)
-	private Integer parentId;
+	@MyColumn(title = "分类ID", condition = true)
+	private Integer categoryId;
 	@MyColumn(title = "标题", condition = true, like = true)
 	private String title;
 	@MyColumn(title = "图片", condition = true)
@@ -68,11 +68,11 @@ public class CmsChapter implements java.io.Serializable {
 		this.description = description;
 	}
 
-	public CmsChapter(int contentId, Integer parentId, String title, String image, Date publishDate, Date createDate,
+	public CmsChapter(int contentId, Integer categoryId, String title, String image, Date publishDate, Date createDate,
 			String description, String extend1, String extend2, String extend3, String extend4, Integer extendNumber1,
 			Integer extendNumber2, Integer extendNumber3, Integer extendNumber4) {
 		this.contentId = contentId;
-		this.parentId = parentId;
+		this.categoryId = categoryId;
 		this.title = title;
 		this.image = image;
 		this.publishDate = publishDate;
@@ -108,13 +108,13 @@ public class CmsChapter implements java.io.Serializable {
 		this.contentId = contentId;
 	}
 
-	@Column(name = "parent_id")
-	public Integer getParentId() {
-		return this.parentId;
+	@Column(name = "category_id")
+	public Integer getCategoryId() {
+		return this.categoryId;
 	}
 
-	public void setParentId(Integer parentId) {
-		this.parentId = parentId;
+	public void setCategoryId(Integer categoryId) {
+		this.categoryId = categoryId;
 	}
 
 	@Column(name = "title", nullable = false, length = 200)

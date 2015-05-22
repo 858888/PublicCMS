@@ -1,4 +1,4 @@
-<@d_categoryList extendNumber3=queryExtendNumber3 extendNumber4=queryExtendNumber4 parentId=queryParentId siteId=querySiteId extend1=queryExtend1 name=queryName extend3=queryExtend3 extend2=queryExtend2 extend4=queryExtend4 extendNumber2=queryExtendNumber2 isDisable=queryIsDisable extendNumber1=queryExtendNumber1 pageNo=pageNum count=numPerPage>
+<@d_categoryList extendNumber3=queryExtendNumber3 extendNumber4=queryExtendNumber4 parentId=queryParentId extend1=queryExtend1 name=queryName extend3=queryExtend3 extend2=queryExtend2 extend4=queryExtend4 extendNumber2=queryExtendNumber2 isDisable=queryIsDisable extendNumber1=queryExtendNumber1 pageNo=pageNum count=numPerPage>
 <form id="pagerForm" method="post">
 	<#include "../include_page/queryParamters.html"/>
 </form>
@@ -12,9 +12,6 @@
 				</td>
 				<td>
 					父分类：<input type="text" name="queryParentId" value="${queryParentId!}" />
-				</td>
-				<td>
-					站点：<input type="text" name="querySiteId" value="${querySiteId!}" />
 				</td>
 				<td>
 					名称：<input type="text" name="queryName" value="${queryName!}" />

@@ -1,7 +1,5 @@
 package com.sanluan.cms.logic.component;
 
-import static com.sanluan.common.constants.FreeMakerConstants.CONTEXT_BASE;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.DirectoryStream;
@@ -24,7 +22,6 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sanluan.cms.common.bean.FileInfo;
-import com.sanluan.cms.entities.cms.CmsSite;
 import com.sanluan.common.tools.FreeMarkerUtils;
 
 import freemarker.template.Configuration;
@@ -46,14 +43,11 @@ public class StaticComponent {
 
 	private Configuration configuration;
 
-	public boolean createStaticFile(String templatePath, String filePath, CmsSite site, ModelMap model) {
+	public boolean createStaticFile(String templatePath, String filePath, ModelMap model) {
 		try {
 			if (StringUtils.isNotBlank(filePath)) {
 				model = (ModelMap) model.clone();
-				model.put(CONTEXT_BASE, site.getSitePath());
-				model.put("site", site);
-				FreeMarkerUtils.makeFileByFile(templatePath, getHtmlFilePath(site.getHtmlPath() + filePath), getConfiguration(),
-						model);
+				FreeMarkerUtils.makeFileByFile(templatePath, getHtmlFilePath(filePath), getConfiguration(), model);
 			}
 			return true;
 		} catch (Exception e) {

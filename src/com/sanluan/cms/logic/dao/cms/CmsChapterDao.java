@@ -11,7 +11,7 @@ import com.sanluan.common.handler.QueryHandler;
 
 @Repository
 public class CmsChapterDao extends BaseDao<CmsChapter> {
-	public PageHandler getPage(Integer extendNumber3, Integer extendNumber4, Integer parentId, String title, String extend1,
+	public PageHandler getPage(Integer extendNumber3, Integer extendNumber4, Integer categoryId, String title, String extend1,
 			String extend3, String extend2, String image, String extend4, Integer extendNumber2, Integer contentId,
 			Integer extendNumber1, int pageNo, int pageSize) {
 		QueryHandler queryMaker = getQueryMaker("from CmsChapter bean");
@@ -21,8 +21,8 @@ public class CmsChapterDao extends BaseDao<CmsChapter> {
 		if (notEmpty(extendNumber4)) {
 			queryMaker.condition("bean.extendNumber4 = :extendNumber4").setParameter("extendNumber4", extendNumber4);
 		}
-		if (notEmpty(parentId)) {
-			queryMaker.condition("bean.parentId = :parentId").setParameter("parentId", parentId);
+		if (notEmpty(categoryId)) {
+			queryMaker.condition("bean.categoryId = :categoryId").setParameter("categoryId", categoryId);
 		}
 		if (notEmpty(title)) {
 			queryMaker.condition("bean.title like :title").setParameter("title", like(title));
