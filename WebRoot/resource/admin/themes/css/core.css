@@ -439,7 +439,7 @@ body { overflow:hidden;}
 
 /* Menu */
 #header { display:block; overflow:hidden; height:35px; background-repeat:repeat-x;}
-#navMenu { float:left; display:block; overflow:hidden; position:relative;}
+#navMenu { float:left; display:block; overflow:hidden; position:absolute; top:0px; left:200px;}
 #navMenu li { float:left; margin-left:-1px; background-position:0 -50px; position:relative;}
 #navMenu li a { float:left;}
 #navMenu li span { float:left; font-weight:bold; cursor:pointer; padding:0 15px;}

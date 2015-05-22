@@ -91,7 +91,6 @@
 				<th orderField="publishDate" class="<#if orderField??&&'publishDate'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">发布日期</th>
 				<th>创建日期</th>
 				<th>状态</th>
-				<th>已删除</th>
 				<#-- <th>扩展字段1</th>
 				<th>扩展字段2</th>
 				<th>扩展字段3</th>
@@ -105,7 +104,7 @@
 		<tbody>
 			<#list t_page.list as a>
 			<tr target="sid" rel="${a.id}">
-				<td>${(a.isCopied?string('[转载]',''))!}${a.title!}</td>
+				<td>${(a.isCopied?string('[转载]',''))!}${a.title!}${(a.isDisable?string('[已删除]',''))!}</td>
 				<td><@d_systemUser id=a.userId>${(t_bean.name)!}</@d_systemUser></td>
 				<td><@d_category id=a.categoryId>${(t_bean.name)!}</@d_category></td>
 				<td><@d_model id=a.modelId>${(t_bean.name)!}</@d_model></td>
@@ -115,7 +114,6 @@
 				<td>${a.publishDate!}</td>
 				<td>${a.createDate!}</td>
 				<td><@t.m 'status.content.'+a.status/></td>
-				<td>${(a.isDisable?string('已删除',''))!}</td>
 				<#-- <td>${a.extend1!}</td>
 				<td>${a.extend2!}</td>
 				<td>${a.extend3!}</td>
