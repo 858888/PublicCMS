@@ -30,8 +30,6 @@ public class CmsContent implements java.io.Serializable {
 	private String title;
 	@MyColumn(title = "发布用户", condition = true)
 	private int userId;
-	@MyColumn(title = "站点", condition = true)
-	private String siteId;
 	@MyColumn(title = "分类", condition = true)
 	private int categoryId;
 	@MyColumn(title = "模型", condition = true)
@@ -164,15 +162,6 @@ public class CmsContent implements java.io.Serializable {
 
 	public void setUserId(int userId) {
 		this.userId = userId;
-	}
-	
-	@Column(name = "site_id", nullable = false)
-	public String getSiteId() {
-		return this.siteId;
-	}
-
-	public void setSiteId(String siteId) {
-		this.siteId = siteId;
 	}
 
 	@Column(name = "category_id", nullable = false)

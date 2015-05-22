@@ -147,11 +147,6 @@ input.disabled, textarea.disabled { border-color:#9eabb3 #d5dbdf #d5dbdf #9eabb3
 body, #splitBar { background:#dfe8f6;}
 #splitBarProxy { border-color:#c0c0c0; background:#CCC;}
 
-#header, #header .headerNav { background:url(./images/header_bg.png) repeat-x;}
-#header { background-color:#102c4a;}
-#header .logo { background:url(../default/images/logo.png) no-repeat;}
-#header .nav li a { color:#15428b;}
-#header .themeList li div { background:url(../default/images/themeButton.png) no-repeat;}
 .toggleCollapse, .toggleCollapse div { background:url(./images/layout/toggleSidebar.png) no-repeat;}
 .toggleCollapse { border-style:solid; border-width:1px 1px 0 1px; border-color:#99BBE8; background-color:#dfe8f6;}
 .toggleCollapse h2 { color:#15428B;}
@@ -164,10 +159,11 @@ body, #splitBar { background:#dfe8f6;}
 #taskbar .taskbarLeft, #taskbar .taskbarRight { background:url(./images/layout/taskbar_control.png) no-repeat;}
 
 /* Menu */
-#navMenu, #navMenu li, #navMenu li.selected a, #navMenu li.selected span { background:url(../default/images/menu/menu.png) no-repeat;}
-#navMenu { background-color:#1871dd; }
+#header, #navMenu li, #navMenu li.selected a, #navMenu li.selected span { background:url(../default/images/menu/menu.png) no-repeat;}
 #navMenu li a, #navMenu li span { color:#FFF; }
 #navMenu li.selected span { color:#000; }
+#header .logo { background:url(../default/images/logo.png) no-repeat;}
+#header .nav li a { color:#15428b;}
 
 /* Homepage */
 .sidebarContent { display:block; overflow:auto; height:500px; border:solid 1px #86B4EC; background:#FFF;}

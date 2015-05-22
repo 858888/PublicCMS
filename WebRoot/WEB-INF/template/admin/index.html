@@ -50,35 +50,21 @@ $(function(){
 </head>
 <body scroll="no">
 <div id="layout">
+	<!-- navMenu -->
 	<div id="header">
-		<div class="headerNav">
-			<a class="logo" href="./"></a>
-			<ul class="nav">
-				<li>
-					<ul class="themeList" id="themeList">
-						<li theme="default"><div class="selected">蓝色</div></li>
-						<li theme="green"><div>绿色</div></li>
-						<li theme="purple"><div>紫色</div></li>
-						<li theme="silver"><div>银色</div></li>
-						<li theme="azure"><div>天蓝</div></li>
-					</ul>
-				</li>
-				<li><a href="systemuser/password.html" target="dialog" width="600">修改密码</a></li>
-				<li><a href="logout.do">退出</a></li>
-			</ul>
-		</div>
-		<!-- navMenu -->
-		<div id="navMenu">
-			<ul>
-				<li class="selected"><a href="menu/myself.html"><span>与我相关</span></a></li>
-				<li><a href="menu/content.html"><span>内容管理</span></a></li>
-				<li><a href="menu/category.html"><span>分类管理</span></a></li>
-				<li><a href="menu/template.html"><span>模板管理</span></a></li>
-				<li><a href="menu/user.html"><span>用户管理</span></a></li>
-				<li><a href="menu/model.html"><span>模型管理</span></a></li>
-				<li><a href="menu/site.html"><span>站点管理</span></a></li>
-			</ul>
-		</div>
+		<a class="logo" href="./"></a>
+		<ul class="nav">
+			<li><a href="systemuser/password.html" target="dialog" width="600">修改密码</a></li>
+			<li><a href="logout.do">退出</a></li>
+		</ul>
+		<ul id="navMenu">
+			<li class="selected"><a href="menu/myself.html"><span>与我相关</span></a></li>
+			<li><a href="menu/content.html"><span>内容管理</span></a></li>
+			<li><a href="menu/category.html"><span>分类管理</span></a></li>
+			<li><a href="menu/template.html"><span>模板管理</span></a></li>
+			<li><a href="menu/user.html"><span>用户管理</span></a></li>
+			<li><a href="menu/model.html"><span>模型管理</span></a></li>
+		</ul>
 	</div>
 	<div id="leftside">
 		<div id="sidebar_s">
@@ -121,6 +107,15 @@ $(function(){
 		</div>
 	</div>
 </div>
-<div id="footer">Copyright &copy; 2015</div>
+<div id="footer">
+	Copyright &copy; 2015
+	<ul class="themeList" id="themeList">
+		<li theme="default"><div class="selected">蓝色</div></li>
+		<li theme="green"><div>绿色</div></li>
+		<li theme="purple"><div>紫色</div></li>
+		<li theme="silver"><div>银色</div></li>
+		<li theme="azure"><div>天蓝</div></li>
+	</ul>
+</div>
 </body>
 </html>
