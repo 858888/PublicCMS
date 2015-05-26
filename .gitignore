@@ -1,5 +1,4 @@
-*.class
-*.jar
+/src/com/sanluan/common/source/
 *.war
 *.ear
 .project
