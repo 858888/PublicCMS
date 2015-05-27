@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.sanluan.common.source.entity.MyColumn;
 
 /**
@@ -36,7 +38,11 @@ public class CmsChapter implements java.io.Serializable {
 	private String title;
 	@MyColumn(title = "图片", condition = true)
 	private String image;
+	@MyColumn(title = "发布日期", condition = true, order = true)
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date publishDate;
+	@MyColumn(title = "创建日期")
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date createDate;
 	@MyColumn(title = "描述")
 	private String description;

@@ -1,0 +1,5 @@
+<select class="combox" name="queryStatus">
+	<option value="0"${(queryStatus??&&"0"==queryStatus)?string(' selected="true"','')}>草稿</option>
+	<option value="1"${(!queryStatus??||"1"==queryStatus)?string(' selected="true"','')}>已发布</option>
+	<option value="2"${(queryStatus??&&"2"==queryStatus)?string(' selected="true"','')}>待审核</option>
+</select>

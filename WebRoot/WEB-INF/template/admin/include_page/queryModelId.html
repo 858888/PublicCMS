@@ -1,0 +1,7 @@
+<@d_modelList isDisable=false count=100>
+	<#list t_page.list as a>
+<select class="combox" name="queryModelId">
+	<option value="${a.id}"${(queryModelId??&&a.id==queryModelId)?string(' selected="true"','')}>${a.name!}</option>
+</select>
+	</#list>
+</@d_modelList>

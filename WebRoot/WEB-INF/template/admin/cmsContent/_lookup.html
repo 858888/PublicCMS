@@ -1,0 +1,77 @@
+<@d_contentList extendNumber3=queryExtendNumber3 extendNumber4=queryExtendNumber4 
+			extend1=queryExtend1 categoryId=queryCategoryId 
+			extend3=queryExtend3 extend2=queryExtend2 extend4=queryExtend4 
+			modelId=queryModelId title=queryTitle 
+			userId=queryUserId extendNumber2=queryExtendNumber2 startPublishDate=queryStartPublishDate endPublishDate=queryEndPublishDate 
+			extendNumber1=queryExtendNumber1 orderField=orderField orderType=orderType pageNo=pageNum count=numPerPage>
+<form id="pagerForm" method="post">
+	<#include "../include_page/queryParamters.html"/>
+</form>
+<div class="pageHeader">
+	<form onsubmit="return dwzSearch(this,'dialog');" method="post">
+	<div class="searchBar">
+		<table class="searchContent">
+			<tr>
+				<td>
+					<label>模型：</label><#include "../include_page/queryModelId.html"/>
+				</td>
+				<td>
+					<label>发布用户：</label><#include "../include_page/queryUserId.html"/>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<label>标题：</label><input type="text" size="40" name="queryTitle" value="${queryTitle!}" />
+				</td>
+				<td colspan="2">
+					<label>发布日期：</label>
+					<input type="text" name="queryStartPublishDate" class="date" dateFmt="yyyy-MM-dd" maxDate="{%y}-%M-{%d}" value="${queryStartPublishDate!}" />
+					-
+					<input type="text" name="queryEndPublishDate" class="date" dateFmt="yyyy-MM-dd" maxDate="{%y}-%M-{%d}" value="${queryEndPublishDate!}" />
+				</td>
+			</tr>
+		</table>
+		<#include "../include_page/searchBar.html"/>
+	</div>
+	</form>
+</div>
+<div class="pageContent">
+	<table class="table" width="100%" layoutH="162">
+		<thead>
+			<tr>
+				<th>标题</th>
+				<th>发布用户</th>
+				<th>分类</th>
+				<th>模型</th>
+				<th orderField="scores" class="<#if orderField??&&'scores'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">分数</th>
+				<th orderField="comments" class="<#if orderField??&&'comments'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">评论数</th>
+				<th orderField="clicks" class="<#if orderField??&&'clicks'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">点击数</th>
+				<th orderField="publishDate" class="<#if orderField??&&'publishDate'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">发布日期</th>
+				<th>创建日期</th>
+				<th>状态</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			<#list t_page.list as a>
+			<tr target="sid" rel="${a.id}">
+				<td>${(a.isCopied?string('[转载]',''))!}${a.title!}</td>
+				<td><@d_systemUser id=a.userId>${(t_bean.name)!}</@d_systemUser></td>
+				<td><@d_category id=a.categoryId>${(t_bean.name)!}</@d_category></td>
+				<td><@d_model id=a.modelId>${(t_bean.name)!}</@d_model></td>
+				<td>${a.scores!}</td>
+				<td>${a.comments!}</td>
+				<td>${a.clicks!}</td>
+				<td>${a.publishDate!}</td>
+				<td>${a.createDate!}</td>
+				<td><@t.m 'status.content.'+a.status/></td>
+				<td>
+					<a class="btnSelect" href="javascript:$.bringBack({id:'1', orgName:'技术部', orgNum:'1001'})" title="选择">选择</a>
+				</td>
+			</tr>
+			</#list>
+		</tbody>
+	</table>
+<#include "../include_page/page.html"/>
+</div>
+</@d_contentList>

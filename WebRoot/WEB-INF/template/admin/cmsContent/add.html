@@ -2,79 +2,48 @@
 <div class="pageContent">
 	<form method="post" action="cmsContent/save.do?callbackType=closeCurrent" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
 		<input name="id" type="hidden" value="${id!}" />
+		<input name="modelId" type="hidden" value="${(a.modelId)!modelId!}"/>
 		<div class="pageFormContent" layoutH="57">
-			<dl>
-				<dt>标题：</dt>
-				<dd><input class="required" name="title" type="text" size="30" value="${(a.title)!}"/></dd>
-			</dl>
-			<dl>
-				<dt>发布用户：</dt>
-				<dd><input class="required" name="userId" type="text" size="30" value="${(a.userId)!}"/></dd>
-			</dl>
 			<dl>
 				<dt>分类：</dt>
 				<dd><input class="required" name="categoryId" type="text" size="30" value="${(a.categoryId)!}"/></dd>
 			</dl>
-			<dl>
-				<dt>模型：</dt>
-				<dd><input class="required" name="modelId" type="text" size="30" value="${(a.modelId)!}"/></dd>
-			</dl>
-			<dl>
-				<dt>是否转载：</dt>
-				<dd><input class="required" name="isCopied" type="text" size="30" value="${(a.isCopied)!}"/></dd>
+			<dl class="nowrap">
+				<dt>标题：</dt>
+				<dd><input class="required" name="title" type="text" size="30" value="${(a.title)!}"/></dd>
 			</dl>
 			<dl>
 				<dt>来源：</dt>
-				<dd><input class="required" name="source" type="text" size="30" value="${(a.source)!}"/></dd>
+				<dd><input class="required" name="source" type="text" size="10" value="${(a.source)!}"/></dd>
 			</dl>
 			<dl>
 				<dt>作者：</dt>
-				<dd><input class="required" name="author" type="text" size="30" value="${(a.author)!}"/></dd>
+				<dd><input class="required" name="author" type="text" size="10" value="${(a.author)!}"/></dd>
 			</dl>
 			<dl>
 				<dt>编辑：</dt>
-				<dd><input class="required" name="editor" type="text" size="30" value="${(a.editor)!}"/></dd>
+				<dd><input class="required" name="editor" type="text" size="10" value="${(a.editor)!}"/></dd>
 			</dl>
 			<dl>
 				<dt>地址：</dt>
 				<dd><input class="required" name="url" type="text" size="30" value="${(a.url)!}"/></dd>
 			</dl>
-			<dl>
+			<dl class="nowrap">
 				<dt>描述：</dt>
-				<dd><input class="required" name="description" type="text" size="30" value="${(a.description)!}"/></dd>
+				<dd><textarea name="description" class="required" cols="80" rows="4">${(a.description)!}</textarea></dd>
 			</dl>
 			<dl>
 				<dt>封面：</dt>
 				<dd><input class="required" name="cover" type="text" size="30" value="${(a.cover)!}"/></dd>
 			</dl>
 			<dl>
-				<dt>章节数：</dt>
-				<dd><input class="required" name="chapters" type="text" size="30" value="${(a.chapters)!}"/></dd>
-			</dl>
-			<dl>
-				<dt>分数：</dt>
-				<dd><input class="required" name="scores" type="text" size="30" value="${(a.scores)!}"/></dd>
-			</dl>
-			<dl>
-				<dt>评论数：</dt>
-				<dd><input class="required" name="comments" type="text" size="30" value="${(a.comments)!}"/></dd>
-			</dl>
-			<dl>
-				<dt>点击数：</dt>
-				<dd><input class="required" name="clicks" type="text" size="30" value="${(a.clicks)!}"/></dd>
-			</dl>
-			<dl>
 				<dt>发布日期：</dt>
-				<dd><input class="required" name="publishDate" type="text" size="30" class="date" dateFmt="yyyy-MM-dd HH:mm:ss" value="${(a.publishDate)!}"/></dd>
+				<dd><input class="required date" name="publishDate" type="text" size="30" dateFmt="yyyy-MM-dd HH:mm:ss" value="${(a.publishDate)!}"/></dd>
 			</dl>
 			<dl>
 				<dt>创建日期：</dt>
-				<dd><input class="required" name="createDate" type="text" size="30" class="date" dateFmt="yyyy-MM-dd HH:mm:ss" value="${(a.createDate)!}"/></dd>
-			</dl>
-			<dl>
-				<dt>状态：</dt>
-				<dd><input class="required" name="status" type="text" size="30" value="${(a.status)!}"/></dd>
-			</dl>
+				<dd><input class="required date" name="createDate" type="text" size="30" dateFmt="yyyy-MM-dd HH:mm:ss" value="${(a.createDate)!}"/></dd>
+			</dl>			<#--
 			<dl>
 				<dt>扩展字段1：</dt>
 				<dd><input class="required" name="extend1" type="text" size="30" value="${(a.extend1)!}"/></dd>
@@ -106,7 +75,7 @@
 			<dl>
 				<dt>扩展数字字段4：</dt>
 				<dd><input class="required" name="extendNumber4" type="text" size="30" value="${(a.extendNumber4)!}"/></dd>
-			</dl>
+			</dl>-->
 		</div>
 		<div class="formBar">
 			<ul>

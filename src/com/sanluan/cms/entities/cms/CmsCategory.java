@@ -2,10 +2,11 @@ package com.sanluan.cms.entities.cms;
 
 // Generated 2015-5-6 15:49:39 by Hibernate Tools 4.0.0
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -38,12 +39,6 @@ public class CmsCategory implements java.io.Serializable {
 	private String contentPath;
 	@MyColumn(title = "每页数据")
 	private Integer pageSize;
-	@MyColumn(title = "继承父分类栏目扩展", condition = true)
-	private boolean useParentCategoryExtend;
-	@MyColumn(title = "继承父分类内容扩展", condition = true)
-	private boolean useParentContentExtend;
-	@MyColumn(title = "继承父分类章节扩展", condition = true)
-	private boolean useParentChapterExtend;
 	@MyColumn(title = "是否删除", condition = true)
 	private boolean isDisable;
 	@MyColumn(title = "内容数")
@@ -69,22 +64,17 @@ public class CmsCategory implements java.io.Serializable {
 	}
 
 	public CmsCategory(String name, String path, String listPath, String contentPath,
-			boolean useParentCategoryExtend, boolean useParentContentExtend, boolean useParentChapterExtend,
 			boolean isDisable, int contents) {
 		this.name = name;
 		this.path = path;
 		this.listPath = listPath;
 		this.contentPath = contentPath;
-		this.useParentCategoryExtend = useParentCategoryExtend;
-		this.useParentContentExtend = useParentContentExtend;
-		this.useParentChapterExtend = useParentChapterExtend;
 		this.isDisable = isDisable;
 		this.contents = contents;
 	}
 
 	public CmsCategory(String name, Integer parentId, String childIds, String englishName, String path,
 			String listPath, String contentPath,  Integer pageSize,
-			boolean useParentCategoryExtend, boolean useParentContentExtend, boolean useParentChapterExtend,
 			boolean isDisable, int contents, String extend1, String extend2, String extend3, String extend4,
 			Integer extendNumber1, Integer extendNumber2, Integer extendNumber3, Integer extendNumber4) {
 		this.name = name;
@@ -95,9 +85,6 @@ public class CmsCategory implements java.io.Serializable {
 		this.listPath = listPath;
 		this.contentPath = contentPath;
 		this.pageSize = pageSize;
-		this.useParentCategoryExtend = useParentCategoryExtend;
-		this.useParentContentExtend = useParentContentExtend;
-		this.useParentChapterExtend = useParentChapterExtend;
 		this.isDisable = isDisable;
 		this.contents = contents;
 		this.extend1 = extend1;
@@ -191,33 +178,6 @@ public class CmsCategory implements java.io.Serializable {
 
 	public void setPageSize(Integer pageSize) {
 		this.pageSize = pageSize;
-	}
-
-	@Column(name = "use_parent_category_extend", nullable = false)
-	public boolean isUseParentCategoryExtend() {
-		return this.useParentCategoryExtend;
-	}
-
-	public void setUseParentCategoryExtend(boolean useParentCategoryExtend) {
-		this.useParentCategoryExtend = useParentCategoryExtend;
-	}
-
-	@Column(name = "use_parent_content_extend", nullable = false)
-	public boolean isUseParentContentExtend() {
-		return this.useParentContentExtend;
-	}
-
-	public void setUseParentContentExtend(boolean useParentContentExtend) {
-		this.useParentContentExtend = useParentContentExtend;
-	}
-
-	@Column(name = "use_parent_chapter_extend", nullable = false)
-	public boolean isUseParentChapterExtend() {
-		return this.useParentChapterExtend;
-	}
-
-	public void setUseParentChapterExtend(boolean useParentChapterExtend) {
-		this.useParentChapterExtend = useParentChapterExtend;
 	}
 
 	@Column(name = "is_disable", nullable = false)

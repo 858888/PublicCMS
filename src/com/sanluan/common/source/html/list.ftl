@@ -8,7 +8,7 @@ ${"<@d_"+entityName?replace('Cms','')?uncap_first+"List"} <#include "../include_
 		<table class="searchContent">
 			<tr>
 			<#list conditionList as a><#if "Date"=a.type>
-				<td>
+				<td colspan="2">
 					<label>${a.title}：</label>
 					<input type="text" name="queryStart${a.name?cap_first}" class="date" dateFmt="yyyy-MM-dd" maxDate="{%y}-%M-{%d}" value="$${"{queryStart"+a.name?cap_first+"!}"}" />
 					-
@@ -16,7 +16,8 @@ ${"<@d_"+entityName?replace('Cms','')?uncap_first+"List"} <#include "../include_
 				</td>
 				<#else>
 				<td>
-					${a.title}：<input type="text" name="query${a.name?cap_first}" value="$${"{query"+a.name?cap_first+"!}"}" />
+					<label>${a.title}：</label>
+					<input type="text" name="query${a.name?cap_first}" value="$${"{query"+a.name?cap_first+"!}"}" />
 				</td>
 			</#if></#list>
 			</tr>

@@ -7,7 +7,7 @@ ${"<@d_"+entityName?replace('Cms','')?uncap_first+" id=id><#assign a=t_bean/></@
 			<#if "Date"=a.type>
 			<dl>
 				<dt>${a.title}：</dt>
-				<dd><input class="required" name="${a.name}" type="text" size="30" class="date" dateFmt="yyyy-MM-dd HH:mm:ss" value="$${"{(a."+a.name+")!}"}"/></dd>
+				<dd><input class="required date" name="${a.name}" type="text" size="30" dateFmt="yyyy-MM-dd HH:mm:ss" value="$${"{(a."+a.name+")!}"}"/></dd>
 			</dl>
 			<#else>
 			<dl>

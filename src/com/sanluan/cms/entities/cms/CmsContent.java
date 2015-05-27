@@ -2,15 +2,19 @@ package com.sanluan.cms.entities.cms;
 
 // Generated 2015-5-6 15:49:39 by Hibernate Tools 4.0.0
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.sanluan.common.source.entity.MyColumn;
 
@@ -57,8 +61,10 @@ public class CmsContent implements java.io.Serializable {
 	@MyColumn(title = "点击数", order = true)
 	private int clicks;
 	@MyColumn(title = "发布日期", condition = true, order = true)
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date publishDate;
 	@MyColumn(title = "创建日期")
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date createDate;
 	@MyColumn(title = "状态", condition = true)
 	private int status;
@@ -84,8 +90,8 @@ public class CmsContent implements java.io.Serializable {
 	public CmsContent() {
 	}
 
-	public CmsContent(String title, int userId, int categoryId, int modelId, boolean isCopied, String description,
-			int chapters, int scores, int comments, int clicks, Date publishDate, Date createDate, int status, boolean isDisable) {
+	public CmsContent(String title, int userId, int categoryId, int modelId, boolean isCopied, String description, int chapters,
+			int scores, int comments, int clicks, Date publishDate, Date createDate, int status, boolean isDisable) {
 		this.title = title;
 		this.userId = userId;
 		this.categoryId = categoryId;

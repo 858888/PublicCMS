@@ -1,0 +1,9 @@
+[
+<@d_systemUserList startDateRegistered=queryStartDateRegistered endDateRegistered=queryEndDateRegistered startLastLoginDate=queryStartLastLoginDate endLastLoginDate=queryEndLastLoginDate 
+			superuserAccess=true emailChecked=queryEmailChecked name=queryName 
+			disable=false orderField=orderField orderType=orderType pageNo=pageNum count=numPerPage>
+	<#list t_page.list as a>
+	{"queryUserId":"${a.id}", "nickName":"${a.nickName}"}<#if a_has_next>,</#if>
+	</#list>
+</@d_systemUserList>
+]

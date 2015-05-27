@@ -13,7 +13,7 @@ import com.sanluan.common.handler.QueryHandler;
 
 @Repository
 public class CmsContentDao extends BaseDao<CmsContent> {
-	public PageHandler getPage(Integer extendNumber3, Integer extendNumber4, Integer status, String extend1, String categoryId,
+	public PageHandler getPage(Integer extendNumber3, Integer extendNumber4, Integer status, String extend1, Integer categoryId,
 			String extend3, String extend2, String extend4, Boolean isDisable, Integer modelId, String title, Integer userId,
 			Integer extendNumber2, Date startPublishDate, Date endPublishDate, Integer extendNumber1, String orderField,
 			String orderType, int pageNo, int pageSize) {
@@ -95,6 +95,9 @@ public class CmsContentDao extends BaseDao<CmsContent> {
 
 	@Override
 	protected CmsContent init(CmsContent entity) {
+		if (null == entity.getCreateDate()) {
+			entity.setCreateDate(getDate());
+		}
 		return entity;
 	}
 

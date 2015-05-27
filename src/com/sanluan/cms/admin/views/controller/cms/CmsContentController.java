@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.sanluan.cms.common.tools.UserUtils;
 import com.sanluan.cms.entities.cms.CmsCategory;
 import com.sanluan.cms.entities.cms.CmsCategoryModel;
 import com.sanluan.cms.entities.cms.CmsContent;
@@ -33,6 +34,7 @@ public class CmsContentController extends BaseController {
 
 	@RequestMapping(value = { "save" + DO_SUFFIX })
 	public String save(CmsContent entity, HttpServletRequest request, ModelMap model) {
+		entity.setUserId(UserUtils.getAdminFromSession(request).getId());
 		if (null != entity.getId()) {
 			service.update(entity.getId(), entity);
 		} else {

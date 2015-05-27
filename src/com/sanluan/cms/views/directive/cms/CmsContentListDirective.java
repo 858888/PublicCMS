@@ -20,7 +20,7 @@ public class CmsContentListDirective extends BaseDirective {
 	@Override
 	public void execute(DirectiveHandler handler) throws TemplateException, IOException {
 		PageHandler page = service.getPage(handler.getInteger("extendNumber3"), handler.getInteger("extendNumber4"),
-				handler.getInteger("status"), handler.getString("extend1"), handler.getString("categoryId"),
+				handler.getInteger("status", 1), handler.getString("extend1"), handler.getInteger("categoryId"),
 				handler.getString("extend3"), handler.getString("extend2"), handler.getString("extend4"),
 				handler.getBoolean("isDisable", false), handler.getInteger("modelId"), handler.getString("title"),
 				handler.getInteger("userId"), handler.getInteger("extendNumber2"), handler.getDate("startPublishDate"),
