@@ -1,11 +1,13 @@
+<#list .data_model?keys as key>
+	<#if key?starts_with('query')>
+		<#assign paramters=(paramters!'')+(paramters?has_content)?string('&','')+key?url+'='+(.data_model[key])?url/>
+	</#if>
+</#list>
 <div class="pageContent">
 	<div layoutH="0" style="float:left; display:block; overflow:auto; width:240px;border:solid 1px #CCC; line-height:21px;">
 		<ul class="tree treeFolder">
-			<li><a href="cmsContent/_list.html">内容分类</a>
+			<li><a href="cmsContent/_list.html?${paramters!}" target="ajax" rel="jbsxBox">所有内容</a>
 				<ul>
-				<#list .data_model?keys as key><#if key?starts_with('query')&&'queryCategoryId'!=key>
-					<#if paramters??><#assign paramters=paramters+'&'+key?url+'='+(.data_model[key])?url/><#else><#assign paramters=key?url+'='+(.data_model[key])?url/></#if>
-				</#if></#list>
 				<@d_categoryList isDisable=false count=100>
 					<#list t_page.list as a>
 					<li>
