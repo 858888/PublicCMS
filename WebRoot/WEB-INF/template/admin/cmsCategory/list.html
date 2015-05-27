@@ -8,38 +8,17 @@
 		<table class="searchContent">
 			<tr>
 				<td>
-					<label>已删除：</label><#include "../include_page/queryIsDisable.html"/>
+					<label>已删除：</label>
+					<#include "../include_page/queryIsDisable.html"/>
 				</td>
 				<td>
-					父分类：<input type="text" name="queryParentId" value="${queryParentId!}" />
+					<label>父分类：</label>
+					<input type="text" name="queryParentId" value="${queryParentId!}" />
 				</td>
 				<td>
-					名称：<input type="text" name="queryName" value="${queryName!}" />
+					<label>名称：</label>
+					<input type="text" name="queryName" value="${queryName!}" />
 				</td>
-				<#-- <td>
-					扩展字段1：<input type="text" name="queryExtend1" value="${queryExtend1!}" />
-				</td>
-				<td>
-					扩展字段2：<input type="text" name="queryExtend2" value="${queryExtend2!}" />
-				</td>
-				<td>
-					扩展字段3：<input type="text" name="queryExtend3" value="${queryExtend3!}" />
-				</td>
-				<td>
-					扩展字段4：<input type="text" name="queryExtend4" value="${queryExtend4!}" />
-				</td>
-				<td>
-					扩展数字字段1：<input type="text" name="queryExtendNumber1" value="${queryExtendNumber1!}" />
-				</td>
-				<td>
-					扩展数字字段2：<input type="text" name="queryExtendNumber2" value="${queryExtendNumber2!}" />
-				</td>
-				<td>
-					扩展数字字段3：<input type="text" name="queryExtendNumber3" value="${queryExtendNumber3!}" />
-				</td>
-				<td>
-					扩展数字字段4：<input type="text" name="queryExtendNumber4" value="${queryExtendNumber4!}" />
-				</td> -->
 			</tr>
 		</table>
 		<#include "../include_page/searchBar.html"/>
@@ -69,14 +48,6 @@
 				<th>每页数据</th>
 				<th>是否删除</th>
 				<th>内容数</th>
-				<#-- <th>扩展字段1</th>
-				<th>扩展字段2</th>
-				<th>扩展字段3</th>
-				<th>扩展字段4</th>
-				<th>扩展数字字段1</th>
-				<th>扩展数字字段2</th>
-				<th>扩展数字字段3</th>
-				<th>扩展数字字段4</th> -->
 			</tr>
 		</thead>
 		<tbody>
@@ -94,14 +65,6 @@
 				<td>${a.pageSize!}</td>
 				<td>${(a.isDisable?string('已删除',''))!}</td>
 				<td>${a.contents!}</td>
-				<#-- <td>${a.extend1!}</td>
-				<td>${a.extend2!}</td>
-				<td>${a.extend3!}</td>
-				<td>${a.extend4!}</td>
-				<td>${a.extendNumber1!}</td>
-				<td>${a.extendNumber2!}</td>
-				<td>${a.extendNumber3!}</td>
-				<td>${a.extendNumber4!}</td> -->
 			</tr>
 			</#list>
 		</tbody>

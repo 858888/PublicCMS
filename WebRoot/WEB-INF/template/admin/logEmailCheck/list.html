@@ -10,7 +10,8 @@
 		<table class="searchContent">
 			<tr>
 				<td>
-					用户：<input type="text" name="queryUserId" value="${queryUserId!}" />
+					<label>用户：</label>
+					<input type="text" name="queryUserId" value="${queryUserId!}" />
 				</td>
 				<td>
 					<label>创建日期：</label>
@@ -19,7 +20,12 @@
 					<input type="text" name="queryEndCreateDate" class="date" dateFmt="yyyy-MM-dd" maxDate="{%y}-%M-{%d}" value="${queryEndCreateDate!}" />
 				</td>
 				<td>
-					验证通过：<input type="text" name="queryChecked" value="${queryChecked!}" />
+					<label>验证结果：</label>
+					<select class="combox" name="queryResult">
+						<option value=""${(!queryResult?has_content)?string(' selected="true"','')}>不限</option>
+						<option value="1"${(queryResult?has_content&&"1"==queryResult)?string(' selected="true"','')}>成功</option>
+						<option value="0"${(queryResult?has_content&&"0"==queryResult)?string(' selected="true"','')}>失败</option>
+					</select>
 				</td>
 			</tr>
 		</table>
@@ -42,7 +48,7 @@
 				<th>邮件地址</th>
 				<th>验证码</th>
 				<th orderField="createDate" class="<#if orderField??&&'createDate'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">创建日期</th>
-				<th>验证通过</th>
+				<th>验证结果</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -52,7 +58,7 @@
 				<td>${a.email!}</td>
 				<td>${a.code!}</td>
 				<td>${a.createDate!}</td>
-				<td>${a.checked!}</td>
+				<td>${a.checked?string('成功','失败')}</td>
 			</tr>
 			</#list>
 		</tbody>

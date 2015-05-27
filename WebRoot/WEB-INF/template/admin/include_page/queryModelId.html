@@ -1,7 +1,8 @@
 <@d_modelList isDisable=false count=100>
-	<#list t_page.list as a>
 <select class="combox" name="queryModelId">
-	<option value="${a.id}"${(queryModelId??&&a.id==queryModelId)?string(' selected="true"','')}>${a.name!}</option>
-</select>
+	<option value=""${(!queryModelId?has_content)?string(' selected="true"','')}>所有</option>
+	<#list t_page.list as a>
+	<option value="${a.id}"${(queryModelId?has_content&&a.id==queryModelId)?string(' selected="true"','')}>${a.name!}</option>
 	</#list>
+</select>
 </@d_modelList>

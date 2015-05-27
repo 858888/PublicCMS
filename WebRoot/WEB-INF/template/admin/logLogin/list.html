@@ -10,13 +10,20 @@
 		<table class="searchContent">
 			<tr>
 				<td>
-					登录结果：<input type="text" name="queryResult" value="${queryResult!}" />
+					<label>登录结果：</label>
+					<select class="combox" name="queryResult">
+						<option value=""${(!queryResult?has_content)?string(' selected="true"','')}>不限</option>
+						<option value="1"${(queryResult?has_content&&"1"==queryResult)?string(' selected="true"','')}>成功</option>
+						<option value="0"${(queryResult?has_content&&"0"==queryResult)?string(' selected="true"','')}>失败</option>
+					</select>
 				</td>
 				<td>
-					用户：<input type="text" name="queryUserId" value="${queryUserId!}" />
+					<label>用户：</label>
+					<#include "../include_page/queryUserId.html"/>
 				</td>
 				<td>
-					用户名：<input type="text" name="queryName" value="${queryName!}" />
+					<label>用户名：</label>
+					<input type="text" name="queryName" value="${queryName!}" />
 				</td>
 				<td>
 					<label>登录日期：</label>
@@ -25,7 +32,8 @@
 					<input type="text" name="queryEndCreateDate" class="date" dateFmt="yyyy-MM-dd" maxDate="{%y}-%M-{%d}" value="${queryEndCreateDate!}" />
 				</td>
 				<td>
-					IP：<input type="text" name="queryIp" value="${queryIp!}" />
+					<label>IP：</label>
+					<input type="text" name="queryIp" value="${queryIp!}" />
 				</td>
 			</tr>
 		</table>
@@ -58,7 +66,7 @@
 				<td>${a.name!}</td>
 				<td>${a.userId!}</td>
 				<td>${a.ip!}</td>
-				<td>${a.result!}</td>
+				<td>${a.result?string('成功','失败')}</td>
 				<td>${a.createDate!}</td>
 				<td>${a.errorPassword!}</td>
 			</tr>

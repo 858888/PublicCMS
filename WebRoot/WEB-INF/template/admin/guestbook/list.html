@@ -8,16 +8,18 @@
 		<table class="searchContent">
 			<tr>
 				<td>
-					用户ID：<input type="text" name="queryUserId" value="${queryUserId!}" />
+					<label>用户ID：</label>
+					<input type="text" name="queryUserId" value="${queryUserId!}" />
 				</td>
 				<td>
-					用户昵称：<input type="text" name="queryUserName" value="${queryUserName!}" />
+					<label>用户昵称：</label>
+					<input type="text" name="queryUserName" value="${queryUserName!}" />
 				</td>
 				<td>
-					<label>开始填写时间：</label><input type="text" name="queryStartCreateDate" class="date" dateFmt="yyyy-MM-dd" minDate="2014-11-01" maxDate="{%y}-%M-{%d}" value="${queryStartCreateDate!}" />
-				</td>
-				<td>
-					<label>结束填写时间：</label><input type="text" name="queryEndCreateDate" class="date" dateFmt="yyyy-MM-dd" minDate="2014-11-01" maxDate="{%y}-%M-{%d}" value="${queryEndCreateDate!}" />
+					<label>填写时间：</label>
+					<input type="text" name="queryStartCreateDate" class="date" dateFmt="yyyy-MM-dd" maxDate="{%y}-%M-{%d}" value="${queryStartCreateDate!}" />
+					-
+					<input type="text" name="queryEndCreateDate" class="date" dateFmt="yyyy-MM-dd" maxDate="{%y}-%M-{%d}" value="${queryEndCreateDate!}" />
 				</td>
 			</tr>
 		</table>

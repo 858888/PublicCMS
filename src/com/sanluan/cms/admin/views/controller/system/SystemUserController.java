@@ -18,7 +18,7 @@ import com.sanluan.common.base.BaseController;
  * 
  */
 @Controller
-@RequestMapping("systemuser")
+@RequestMapping("systemUser")
 public class SystemUserController extends BaseController {
 	@Autowired
 	private SystemUserService service;
