@@ -2,7 +2,7 @@
 <select class="combox" name="queryModelId">
 	<option value=""${(!queryModelId?has_content)?string(' selected="true"','')}>所有</option>
 	<#list t_page.list as a>
-	<option value="${a.id}"${(queryModelId?has_content&&a.id==queryModelId)?string(' selected="true"','')}>${a.name!}</option>
+	<option value="${a.id}"${(queryModelId??&&a.id?string==queryModelId)?string(' selected="true"','')}>${a.name!}</option>
 	</#list>
 </select>
 </@d_modelList>

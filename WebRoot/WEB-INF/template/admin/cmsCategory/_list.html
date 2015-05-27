@@ -1,0 +1,70 @@
+<@d_categoryList extendNumber3=queryExtendNumber3 extendNumber4=queryExtendNumber4 parentId=queryParentId extend1=queryExtend1 name=queryName extend3=queryExtend3 extend2=queryExtend2 extend4=queryExtend4 extendNumber2=queryExtendNumber2 isDisable=queryIsDisable extendNumber1=queryExtendNumber1 pageNo=pageNum count=numPerPage>
+<form id="pagerForm" method="post">
+	<#include "../include_page/queryParamters.html"/>
+</form>
+<div class="pageHeader">
+	<form onsubmit="return navTabSearch(this);" method="post">
+	<div class="searchBar">
+		<table class="searchContent">
+			<tr>
+			<#if queryParentId?has_content>
+				<#if !parentName?has_content><@d_category id=queryParentId><#assign parentName=t_bean.name/></@d_category></#if>
+				<td>
+					<label>父分类：</label>
+					<input name="queryParentId" type="hidden" value="${queryParentId!}" />
+					<input class="readonly" readonly="readonly" name="parentName" type="text" value="${parentName!}" />
+				</td>
+			</#if>
+				<td>
+					<label>名称：</label>
+					<input type="text" name="queryName" value="${queryName!}" />
+				</td>
+				<td>
+					<label>已删除：</label>
+					<#include "../include_page/queryIsDisable.html"/>
+				</td>
+			</tr>
+		</table>
+		<#include "../include_page/searchBar.html"/>
+	</div>
+	</form>
+</div>
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="add" href="cmsCategory/add.html?parentId=${queryParentId!}" target="dialog"><span>添加</span></a></li>
+			<li><a class="edit" href="cmsCategory/add.html?navTabId=${navTabId!}&id={sid}" target="dialog"><span>修改</span></a></li>
+			<li><a class="delete" href="cmsCategory/delete.do?id={sid}" title="确定要删除该条记录吗?" target="ajaxTodo"><span>删除</span></a></li>
+		</ul>
+	</div>
+	<table class="table" width="100%" layoutH="137">
+		<thead>
+			<tr>
+				<th>名称</th>
+				<th>父分类</th>
+				<th>英文名</th>
+				<th>路径</th>
+				<th>列表路径</th>
+				<th>内容路径</th>
+				<th>每页数据</th>
+				<th>内容数</th>
+			</tr>
+		</thead>
+		<tbody>
+			<#list t_page.list as a>
+			<tr target="sid" rel="${a.id}">
+				<td>${a.name!}${(a.isDisable?string('[已删除]',''))!}</td>
+				<td>${a.parentId!}</td>
+				<td>${a.englishName!}</td>
+				<td>${a.path!}</td>
+				<td>${a.listPath!}</td>
+				<td>${a.contentPath!}</td>
+				<td>${a.pageSize!}</td>
+				<td>${a.contents!}</td>
+			</tr>
+			</#list>
+		</tbody>
+	</table>
+<#include "../include_page/page.html"/>
+</div>
+</@d_categoryList>
