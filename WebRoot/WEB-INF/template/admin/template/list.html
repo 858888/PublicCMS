@@ -13,7 +13,7 @@
 					<#if !a.isDirectory>
 					</#if>
 					<li>
-						<a href="template/_place.html?queryPath=${queryPath+'.include/'+a.fileName}" target="ajax" rel="templateBox">${a.description!}</a>
+						<a href="template/_list.html?queryPath=${queryPath+'.include/'+a.fileName}" target="ajax" rel="templateBox">${a.description!}</a>
 					</li>
 					</#list>
 				</@d_templateTree>
