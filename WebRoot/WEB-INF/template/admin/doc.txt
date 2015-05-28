@@ -22,7 +22,7 @@
 	extendNumber3:扩展数字字段3
 	extendNumber4:扩展数字字段4
 menu项:
-	<li><a href="cmsCategory/list.html?navTabId=cmsCategory" target="navTab" rel="cmsCategory">管理</a></li>
+	<li><a href="cmsCategory/list.html" target="navTab" rel="cmsCategory">管理</a></li>
 自定义指令：
 	分页列表查询：
 		<@d_categoryList extendNumber3=queryExtendNumber3 extendNumber4=queryExtendNumber4 parentId=queryParentId siteId=querySiteId extend1=queryExtend1 name=queryName extend3=queryExtend3 extend2=queryExtend2 extend4=queryExtend4 extendNumber2=queryExtendNumber2 isDisable=queryIsDisable extendNumber1=queryExtendNumber1 pageNo=pageNum count=numPerPage></@d_categoryList>
@@ -51,7 +51,7 @@ menu项:
 -- CmsCategoryAttribute begin 2015-5-11 21:56:48---
 字段列表：
 menu项:
-	<li><a href="cmsCategoryAttribute/list.html?navTabId=cmsCategoryAttribute" target="navTab" rel="cmsCategoryAttribute">管理</a></li>
+	<li><a href="cmsCategoryAttribute/list.html" target="navTab" rel="cmsCategoryAttribute">管理</a></li>
 自定义指令：
 	分页列表查询：
 		<@d_categoryAttributeList pageNo=pageNum count=numPerPage></@d_categoryAttributeList>
@@ -76,7 +76,7 @@ menu项:
 	inputType:表单类型
 	defaultValue:默认值
 menu项:
-	<li><a href="cmsCategoryExtend/list.html?navTabId=cmsCategoryExtend" target="navTab" rel="cmsCategoryExtend">管理</a></li>
+	<li><a href="cmsCategoryExtend/list.html" target="navTab" rel="cmsCategoryExtend">管理</a></li>
 自定义指令：
 	分页列表查询：
 		<@d_categoryExtendList extendType=queryExtendType cateoryId=queryCateoryId type=queryType pageNo=pageNum count=numPerPage></@d_categoryExtendList>
@@ -100,7 +100,7 @@ menu项:
 	templatePath:模板路径
 	templatePath1:模板路径1
 menu项:
-	<li><a href="cmsCategoryModel/list.html?navTabId=cmsCategoryModel" target="navTab" rel="cmsCategoryModel">管理</a></li>
+	<li><a href="cmsCategoryModel/list.html" target="navTab" rel="cmsCategoryModel">管理</a></li>
 自定义指令：
 	分页列表查询：
 		<@d_categoryModelList modelId=queryModelId categoryId=queryCategoryId pageNo=pageNum count=numPerPage></@d_categoryModelList>
@@ -132,7 +132,7 @@ menu项:
 	extendNumber3:扩展数字字段3
 	extendNumber4:扩展数字字段4
 menu项:
-	<li><a href="cmsChapter/list.html?navTabId=cmsChapter" target="navTab" rel="cmsChapter">管理</a></li>
+	<li><a href="cmsChapter/list.html" target="navTab" rel="cmsChapter">管理</a></li>
 自定义指令：
 	分页列表查询：
 		<@d_chapterList extendNumber3=queryExtendNumber3 extendNumber4=queryExtendNumber4 
@@ -166,7 +166,7 @@ menu项:
 -- CmsChapterAttribute begin 2015-5-11 21:56:48---
 字段列表：
 menu项:
-	<li><a href="cmsChapterAttribute/list.html?navTabId=cmsChapterAttribute" target="navTab" rel="cmsChapterAttribute">管理</a></li>
+	<li><a href="cmsChapterAttribute/list.html" target="navTab" rel="cmsChapterAttribute">管理</a></li>
 自定义指令：
 	分页列表查询：
 		<@d_chapterAttributeList pageNo=pageNum count=numPerPage></@d_chapterAttributeList>
@@ -210,7 +210,7 @@ menu项:
 	extendNumber3:扩展数字字段3
 	extendNumber4:扩展数字字段4
 menu项:
-	<li><a href="cmsContent/list.html?navTabId=cmsContent" target="navTab" rel="cmsContent">管理</a></li>
+	<li><a href="cmsContent/list.html" target="navTab" rel="cmsContent">管理</a></li>
 自定义指令：
 	分页列表查询：
 		<@d_contentList extendNumber3=queryExtendNumber3 extendNumber4=queryExtendNumber4 
@@ -249,7 +249,7 @@ menu项:
 -- CmsContentAttribute begin 2015-5-11 21:56:48---
 字段列表：
 menu项:
-	<li><a href="cmsContentAttribute/list.html?navTabId=cmsContentAttribute" target="navTab" rel="cmsContentAttribute">管理</a></li>
+	<li><a href="cmsContentAttribute/list.html" target="navTab" rel="cmsContentAttribute">管理</a></li>
 自定义指令：
 	分页列表查询：
 		<@d_contentAttributeList pageNo=pageNum count=numPerPage></@d_contentAttributeList>
@@ -268,7 +268,7 @@ menu项:
 	name:名称
 	description:描述
 menu项:
-	<li><a href="cmsDictionary/list.html?navTabId=cmsDictionary" target="navTab" rel="cmsDictionary">管理</a></li>
+	<li><a href="cmsDictionary/list.html" target="navTab" rel="cmsDictionary">管理</a></li>
 自定义指令：
 	分页列表查询：
 		<@d_dictionaryList pageNo=pageNum count=numPerPage></@d_dictionaryList>
@@ -288,7 +288,7 @@ menu项:
 	name:名称
 	value:值
 menu项:
-	<li><a href="cmsDictionaryData/list.html?navTabId=cmsDictionaryData" target="navTab" rel="cmsDictionaryData">管理</a></li>
+	<li><a href="cmsDictionaryData/list.html" target="navTab" rel="cmsDictionaryData">管理</a></li>
 自定义指令：
 	分页列表查询：
 		<@d_dictionaryDataList name=queryName dictionaryId=queryDictionaryId pageNo=pageNum count=numPerPage></@d_dictionaryDataList>
@@ -312,7 +312,7 @@ menu项:
 	templatePath1:模板路径1
 	isDisable:已删除
 menu项:
-	<li><a href="cmsModel/list.html?navTabId=cmsModel" target="navTab" rel="cmsModel">管理</a></li>
+	<li><a href="cmsModel/list.html" target="navTab" rel="cmsModel">管理</a></li>
 自定义指令：
 	分页列表查询：
 		<@d_modelList isDisable=queryIsDisable pageNo=pageNum count=numPerPage></@d_modelList>
@@ -338,7 +338,7 @@ menu项:
 	inputType:表单类型
 	defaultValue:默认值
 menu项:
-	<li><a href="cmsModelExtend/list.html?navTabId=cmsModelExtend" target="navTab" rel="cmsModelExtend">管理</a></li>
+	<li><a href="cmsModelExtend/list.html" target="navTab" rel="cmsModelExtend">管理</a></li>
 自定义指令：
 	分页列表查询：
 		<@d_modelExtendList modelId=queryModelId extendType=queryExtendType type=queryType pageNo=pageNum count=numPerPage></@d_modelExtendList>
@@ -367,7 +367,7 @@ menu项:
 	createDate:创建日期
 	isDisable:已删除
 menu项:
-	<li><a href="cmsSite/list.html?navTabId=cmsSite" target="navTab" rel="cmsSite">管理</a></li>
+	<li><a href="cmsSite/list.html" target="navTab" rel="cmsSite">管理</a></li>
 自定义指令：
 	分页列表查询：
 		<@d_siteList startCreateDate=queryStartCreateDate endCreateDate=queryEndCreateDate isDisable=queryIsDisable 
@@ -392,7 +392,7 @@ menu项:
 	isAdmin:是否管理员
 	isDisable:已禁用
 menu项:
-	<li><a href="cmsSiteUser/list.html?navTabId=cmsSiteUser" target="navTab" rel="cmsSiteUser">管理</a></li>
+	<li><a href="cmsSiteUser/list.html" target="navTab" rel="cmsSiteUser">管理</a></li>
 自定义指令：
 	分页列表查询：
 		<@d_siteUserList siteId=querySiteId userId=queryUserId isAdmin=queryIsAdmin isDisable=queryIsDisable pageNo=pageNum count=numPerPage></@d_siteUserList>
@@ -415,7 +415,7 @@ menu项:
 	contentCount:文章数
 	commentCount:评论数
 menu项:
-	<li><a href="cmsUser/list.html?navTabId=cmsUser" target="navTab" rel="cmsUser">管理</a></li>
+	<li><a href="cmsUser/list.html" target="navTab" rel="cmsUser">管理</a></li>
 自定义指令：
 	分页列表查询：
 		<@d_userList pageNo=pageNum count=numPerPage></@d_userList>
@@ -437,7 +437,7 @@ menu项:
 	createDate:创建日期
 	checked:验证通过
 menu项:
-	<li><a href="logEmailCheck/list.html?navTabId=logEmailCheck" target="navTab" rel="logEmailCheck">管理</a></li>
+	<li><a href="logEmailCheck/list.html" target="navTab" rel="logEmailCheck">管理</a></li>
 自定义指令：
 	分页列表查询：
 		<@d_logEmailCheckList userId=queryUserId startCreateDate=queryStartCreateDate endCreateDate=queryEndCreateDate 
@@ -466,7 +466,7 @@ menu项:
 	createDate:登录日期
 	errorPassword:错误密码
 menu项:
-	<li><a href="logLogin/list.html?navTabId=logLogin" target="navTab" rel="logLogin">管理</a></li>
+	<li><a href="logLogin/list.html" target="navTab" rel="logLogin">管理</a></li>
 自定义指令：
 	分页列表查询：
 		<@d_logLoginList result=queryResult userId=queryUserId 
@@ -495,7 +495,7 @@ menu项:
 	createDate:操作日期
 	content:内容
 menu项:
-	<li><a href="logOperate/list.html?navTabId=logOperate" target="navTab" rel="logOperate">管理</a></li>
+	<li><a href="logOperate/list.html" target="navTab" rel="logOperate">管理</a></li>
 自定义指令：
 	分页列表查询：
 		<@d_logOperateList content=queryContent operate=queryOperate 
@@ -524,7 +524,7 @@ menu项:
 	oldPassword:旧密码
 	newPassword:新密码
 menu项:
-	<li><a href="logPassword/list.html?navTabId=logPassword" target="navTab" rel="logPassword">管理</a></li>
+	<li><a href="logPassword/list.html" target="navTab" rel="logPassword">管理</a></li>
 自定义指令：
 	分页列表查询：
 		<@d_logPasswordList userId=queryUserId startCreateDate=queryStartCreateDate endCreateDate=queryEndCreateDate 
@@ -558,7 +558,7 @@ menu项:
 	loginCount:登录次数
 	dateRegistered:注册日期
 menu项:
-	<li><a href="systemUser/list.html?navTabId=systemUser" target="navTab" rel="systemUser">管理</a></li>
+	<li><a href="systemUser/list.html" target="navTab" rel="systemUser">管理</a></li>
 自定义指令：
 	分页列表查询：
 		<@d_systemUserList startDateRegistered=queryStartDateRegistered endDateRegistered=queryEndDateRegistered startLastLoginDate=queryStartLastLoginDate endLastLoginDate=queryEndLastLoginDate 

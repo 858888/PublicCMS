@@ -11,7 +11,7 @@
 					<@buildTree queryPath/>
 				</ul>
 			<#else>
-				<a href="template/files.html?navTabId=files&queryPath=${queryPath}" target="navTab">${a.description!}</a>
+				<a href="template/files.html?queryPath=${queryPath}" target="navTab">${a.description!}</a>
 			</#if>
 		</li>
 		</#list>
