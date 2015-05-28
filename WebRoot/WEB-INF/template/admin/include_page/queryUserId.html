@@ -1,4 +1,4 @@
 <#if queryUserId?has_content&&!nickName?has_content><@d_systemUser id=queryUserId><#assign nickName=t_bean.nickName/></@d_systemUser></#if>
 <input name="queryUserId" value="${queryUserId!}" type="hidden"/>
 <input name="nickName" class="readonly" readonly="readonly" value="${nickName!}" type="text"/>
-<a class="btnLook" href="systemUser/lookup.html" width="920" warn="请选择用户" lookupGroup="">选择</a>
+<a class="btnLook" href="systemUser/lookup.html" width="920" warn="请选择用户" lookupGroup="">选择用户</a>
