@@ -2,7 +2,7 @@
 <#macro m code>${springMacroRequestContext.getMessage(code,code)}</#macro>
 <#macro cut string l=50><#if string?length lt l>${string}<#else>${string[0..l-1]}</#if></#macro>
 <#macro buildTree dir filepath>
-	<@d_templateTree filepath=filepath>
+	<@d_templateTree path=filepath>
 		<#if t_list?has_content>
 		<#list t_list as a>
 		<li>

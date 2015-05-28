@@ -20,7 +20,6 @@ import freemarker.ext.servlet.IncludePage;
  * 
  */
 public class InitializeFreeMarkerView extends FreeMarkerView {
-	private static final String CONTEXT_USER = "user";
 	private static final String CONTEXT_ADMIN = "admin";
 
 	/*
@@ -33,7 +32,6 @@ public class InitializeFreeMarkerView extends FreeMarkerView {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void exposeHelpers(Map model, HttpServletRequest request) throws Exception {
 		super.exposeHelpers(model, request);
-		model.put(CONTEXT_USER, UserUtils.getUserFromSession(request));
 		model.put(CONTEXT_ADMIN, UserUtils.getAdminFromSession(request));
 		model.put(CONTEXT_BASE, request.getContextPath());
 		Enumeration<String> parameters = request.getParameterNames();
