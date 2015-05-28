@@ -25,16 +25,16 @@
 					<label>用户身份:</label>
 					<select class="combox" name="querySuperuserAccess">
 						<option value=""${(!querySuperuserAccess?has_content)?string(' selected="true"','')}>不限</option>
-						<option value="0"${(querySuperuserAccess?has_content&&"0"==querySuperuserAccess)?string(' selected="true"','')}>普通用户</option>
-						<option value="1"${(querySuperuserAccess?has_content&&"1"==querySuperuserAccess)?string(' selected="true"','')}>超级管理员</option>
+						<option value="0"${(querySuperuserAccess??&&"0"==querySuperuserAccess)?string(' selected="true"','')}>普通用户</option>
+						<option value="1"${(querySuperuserAccess??&&"1"==querySuperuserAccess)?string(' selected="true"','')}>超级管理员</option>
 					</select>
 				</td>
 				<td>
 					<label>已验证邮箱：</label>
 					<select class="combox" name="queryEmailChecked">
-						<option value=""${(!queryEmailChecked?has_content?string(' selected="true"','')}>不限</option>
-						<option value="0"${(queryEmailChecked?has_content&&"0"==queryEmailChecked)?string(' selected="true"','')}>已验证</option>
-						<option value="1"${(queryEmailChecked?has_content&&"1"==queryEmailChecked)?string(' selected="true"','')}>未验证</option>
+						<option value=""${(!queryEmailChecked?has_content)?string(' selected="true"','')}>不限</option>
+						<option value="0"${(queryEmailChecked??&&"0"==queryEmailChecked)?string(' selected="true"','')}>已验证</option>
+						<option value="1"${(queryEmailChecked??&&"1"==queryEmailChecked)?string(' selected="true"','')}>未验证</option>
 					</select>
 				</td>
 			</tr>

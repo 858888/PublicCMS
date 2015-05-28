@@ -1,0 +1,27 @@
+<#list .data_model?keys as key>
+	<#if key?starts_with('query')>
+		<#assign paramters=(paramters!'')+(paramters?has_content)?string('&','')+key?url+'='+(.data_model[key])?url/>
+	</#if>
+</#list>
+<div class="pageContent">
+	<div layoutH="0" style="float:left; display:block; overflow:auto; width:240px;border:solid 1px #CCC; line-height:21px;">
+		<ul class="tree treeFolder">
+			<li><a href="template/_list.html?${paramters!}" target="ajax" rel="templateBox">推荐位</a>
+				<ul>
+				<@d_templateTree path=queryPath+".include/">
+					<#list t_list as a>
+					<#if !a.isDirectory>
+					</#if>
+					<li>
+						<a href="template/_place.html?queryPath=${queryPath+'.include/'+a.fileName}" target="ajax" rel="templateBox">${a.description!}</a>
+					</li>
+					</#list>
+				</@d_templateTree>
+				</ul>
+			</li>
+	     </ul>
+	</div>
+	<div id="templateBox" class="unitBox" style="margin-left:240px;">
+		<#include "_list.html"/>
+	</div>
+</div>
