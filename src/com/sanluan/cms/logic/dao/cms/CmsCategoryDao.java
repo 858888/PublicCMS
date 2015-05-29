@@ -2,7 +2,6 @@ package com.sanluan.cms.logic.dao.cms;
 
 // Generated 2015-5-8 16:50:23 by SourceMaker
 
-
 import org.springframework.stereotype.Repository;
 
 import com.sanluan.cms.entities.cms.CmsCategory;
@@ -12,7 +11,9 @@ import com.sanluan.common.handler.QueryHandler;
 
 @Repository
 public class CmsCategoryDao extends BaseDao<CmsCategory> {
-	public PageHandler getPage(Integer extendNumber3, Integer extendNumber4, Integer parentId, String extend1, String name, String extend3, String extend2, String extend4, Integer extendNumber2, Boolean isDisable, Integer extendNumber1, int pageNo, int pageSize) {
+	public PageHandler getPage(Integer extendNumber3, Integer extendNumber4, Integer parentId, String extend1, String name,
+			String extend3, String extend2, String extend4, Integer extendNumber2, Boolean isDisable, Integer extendNumber1,
+			int pageNo, int pageSize) {
 		QueryHandler queryMaker = getQueryMaker("from CmsCategory bean");
 		if (notEmpty(extendNumber3)) {
 			queryMaker.condition("bean.extendNumber3 = :extendNumber3").setParameter("extendNumber3", extendNumber3);
@@ -22,6 +23,8 @@ public class CmsCategoryDao extends BaseDao<CmsCategory> {
 		}
 		if (notEmpty(parentId)) {
 			queryMaker.condition("bean.parentId = :parentId").setParameter("parentId", parentId);
+		} else {
+			queryMaker.condition("bean.parentId is null");
 		}
 		if (notEmpty(extend1)) {
 			queryMaker.condition("bean.extend1 = :extend1").setParameter("extend1", extend1);

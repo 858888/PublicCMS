@@ -94,22 +94,31 @@ public class Maker {
 		for (Field field : c.getDeclaredFields()) {
 			if ((field.getModifiers() & Modifier.PRIVATE) != 0 && (field.getModifiers() & Modifier.FINAL) == 0) {
 				String typeName = field.getType().getName();
-				if ("int" == typeName) {
+				switch (typeName) {
+				case "int":
 					typeName = "java.lang.Integer";
-				} else if ("short" == typeName) {
+					break;
+				case "short":
 					typeName = "java.lang.Short";
-				} else if ("long" == typeName) {
+					break;
+				case "long":
 					typeName = "java.lang.Long";
-				} else if ("byte" == typeName) {
+					break;
+				case "byte":
 					typeName = "java.lang.Byte";
-				} else if ("char" == typeName) {
+					break;
+				case "char":
 					typeName = "java.lang.Charactor";
-				} else if ("double" == typeName) {
+					break;
+				case "double":
 					typeName = "java.lang.Double";
-				} else if ("float" == typeName) {
+					break;
+				case "float":
 					typeName = "java.lang.Float";
-				} else if ("boolean" == typeName) {
+					break;
+				case "boolean":
 					typeName = "java.lang.Boolean";
+					break;
 				}
 
 				MyColumn column = field.getAnnotation(MyColumn.class);

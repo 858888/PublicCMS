@@ -41,7 +41,6 @@
 		<thead>
 			<tr>
 				<th>名称</th>
-				<th>父分类</th>
 				<th>英文名</th>
 				<th>路径</th>
 				<th>列表路径</th>
@@ -53,8 +52,7 @@
 		<tbody>
 			<#list t_page.list as a>
 			<tr target="sid" rel="${a.id}">
-				<td>${a.name!}${(a.isDisable?string('[已删除]',''))!}</td>
-				<td>${a.parentId!}</td>
+				<td><a href="cmsCategory/_list.html?queryParentId=${a.id}" target="ajax" rel="categoryBox">${a.name!}${(a.isDisable?string('[已删除]',''))!}</a></td>
 				<td>${a.englishName!}</td>
 				<td>${a.path!}</td>
 				<td>${a.listPath!}</td>

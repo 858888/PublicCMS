@@ -8,13 +8,7 @@
 		<ul class="tree treeFolder">
 			<li><a href="cmsContent/_list.html?${paramters!}" target="ajax" rel="contentBox">所有分类</a>
 				<ul>
-				<@d_categoryList isDisable=false count=100>
-					<#list t_page.list as a>
-					<li>
-						<a href="cmsContent/_list.html?queryCategoryId=${a.id}&${paramters!}"  <#if queryCategoryId??&&a.id?string=queryCategoryId>class="selected"</#if> target="ajax" rel="contentBox">${a.name!}</a>
-					</li>
-					</#list>
-				</@d_categoryList>
+					<@t.categoryTree queryCategoryId paramters/>
 				</ul>
 			</li>
 	     </ul>

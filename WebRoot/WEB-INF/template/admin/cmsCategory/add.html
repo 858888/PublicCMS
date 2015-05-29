@@ -4,33 +4,29 @@
 		<input name="id" type="hidden" value="${id!}" />
 		<input name="parentId" type="hidden" value="${parentId!}" />
 		<div class="pageFormContent" layoutH="57">
-			<dl>
+			<dl class="nowrap">
 				<dt>名称：</dt>
 				<dd><input class="required" name="name" type="text" size="30" value="${(a.name)!}"/></dd>
 			</dl>
-			<dl>
+			<dl class="nowrap">
 				<dt>英文名：</dt>
 				<dd><input class="required" name="englishName" type="text" size="30" value="${(a.englishName)!}"/></dd>
 			</dl>
-			<dl>
+			<dl class="nowrap">
 				<dt>路径：</dt>
-				<dd><input class="required" name="path" type="text" size="30" value="${(a.path)!}"/></dd>
+				<dd><input class="required" name="path" type="text" size="80" value="${(a.path)!}"/></dd>
 			</dl>
-			<dl>
+			<dl class="nowrap">
 				<dt>列表路径：</dt>
-				<dd><input class="required" name="listPath" type="text" size="30" value="${(a.listPath)!}"/></dd>
+				<dd><input class="required" name="listPath" type="text" size="80" value="${(a.listPath)!}"/></dd>
 			</dl>
-			<dl>
+			<dl class="nowrap">
 				<dt>内容路径：</dt>
-				<dd><input class="required" name="contentPath" type="text" size="30" value="${(a.contentPath)!}"/></dd>
+				<dd><input class="required" name="contentPath" type="text" size="80" value="${(a.contentPath)!}"/></dd>
 			</dl>
 			<dl>
 				<dt>每页数据：</dt>
-				<dd><input class="required" name="pageSize" type="text" size="30" value="${(a.pageSize)!}"/></dd>
-			</dl>
-			<dl>
-				<dt>内容数：</dt>
-				<dd><input class="required" name="contents" type="text" size="30" value="${(a.contents)!}"/></dd>
+				<dd><input class="required" name="pageSize" type="text" size="4" value="${(a.pageSize)!}"/></dd>
 			</dl>
 		</div>
 		<div class="formBar">
