@@ -2,8 +2,7 @@
 	<table class="table" width="100%" layoutH="0">
 		<thead>
 			<tr>
-				<th>文件名</th>
-				<th>描述</th>
+				<th>推荐位</th>
 				<th>修改时间</th>
 			</tr>
 		</thead>
@@ -12,8 +11,7 @@
 	<#list t_list as a>
 		<#if !a.isDirectory>
 			<tr>
-				<td><a href="template/_place.html?queryPath=${queryPath+'.include/'+a.fileName}" target="ajax" rel="templateBox">${a.fileName!}</a></td>
-				<td>${a.description!}</td>
+				<td><a href="page/_place.html?queryPath=${queryPath+'.include/'+a.fileName}" target="ajax" rel="templateBox">${a.description!}</a></td>
 				<td>${a.lastModifiedTime?datetime}</td>
 			</tr>
 		</#if>

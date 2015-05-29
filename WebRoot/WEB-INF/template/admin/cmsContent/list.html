@@ -11,7 +11,7 @@
 				<@d_categoryList isDisable=false count=100>
 					<#list t_page.list as a>
 					<li>
-						<a href="cmsContent/_list.html?queryCategoryId=${a.id}&${paramters!}" target="ajax" rel="contentBox">${a.name!}</a>
+						<a href="cmsContent/_list.html?queryCategoryId=${a.id}&${paramters!}"  <#if queryCategoryId??&&a.id?string=queryCategoryId>class="selected"</#if> target="ajax" rel="contentBox">${a.name!}</a>
 					</li>
 					</#list>
 				</@d_categoryList>
