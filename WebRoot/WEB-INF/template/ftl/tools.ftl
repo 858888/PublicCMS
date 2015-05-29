@@ -20,15 +20,15 @@
 		</#if>
 	</@d_templateTree>
 </#macro>
-<#macro categoryTree queryCategoryId='' paramters='' queryParentId=''>
+<#macro categoryTree file target queryCategoryId='' paramters='' queryParentId=''>
 	<@d_categoryList parentId=queryParentId isDisable=false count=100>
 		<#if t_page.list?has_content>
 		<#list t_page.list as a>
 		<li>
-			<a href="cmsContent/_lookup.html?queryCategoryId=${a.id}&${paramters!}" <#if queryCategoryId??&&a.id?string=queryCategoryId>class="selected"</#if> target="ajax" rel="contentSelectBox">${a.name!}</a>
+			<a href="${file}?queryCategoryId=${a.id}&${paramters!}" <#if queryCategoryId??&&a.id?string=queryCategoryId>class="selected"</#if> target="ajax" rel="${target}">${a.name!}</a>
 		<#if a.childIds?has_content>
 			<ul>
-				<@categoryTree queryCategoryId paramters a.id/>
+				<@categoryTree file target queryCategoryId paramters a.id/>
 			</ul>
 		</#if>
 		</li>

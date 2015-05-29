@@ -19,17 +19,17 @@ public class CmsChapterService extends BaseService<CmsChapter, CmsChapterDao> {
 	private CmsChapterDao dao;
 
 	@Transactional(readOnly = true)
-	public PageHandler getPage(Integer extendNumber3, Integer extendNumber4, 
+	public PageHandler getPage(String modelExtend3, String modelExtend4, 
 				Integer categoryId, String title, String extend1, 
 				String extend3, String extend2, String image, 
-				String extend4, Integer extendNumber2, Integer contentId, 
-				Integer extendNumber1, 
+				String extend4, String modelExtend2, Integer contentId, 
+				String modelExtend1, 
 				int pageNo, int pageSize) {
-		return dao.getPage(extendNumber3, extendNumber4, 
+		return dao.getPage(modelExtend3, modelExtend4, 
 				categoryId, title, extend1, 
 				extend3, extend2, image, 
-				extend4, extendNumber2, contentId, 
-				extendNumber1, 
+				extend4, modelExtend2, contentId, 
+				modelExtend1, 
 				pageNo, pageSize);
 	}
 

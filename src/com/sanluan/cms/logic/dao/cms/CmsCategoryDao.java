@@ -11,16 +11,10 @@ import com.sanluan.common.handler.QueryHandler;
 
 @Repository
 public class CmsCategoryDao extends BaseDao<CmsCategory> {
-	public PageHandler getPage(Integer extendNumber3, Integer extendNumber4, Integer parentId, String extend1, String name,
-			String extend3, String extend2, String extend4, Integer extendNumber2, Boolean isDisable, Integer extendNumber1,
+	public PageHandler getPage(Integer parentId, String extend1, String name,
+			String extend3, String extend2, String extend4, Boolean isDisable, 
 			int pageNo, int pageSize) {
 		QueryHandler queryMaker = getQueryMaker("from CmsCategory bean");
-		if (notEmpty(extendNumber3)) {
-			queryMaker.condition("bean.extendNumber3 = :extendNumber3").setParameter("extendNumber3", extendNumber3);
-		}
-		if (notEmpty(extendNumber4)) {
-			queryMaker.condition("bean.extendNumber4 = :extendNumber4").setParameter("extendNumber4", extendNumber4);
-		}
 		if (notEmpty(parentId)) {
 			queryMaker.condition("bean.parentId = :parentId").setParameter("parentId", parentId);
 		} else {
@@ -41,14 +35,8 @@ public class CmsCategoryDao extends BaseDao<CmsCategory> {
 		if (notEmpty(extend4)) {
 			queryMaker.condition("bean.extend4 = :extend4").setParameter("extend4", extend4);
 		}
-		if (notEmpty(extendNumber2)) {
-			queryMaker.condition("bean.extendNumber2 = :extendNumber2").setParameter("extendNumber2", extendNumber2);
-		}
 		if (notEmpty(isDisable)) {
 			queryMaker.condition("bean.isDisable = :isDisable").setParameter("isDisable", isDisable);
-		}
-		if (notEmpty(extendNumber1)) {
-			queryMaker.condition("bean.extendNumber1 = :extendNumber1").setParameter("extendNumber1", extendNumber1);
 		}
 		queryMaker.append("order by bean.id desc");
 		return getPage(queryMaker, pageNo, pageSize);

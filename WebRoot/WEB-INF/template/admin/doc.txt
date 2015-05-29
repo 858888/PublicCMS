@@ -13,27 +13,19 @@
 	extend2:扩展字段2
 	extend3:扩展字段3
 	extend4:扩展字段4
-	extendNumber1:扩展数字字段1
-	extendNumber2:扩展数字字段2
-	extendNumber3:扩展数字字段3
-	extendNumber4:扩展数字字段4
 menu项:
 	<li><a href="cmsCategory/list.html" target="navTab" rel="cmsCategory">管理</a></li>
 自定义指令：
 	分页列表查询：
-		<@d_categoryList extendNumber3=queryExtendNumber3 extendNumber4=queryExtendNumber4 parentId=queryParentId extend1=queryExtend1 name=queryName extend3=queryExtend3 extend2=queryExtend2 extend4=queryExtend4 extendNumber2=queryExtendNumber2 isDisable=queryIsDisable extendNumber1=queryExtendNumber1 pageNo=pageNum count=numPerPage></@d_categoryList>
+		<@d_categoryList parentId=queryParentId extend1=queryExtend1 name=queryName extend3=queryExtend3 extend2=queryExtend2 extend4=queryExtend4 isDisable=queryIsDisable pageNo=pageNum count=numPerPage></@d_categoryList>
 		参数：
-			queryExtendNumber3：扩展数字字段3
-			queryExtendNumber4：扩展数字字段4
 			queryParentId：父分类
 			queryExtend1：扩展字段1
 			queryName：名称
 			queryExtend3：扩展字段3
 			queryExtend2：扩展字段2
 			queryExtend4：扩展字段4
-			queryExtendNumber2：扩展数字字段2
 			queryIsDisable：是否删除
-			queryExtendNumber1：扩展数字字段1
 		结果：
 			t_page:分页信息，totalCount：总条数，totalPage：总页数，pageSize每页数据条数，pageNo当前页数
 			t_page.t_list: List<CmsCategory>对象 使用<#list t_list as a></#list> 遍历数据
@@ -64,7 +56,7 @@ menu项:
 
 -- CmsCategoryExtend begin 2015-5-11 21:56:48---
 字段列表：
-	cateoryId:栏目
+	cateoryId:分类
 	extendType:扩展类型
 	name:名称
 	description:描述
@@ -79,7 +71,7 @@ menu项:
 		<@d_categoryExtendList extendType=queryExtendType cateoryId=queryCateoryId type=queryType pageNo=pageNum count=numPerPage></@d_categoryExtendList>
 		参数：
 			queryExtendType：扩展类型
-			queryCateoryId：栏目
+			queryCateoryId：分类
 			queryType：类型
 		结果：
 			t_page:分页信息，totalCount：总条数，totalPage：总页数，pageSize每页数据条数，pageNo当前页数
@@ -126,23 +118,23 @@ menu项:
 	extend2:扩展字段2
 	extend3:扩展字段3
 	extend4:扩展字段4
-	extendNumber1:扩展数字字段1
-	extendNumber2:扩展数字字段2
-	extendNumber3:扩展数字字段3
-	extendNumber4:扩展数字字段4
+	modelExtend1:扩展数字字段1
+	modelExtend2:扩展数字字段2
+	modelExtend3:扩展数字字段3
+	modelExtend4:扩展数字字段4
 menu项:
 	<li><a href="cmsChapter/list.html" target="navTab" rel="cmsChapter">管理</a></li>
 自定义指令：
 	分页列表查询：
-		<@d_chapterList extendNumber3=queryExtendNumber3 extendNumber4=queryExtendNumber4 
+		<@d_chapterList modelExtend3=queryModelExtend3 modelExtend4=queryModelExtend4 
 			parentId=queryParentId title=queryTitle extend1=queryExtend1 
 			extend3=queryExtend3 extend2=queryExtend2 image=queryImage 
-			extend4=queryExtend4 extendNumber2=queryExtendNumber2 contentId=queryContentId 
-			extendNumber1=queryExtendNumber1 
+			extend4=queryExtend4 modelExtend2=queryModelExtend2 contentId=queryContentId 
+			modelExtend1=queryModelExtend1 
 			pageNo=pageNum count=numPerPage></@d_chapterList>
 		参数：
-			queryExtendNumber3：扩展数字字段3
-			queryExtendNumber4：扩展数字字段4
+			queryModelExtend3：扩展数字字段3
+			queryModelExtend4：扩展数字字段4
 			queryParentId：父章节
 			queryTitle：标题
 			queryExtend1：扩展字段1
@@ -150,9 +142,9 @@ menu项:
 			queryExtend2：扩展字段2
 			queryImage：图片
 			queryExtend4：扩展字段4
-			queryExtendNumber2：扩展数字字段2
+			queryModelExtend2：扩展数字字段2
 			queryContentId：内容
-			queryExtendNumber1：扩展数字字段1
+			queryModelExtend1：扩展数字字段1
 		结果：
 			t_page:分页信息，totalCount：总条数，totalPage：总页数，pageSize每页数据条数，pageNo当前页数
 			t_page.t_list: List<CmsChapter>对象 使用<#list t_list as a></#list> 遍历数据
@@ -206,24 +198,24 @@ menu项:
 	extend2:扩展字段2
 	extend3:扩展字段3
 	extend4:扩展字段4
-	extendNumber1:扩展数字字段1
-	extendNumber2:扩展数字字段2
-	extendNumber3:扩展数字字段3
-	extendNumber4:扩展数字字段4
+	modelExtend1:扩展数字字段1
+	modelExtend2:扩展数字字段2
+	modelExtend3:扩展数字字段3
+	modelExtend4:扩展数字字段4
 menu项:
 	<li><a href="cmsContent/list.html" target="navTab" rel="cmsContent">管理</a></li>
 自定义指令：
 	分页列表查询：
-		<@d_contentList extendNumber3=queryExtendNumber3 extendNumber4=queryExtendNumber4 
+		<@d_contentList modelExtend3=queryModelExtend3 modelExtend4=queryModelExtend4 
 			status=queryStatus extend1=queryExtend1 categoryId=queryCategoryId 
 			extend3=queryExtend3 extend2=queryExtend2 extend4=queryExtend4 
 			isDisable=queryIsDisable modelId=queryModelId title=queryTitle 
-			userId=queryUserId extendNumber2=queryExtendNumber2 startPublishDate=queryStartPublishDate endPublishDate=queryEndPublishDate 
-			extendNumber1=queryExtendNumber1 
+			userId=queryUserId modelExtend2=queryModelExtend2 startPublishDate=queryStartPublishDate endPublishDate=queryEndPublishDate 
+			modelExtend1=queryModelExtend1 
 			orderField=orderField orderType=orderType pageNo=pageNum count=numPerPage></@d_contentList>
 		参数：
-			queryExtendNumber3：扩展数字字段3
-			queryExtendNumber4：扩展数字字段4
+			queryModelExtend3：扩展数字字段3
+			queryModelExtend4：扩展数字字段4
 			queryStatus：状态
 			queryExtend1：扩展字段1
 			queryCategoryId：分类
@@ -234,10 +226,10 @@ menu项:
 			queryModelId：模型
 			queryTitle：标题
 			queryUserId：发布用户
-			queryExtendNumber2：扩展数字字段2
+			queryModelExtend2：扩展数字字段2
 			queryStartPublishDate：开始发布日期
 			queryEndPublishDate：结束发布日期
-			queryExtendNumber1：扩展数字字段1
+			queryModelExtend1：扩展数字字段1
 		结果：
 			t_page:分页信息，totalCount：总条数，totalPage：总页数，pageSize每页数据条数，pageNo当前页数
 			t_page.t_list: List<CmsContent>对象 使用<#list t_list as a></#list> 遍历数据

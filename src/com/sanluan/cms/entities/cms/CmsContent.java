@@ -79,13 +79,13 @@ public class CmsContent implements java.io.Serializable {
 	@MyColumn(title = "扩展字段4", condition = true)
 	private String extend4;
 	@MyColumn(title = "扩展数字字段1", condition = true)
-	private Integer extendNumber1;
+	private String modelExtend1;
 	@MyColumn(title = "扩展数字字段2", condition = true)
-	private Integer extendNumber2;
+	private String modelExtend2;
 	@MyColumn(title = "扩展数字字段3", condition = true)
-	private Integer extendNumber3;
+	private String modelExtend3;
 	@MyColumn(title = "扩展数字字段4", condition = true)
-	private Integer extendNumber4;
+	private String modelExtend4;
 
 	public CmsContent() {
 	}
@@ -111,7 +111,7 @@ public class CmsContent implements java.io.Serializable {
 	public CmsContent(String title, int userId, int categoryId, int modelId, boolean isCopied, String source, String author,
 			String editor, String url, String description, String cover, int chapters, int scores, int comments, int clicks,
 			Date publishDate, Date createDate, int status, boolean isDisable, String extend1, String extend2, String extend3,
-			String extend4, Integer extendNumber1, Integer extendNumber2, Integer extendNumber3, Integer extendNumber4) {
+			String extend4, String modelExtend1, String modelExtend2, String modelExtend3, String modelExtend4) {
 		this.title = title;
 		this.userId = userId;
 		this.categoryId = categoryId;
@@ -135,10 +135,10 @@ public class CmsContent implements java.io.Serializable {
 		this.extend2 = extend2;
 		this.extend3 = extend3;
 		this.extend4 = extend4;
-		this.extendNumber1 = extendNumber1;
-		this.extendNumber2 = extendNumber2;
-		this.extendNumber3 = extendNumber3;
-		this.extendNumber4 = extendNumber4;
+		this.modelExtend1 = modelExtend1;
+		this.modelExtend2 = modelExtend2;
+		this.modelExtend3 = modelExtend3;
+		this.modelExtend4 = modelExtend4;
 	}
 
 	@Id
@@ -361,40 +361,40 @@ public class CmsContent implements java.io.Serializable {
 		this.extend4 = extend4;
 	}
 
-	@Column(name = "extend_number1")
-	public Integer getExtendNumber1() {
-		return this.extendNumber1;
+	@Column(name = "model_extend1")
+	public String getModelExtend1() {
+		return this.modelExtend1;
 	}
 
-	public void setExtendNumber1(Integer extendNumber1) {
-		this.extendNumber1 = extendNumber1;
+	public void setModelExtend1(String modelExtend1) {
+		this.modelExtend1 = modelExtend1;
 	}
 
-	@Column(name = "extend_number2")
-	public Integer getExtendNumber2() {
-		return this.extendNumber2;
+	@Column(name = "model_extend2")
+	public String getModelExtend2() {
+		return this.modelExtend2;
 	}
 
-	public void setExtendNumber2(Integer extendNumber2) {
-		this.extendNumber2 = extendNumber2;
+	public void setModelExtend2(String modelExtend2) {
+		this.modelExtend2 = modelExtend2;
 	}
 
-	@Column(name = "extend_number3")
-	public Integer getExtendNumber3() {
-		return this.extendNumber3;
+	@Column(name = "model_extend3")
+	public String getModelExtend3() {
+		return this.modelExtend3;
 	}
 
-	public void setExtendNumber3(Integer extendNumber3) {
-		this.extendNumber3 = extendNumber3;
+	public void setModelExtend3(String modelExtend3) {
+		this.modelExtend3 = modelExtend3;
 	}
 
-	@Column(name = "extend_number4")
-	public Integer getExtendNumber4() {
-		return this.extendNumber4;
+	@Column(name = "model_extend4")
+	public String getModelExtend4() {
+		return this.modelExtend4;
 	}
 
-	public void setExtendNumber4(Integer extendNumber4) {
-		this.extendNumber4 = extendNumber4;
+	public void setModelExtend4(String modelExtend4) {
+		this.modelExtend4 = modelExtend4;
 	}
 
 }

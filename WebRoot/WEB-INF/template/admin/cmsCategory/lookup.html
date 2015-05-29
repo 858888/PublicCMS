@@ -1,0 +1,30 @@
+<#macro categoryLookupTree queryCategoryId='' queryParentId=''>
+	<@d_categoryList parentId=queryParentId isDisable=false count=100>
+		<#if t_page.list?has_content>
+		<#list t_page.list as a>
+		<li>
+			<a href="javascript:" onclick="$.bringBack({parentId:'${a.id}',categoryId:'${a.id}', categoryName:'${a.name}'});" <#if queryCategoryId??&&a.id?string=queryCategoryId>class="selected"</#if> target="ajax" rel="contentSelectBox">${a.name!}</a>
+		<#if a.childIds?has_content>
+			<ul>
+				<@categoryLookupTree queryCategoryId a.id/>
+			</ul>
+		</#if>
+		</li>
+		</#list>
+		<#else>
+			<li><a>空目录</a></li>
+		</#if>
+	</@d_categoryList>
+</#macro>
+<div class="pageContent">
+	<div class="pageFormContent" layoutH="58">
+		<ul class="tree expand">
+			<@categoryLookupTree queryCategoryId/>
+		</ul>
+	</div>
+	<div class="formBar">
+		<ul>
+			<li><div class="button"><div class="buttonContent"><button class="close" type="button">关闭</button></div></div></li>
+		</ul>
+	</div>
+</div>

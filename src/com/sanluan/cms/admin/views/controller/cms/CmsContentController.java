@@ -42,8 +42,10 @@ public class CmsContentController extends BaseController {
 		}
 		CmsCategory cmsCategory = categoryService.getEntity(entity.getCategoryId());
 		CmsCategoryModel categoryModel = categoryModelService.getEntity(entity.getModelId(), entity.getCategoryId());
-		if (virifyCustom("static",
-				!staticComponent.createStaticFile(categoryModel.getTemplatePath(), cmsCategory.getContentPath(), model), model)) {
+		if (null != categoryModel
+				&& virifyCustom("static",
+						!staticComponent.createStaticFile(categoryModel.getTemplatePath(), cmsCategory.getContentPath(), model),
+						model)) {
 			return "common/ajaxError";
 		}
 		return "common/ajaxDone";

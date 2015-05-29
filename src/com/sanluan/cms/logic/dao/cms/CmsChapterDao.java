@@ -11,15 +11,15 @@ import com.sanluan.common.handler.QueryHandler;
 
 @Repository
 public class CmsChapterDao extends BaseDao<CmsChapter> {
-	public PageHandler getPage(Integer extendNumber3, Integer extendNumber4, Integer categoryId, String title, String extend1,
-			String extend3, String extend2, String image, String extend4, Integer extendNumber2, Integer contentId,
-			Integer extendNumber1, int pageNo, int pageSize) {
+	public PageHandler getPage(String modelExtend3, String modelExtend4, Integer categoryId, String title, String extend1,
+			String extend3, String extend2, String image, String extend4, String modelExtend2, Integer contentId,
+			String modelExtend1, int pageNo, int pageSize) {
 		QueryHandler queryMaker = getQueryMaker("from CmsChapter bean");
-		if (notEmpty(extendNumber3)) {
-			queryMaker.condition("bean.extendNumber3 = :extendNumber3").setParameter("extendNumber3", extendNumber3);
+		if (notEmpty(modelExtend3)) {
+			queryMaker.condition("bean.modelExtend3 = :modelExtend3").setParameter("modelExtend3", modelExtend3);
 		}
-		if (notEmpty(extendNumber4)) {
-			queryMaker.condition("bean.extendNumber4 = :extendNumber4").setParameter("extendNumber4", extendNumber4);
+		if (notEmpty(modelExtend4)) {
+			queryMaker.condition("bean.modelExtend4 = :modelExtend4").setParameter("modelExtend4", modelExtend4);
 		}
 		if (notEmpty(categoryId)) {
 			queryMaker.condition("bean.categoryId = :categoryId").setParameter("categoryId", categoryId);
@@ -42,14 +42,14 @@ public class CmsChapterDao extends BaseDao<CmsChapter> {
 		if (notEmpty(extend4)) {
 			queryMaker.condition("bean.extend4 = :extend4").setParameter("extend4", extend4);
 		}
-		if (notEmpty(extendNumber2)) {
-			queryMaker.condition("bean.extendNumber2 = :extendNumber2").setParameter("extendNumber2", extendNumber2);
+		if (notEmpty(modelExtend2)) {
+			queryMaker.condition("bean.modelExtend2 = :modelExtend2").setParameter("modelExtend2", modelExtend2);
 		}
 		if (notEmpty(contentId)) {
 			queryMaker.condition("bean.contentId = :contentId").setParameter("contentId", contentId);
 		}
-		if (notEmpty(extendNumber1)) {
-			queryMaker.condition("bean.extendNumber1 = :extendNumber1").setParameter("extendNumber1", extendNumber1);
+		if (notEmpty(modelExtend1)) {
+			queryMaker.condition("bean.modelExtend1 = :modelExtend1").setParameter("modelExtend1", modelExtend1);
 		}
 		queryMaker.append("order by bean.id desc");
 		return getPage(queryMaker, pageNo, pageSize);

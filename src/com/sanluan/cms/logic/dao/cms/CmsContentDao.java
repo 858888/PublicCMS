@@ -13,16 +13,16 @@ import com.sanluan.common.handler.QueryHandler;
 
 @Repository
 public class CmsContentDao extends BaseDao<CmsContent> {
-	public PageHandler getPage(Integer extendNumber3, Integer extendNumber4, Integer status, String extend1, Integer categoryId,
+	public PageHandler getPage(String modelExtend3, String modelExtend4, Integer status, String extend1, Integer categoryId,
 			String extend3, String extend2, String extend4, Boolean isDisable, Integer modelId, String title, Integer userId,
-			Integer extendNumber2, Date startPublishDate, Date endPublishDate, Integer extendNumber1, String orderField,
+			String modelExtend2, Date startPublishDate, Date endPublishDate, String modelExtend1, String orderField,
 			String orderType, int pageNo, int pageSize) {
 		QueryHandler queryMaker = getQueryMaker("from CmsContent bean");
-		if (notEmpty(extendNumber3)) {
-			queryMaker.condition("bean.extendNumber3 = :extendNumber3").setParameter("extendNumber3", extendNumber3);
+		if (notEmpty(modelExtend3)) {
+			queryMaker.condition("bean.modelExtend3 = :modelExtend3").setParameter("modelExtend3", modelExtend3);
 		}
-		if (notEmpty(extendNumber4)) {
-			queryMaker.condition("bean.extendNumber4 = :extendNumber4").setParameter("extendNumber4", extendNumber4);
+		if (notEmpty(modelExtend4)) {
+			queryMaker.condition("bean.modelExtend4 = :modelExtend4").setParameter("modelExtend4", modelExtend4);
 		}
 		if (notEmpty(status)) {
 			queryMaker.condition("bean.status = :status").setParameter("status", status);
@@ -54,8 +54,8 @@ public class CmsContentDao extends BaseDao<CmsContent> {
 		if (notEmpty(userId)) {
 			queryMaker.condition("bean.userId = :userId").setParameter("userId", userId);
 		}
-		if (notEmpty(extendNumber2)) {
-			queryMaker.condition("bean.extendNumber2 = :extendNumber2").setParameter("extendNumber2", extendNumber2);
+		if (notEmpty(modelExtend2)) {
+			queryMaker.condition("bean.modelExtend2 = :modelExtend2").setParameter("modelExtend2", modelExtend2);
 		}
 		if (notEmpty(startPublishDate)) {
 			queryMaker.condition("bean.publishDate >= :startPublishDate").setParameter("startPublishDate", startPublishDate);
@@ -63,8 +63,8 @@ public class CmsContentDao extends BaseDao<CmsContent> {
 		if (notEmpty(endPublishDate)) {
 			queryMaker.condition("bean.publishDate < :endPublishDate").setParameter("endPublishDate", tomorrow(endPublishDate));
 		}
-		if (notEmpty(extendNumber1)) {
-			queryMaker.condition("bean.extendNumber1 = :extendNumber1").setParameter("extendNumber1", extendNumber1);
+		if (notEmpty(modelExtend1)) {
+			queryMaker.condition("bean.modelExtend1 = :modelExtend1").setParameter("modelExtend1", modelExtend1);
 		}
 		if ("asc".equals(orderType)) {
 			orderType = "asc";

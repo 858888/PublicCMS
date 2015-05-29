@@ -31,8 +31,12 @@ public class CmsCategory implements java.io.Serializable {
 	private String childIds;
 	@MyColumn(title = "英文名")
 	private String englishName;
+	@MyColumn(title = "模板路径")
+	private String templatePath;
 	@MyColumn(title = "路径")
 	private String path;
+	@MyColumn(title = "列表模板路径")
+	private String listTemplatePath;
 	@MyColumn(title = "列表路径")
 	private String listPath;
 	@MyColumn(title = "内容路径")
@@ -51,20 +55,12 @@ public class CmsCategory implements java.io.Serializable {
 	private String extend3;
 	@MyColumn(title = "扩展字段4", condition = true)
 	private String extend4;
-	@MyColumn(title = "扩展数字字段1", condition = true)
-	private Integer extendNumber1;
-	@MyColumn(title = "扩展数字字段2", condition = true)
-	private Integer extendNumber2;
-	@MyColumn(title = "扩展数字字段3", condition = true)
-	private Integer extendNumber3;
-	@MyColumn(title = "扩展数字字段4", condition = true)
-	private Integer extendNumber4;
 
 	public CmsCategory() {
 	}
 
-	public CmsCategory(String name, String path, String listPath, String contentPath,
-			boolean isDisable, int contents) {
+	public CmsCategory(String name, String templatePath, String path, String listTemplatePath, String listPath,
+			String contentPath, boolean isDisable, int contents) {
 		this.name = name;
 		this.path = path;
 		this.listPath = listPath;
@@ -73,15 +69,16 @@ public class CmsCategory implements java.io.Serializable {
 		this.contents = contents;
 	}
 
-	public CmsCategory(String name, Integer parentId, String childIds, String englishName, String path,
-			String listPath, String contentPath,  Integer pageSize,
-			boolean isDisable, int contents, String extend1, String extend2, String extend3, String extend4,
-			Integer extendNumber1, Integer extendNumber2, Integer extendNumber3, Integer extendNumber4) {
+	public CmsCategory(String name, Integer parentId, String childIds, String englishName, String templatePath, String path,
+			String listTemplatePath, String listPath, String contentPath, Integer pageSize, boolean isDisable, int contents,
+			String extend1, String extend2, String extend3, String extend4) {
 		this.name = name;
 		this.parentId = parentId;
 		this.childIds = childIds;
 		this.englishName = englishName;
+		this.templatePath = templatePath;
 		this.path = path;
+		this.listTemplatePath = listTemplatePath;
 		this.listPath = listPath;
 		this.contentPath = contentPath;
 		this.pageSize = pageSize;
@@ -91,10 +88,6 @@ public class CmsCategory implements java.io.Serializable {
 		this.extend2 = extend2;
 		this.extend3 = extend3;
 		this.extend4 = extend4;
-		this.extendNumber1 = extendNumber1;
-		this.extendNumber2 = extendNumber2;
-		this.extendNumber3 = extendNumber3;
-		this.extendNumber4 = extendNumber4;
 	}
 
 	@Id
@@ -143,8 +136,17 @@ public class CmsCategory implements java.io.Serializable {
 	public void setEnglishName(String englishName) {
 		this.englishName = englishName;
 	}
+	
+	@Column(name = "template_path", nullable = false, length = 255)
+	public String getTemplatePath() {
+		return templatePath;
+	}
 
-	@Column(name = "path", nullable = false, length = 200)
+	public void setTemplatePath(String templatePath) {
+		this.templatePath = templatePath;
+	}
+
+	@Column(name = "path", nullable = false, length = 500)
 	public String getPath() {
 		return this.path;
 	}
@@ -153,7 +155,17 @@ public class CmsCategory implements java.io.Serializable {
 		this.path = path;
 	}
 
-	@Column(name = "list_path", nullable = false, length = 200)
+	@Column(name = "list_template_path", nullable = false, length = 255)
+	public String getListTemplatePath() {
+		return listTemplatePath;
+	}
+
+	public void setListTemplatePath(String listTemplatePath) {
+		this.listTemplatePath = listTemplatePath;
+	}
+
+	
+	@Column(name = "list_path", nullable = false, length = 500)
 	public String getListPath() {
 		return this.listPath;
 	}
@@ -232,42 +244,6 @@ public class CmsCategory implements java.io.Serializable {
 
 	public void setExtend4(String extend4) {
 		this.extend4 = extend4;
-	}
-
-	@Column(name = "extend_number1")
-	public Integer getExtendNumber1() {
-		return this.extendNumber1;
-	}
-
-	public void setExtendNumber1(Integer extendNumber1) {
-		this.extendNumber1 = extendNumber1;
-	}
-
-	@Column(name = "extend_number2")
-	public Integer getExtendNumber2() {
-		return this.extendNumber2;
-	}
-
-	public void setExtendNumber2(Integer extendNumber2) {
-		this.extendNumber2 = extendNumber2;
-	}
-
-	@Column(name = "extend_number3")
-	public Integer getExtendNumber3() {
-		return this.extendNumber3;
-	}
-
-	public void setExtendNumber3(Integer extendNumber3) {
-		this.extendNumber3 = extendNumber3;
-	}
-
-	@Column(name = "extend_number4")
-	public Integer getExtendNumber4() {
-		return this.extendNumber4;
-	}
-
-	public void setExtendNumber4(Integer extendNumber4) {
-		this.extendNumber4 = extendNumber4;
 	}
 
 }

@@ -1,9 +1,17 @@
 <@d_category id=id><#assign a=t_bean/></@d_category>
 <div class="pageContent">
-	<form method="post" action="cmsCategory/save.do?callbackType=closeCurrent" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+	<form method="post" action="cmsCategory/save.do?callbackType=closeCurrent&navTabId=cmsCategory" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
 		<input name="id" type="hidden" value="${id!}" />
-		<input name="parentId" type="hidden" value="${parentId!}" />
 		<div class="pageFormContent" layoutH="57">
+			<dl class="nowrap">
+				<dt>父分类：</dt>
+				<dd>
+					<input name="parentId" type="hidden" value="${(a.parentId)!parentId!}" />
+					<@d_category id=(a.parentId)!parentId!><#assign category=t_bean/></@d_category>
+					<input class="readonly" name="categoryName" readonly="readonly" type="text" size="10" value="${(category.name)!}"/>
+					<a class="btnLook" href="cmsCategory/lookup.html?queryCategoryId=${(a.categoryId)!}" lookupGroup="">选择</a>
+				</dd>
+			</dl>
 			<dl class="nowrap">
 				<dt>名称：</dt>
 				<dd><input class="required" name="name" type="text" size="30" value="${(a.name)!}"/></dd>
@@ -13,15 +21,23 @@
 				<dd><input class="required" name="englishName" type="text" size="30" value="${(a.englishName)!}"/></dd>
 			</dl>
 			<dl class="nowrap">
+				<dt>模板路径：</dt>
+				<dd><input class="required" name="templatePath" type="text" size="80" value="${(a.templatePath)!}"/></dd>
+			</dl>
+			<dl class="nowrap">
 				<dt>路径：</dt>
 				<dd><input class="required" name="path" type="text" size="80" value="${(a.path)!}"/></dd>
 			</dl>
 			<dl class="nowrap">
-				<dt>列表路径：</dt>
+				<dt>列表模板路径：</dt>
+				<dd><input class="required" name="listTemplatePath" type="text" size="80" value="${(a.listTemplatePath)!}"/></dd>
+			</dl>
+			<dl class="nowrap">
+				<dt>列表页路径：</dt>
 				<dd><input class="required" name="listPath" type="text" size="80" value="${(a.listPath)!}"/></dd>
 			</dl>
 			<dl class="nowrap">
-				<dt>内容路径：</dt>
+				<dt>内容页路径：</dt>
 				<dd><input class="required" name="contentPath" type="text" size="80" value="${(a.contentPath)!}"/></dd>
 			</dl>
 			<dl>

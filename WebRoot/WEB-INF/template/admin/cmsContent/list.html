@@ -1,5 +1,5 @@
 <#list .data_model?keys as key>
-	<#if key?starts_with('query')>
+	<#if key?starts_with('query')&&'queryCategoryId'!=key>
 		<#assign paramters=(paramters!'')+(paramters?has_content)?string('&','')+key?url+'='+(.data_model[key])?url/>
 	</#if>
 </#list>
@@ -8,7 +8,7 @@
 		<ul class="tree treeFolder">
 			<li><a href="cmsContent/_list.html?${paramters!}" target="ajax" rel="contentBox">所有分类</a>
 				<ul>
-					<@t.categoryTree queryCategoryId paramters/>
+					<@t.categoryTree 'cmsContent/_list.html' 'contentBox' queryCategoryId paramters/>
 				</ul>
 			</li>
 	     </ul>

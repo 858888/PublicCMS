@@ -21,20 +21,13 @@ public class CmsContentService extends BaseService<CmsContent, CmsContentDao> {
 	private CmsContentDao dao;
 
 	@Transactional(readOnly = true)
-	public PageHandler getPage(Integer extendNumber3, Integer extendNumber4, 
-				Integer status, String extend1, Integer categoryId, 
-				String extend3, String extend2, String extend4, 
-				Boolean isDisable, Integer modelId, String title, 
-				Integer userId, Integer extendNumber2, Date startPublishDate, Date endPublishDate, 
-				Integer extendNumber1, 
-				String orderField, String orderType, int pageNo, int pageSize) {
-		return dao.getPage(extendNumber3, extendNumber4, 
-				status, extend1, categoryId, 
-				extend3, extend2, extend4, 
-				isDisable, modelId, title, 
-				userId, extendNumber2, startPublishDate, endPublishDate, 
-				extendNumber1, 
-				orderField, orderType, pageNo, pageSize);
+	public PageHandler getPage(String modelExtend3, String modelExtend4, Integer status, String extend1, Integer categoryId,
+			String extend3, String extend2, String extend4, Boolean isDisable, Integer modelId, String title, Integer userId,
+			String modelExtend2, Date startPublishDate, Date endPublishDate, String modelExtend1, String orderField,
+			String orderType, int pageNo, int pageSize) {
+		return dao.getPage(modelExtend3, modelExtend4, status, extend1, categoryId, extend3, extend2, extend4, isDisable,
+				modelId, title, userId, modelExtend2, startPublishDate, endPublishDate, modelExtend1, orderField, orderType,
+				pageNo, pageSize);
 	}
 
 	@Override

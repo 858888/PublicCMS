@@ -1,18 +1,19 @@
-<@d_contentList extendNumber3=queryExtendNumber3 extendNumber4=queryExtendNumber4 
+<@d_contentList modelExtend3=queryModelExtend3 modelExtend4=queryModelExtend4 
 			extend1=queryExtend1 categoryId=queryCategoryId 
 			extend3=queryExtend3 extend2=queryExtend2 extend4=queryExtend4 
 			modelId=queryModelId title=queryTitle 
-			userId=queryUserId extendNumber2=queryExtendNumber2 startPublishDate=queryStartPublishDate endPublishDate=queryEndPublishDate 
-			extendNumber1=queryExtendNumber1 orderField=orderField orderType=orderType pageNo=pageNum count=numPerPage>
+			userId=queryUserId modelExtend2=queryModelExtend2 startPublishDate=queryStartPublishDate endPublishDate=queryEndPublishDate 
+			modelExtend1=queryModelExtend1 orderField=orderField orderType=orderType pageNo=pageNum count=numPerPage>
 <form id="pagerForm" method="post">
 	<#include "../include_page/queryParamters.html"/>
 </form>
 <div class="pageHeader">
-	<form onsubmit="return dwzSearch(this,'dialog');" method="post">
+	<form onsubmit="return dwzSearch(this,'dialog');" action="cmsContent/lookup.html" method="post">
 	<div class="searchBar">
 		<table class="searchContent">
 			<tr>
 				<td>
+					<input name="queryCategoryId" type="hidden" value="${queryCategoryId!}"/>
 					<label>模型：</label>
 					<#include "../include_page/queryModelId.html"/>
 				</td>
