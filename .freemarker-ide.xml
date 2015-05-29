@@ -1,7 +1,13 @@
 <config>
 	<context-values>
 		<resource path="">
+			<value key="content" object-class="com.sanluan.cms.entities.cms.CmsContent"/>
+			<value key="category" object-class="com.sanluan.cms.entities.cms.CmsCategory"/>
+			<value key="model" object-class="com.sanluan.cms.entities.cms.CmsModel"/>
+			<value key="chapter" object-class="com.sanluan.cms.entities.cms.CmsChapter"/>
+			<value key="categoryExtend" object-class="com.sanluan.cms.entities.cms.CmsCategoryExtend"/>
 			<value key="user" object-class="com.sanluan.cms.entities.system.SystemUser"/>
+			<value key="modelExtend" object-class="com.sanluan.cms.entities.cms.CmsModelExtend"/>
 		</resource>
 	</context-values>
 	<macro-library>

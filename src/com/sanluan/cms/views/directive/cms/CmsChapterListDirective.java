@@ -19,12 +19,11 @@ public class CmsChapterListDirective extends BaseDirective {
 
 	@Override
 	public void execute(DirectiveHandler handler) throws TemplateException, IOException {
-		PageHandler page = service.getPage(handler.getString("modelExtend3"), handler.getString("modelExtend4"), 
-				handler.getInteger("categoryId"), handler.getString("title"), handler.getString("extend1"), 
-				handler.getString("extend3"), handler.getString("extend2"), handler.getString("image"), 
-				handler.getString("extend4"), handler.getString("modelExtend2"), handler.getInteger("contentId"), 
-				handler.getString("modelExtend1"), 
-				handler.getInteger("pageNo",1), handler.getInteger("count",20));
+		PageHandler page = service.getPage(handler.getString("modelExtend3"), handler.getString("modelExtend4"),
+				handler.getString("title"), handler.getString("extend1"), handler.getString("extend3"),
+				handler.getString("extend2"), handler.getString("image"), handler.getString("extend4"),
+				handler.getString("modelExtend2"), handler.getInteger("contentId"), handler.getString("modelExtend1"),
+				handler.getInteger("pageNo", 1), handler.getInteger("count", 20));
 		handler.put("page", page).render();
 	}
 

@@ -1,5 +1,5 @@
 <@d_chapterList modelExtend3=queryModelExtend3 modelExtend4=queryModelExtend4 
-			categoryId=queryParentId title=queryTitle extend1=queryExtend1 
+			title=queryTitle extend1=queryExtend1 
 			extend3=queryExtend3 extend2=queryExtend2 image=queryImage 
 			extend4=queryExtend4 modelExtend2=queryModelExtend2 contentId=queryContentId 
 			modelExtend1=queryModelExtend1 
@@ -17,11 +17,6 @@
 					<@d_model id=t_bean.modelId>${t_bean.name}</@d_model>：${t_bean.title!}
 				</td>
 				</@d_content>
-				<@d_chapter id=queryParentId>
-				<td>
-					父<@d_model>${t_bean.name}</@d_model>：${t_bean.title!}
-				</td>
-				</@d_chapter>
 				<td>
 					<label>是否有图片：</label>
 					<input type="text" name="queryImage" value="${queryImage!}" />
@@ -48,7 +43,6 @@
 		<thead>
 			<tr>
 				<th>内容</th>
-				<th>父章节</th>
 				<th>标题</th>
 				<th>图片</th>
 				<th>描述</th>
@@ -58,7 +52,6 @@
 			<#list t_page.list as a>
 			<tr target="sid" rel="${a.id}">
 				<td>${a.contentId!}</td>
-				<td>${a.categoryId!}</td>
 				<td>${a.title!}</td>
 				<td>${a.image!}</td>
 				<td>${a.description!}</td>

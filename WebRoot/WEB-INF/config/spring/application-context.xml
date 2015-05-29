@@ -115,7 +115,7 @@
 	</bean>
 	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
-		p:defaultEncoding="utf-8"/>
+		p:defaultEncoding="utf-8" p:maxUploadSize="104857600"/>
 	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>

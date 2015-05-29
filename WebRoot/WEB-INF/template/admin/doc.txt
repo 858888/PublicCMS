@@ -110,7 +110,6 @@ menu项:
 -- CmsChapter begin 2015-5-12 12:57:43---
 字段列表：
 	contentId:内容
-	parentId:父章节
 	title:标题
 	image:图片
 	description:描述
@@ -127,7 +126,7 @@ menu项:
 自定义指令：
 	分页列表查询：
 		<@d_chapterList modelExtend3=queryModelExtend3 modelExtend4=queryModelExtend4 
-			parentId=queryParentId title=queryTitle extend1=queryExtend1 
+			title=queryTitle extend1=queryExtend1 
 			extend3=queryExtend3 extend2=queryExtend2 image=queryImage 
 			extend4=queryExtend4 modelExtend2=queryModelExtend2 contentId=queryContentId 
 			modelExtend1=queryModelExtend1 
@@ -135,7 +134,6 @@ menu项:
 		参数：
 			queryModelExtend3：扩展数字字段3
 			queryModelExtend4：扩展数字字段4
-			queryParentId：父章节
 			queryTitle：标题
 			queryExtend1：扩展字段1
 			queryExtend3：扩展字段3

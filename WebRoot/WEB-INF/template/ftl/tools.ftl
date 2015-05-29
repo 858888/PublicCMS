@@ -38,3 +38,22 @@
 		</#if>
 	</@d_categoryList>
 </#macro>
+<#macro input extend value>
+<#switch extend.inputType>
+	<#case 'number'>
+		<input class="number" name="${extend.code}" type="text" size="30" value="${value!extend.defaultValue!}"/>
+		<#break>
+	<#case 'file'>
+		<input class="readonly" name="fileName" value="${value!extend.defaultValue!}" readonly="readonly" type="text"/>
+		<a class="btnAttach" href="file/upload.html" lookupGroup="" width="560" height="300" title="附件">附件</a>
+		<#break>
+	<#case 'password'>
+		<input class="required" name="${extend.code}" type="password" size="30" value="${value!extend.defaultValue!}"/>
+		<#break>
+	<#case 'textarea'>
+		<textarea name="${extend.code}" class="required" cols="80" rows="4">${value!extend.defaultValue!}</textarea>
+		<#break>
+	<#default>
+		<input class="required" name="${extend.code}" type="text" size="30" value="${value!extend.defaultValue!}"/>
+</#switch>
+</#macro>

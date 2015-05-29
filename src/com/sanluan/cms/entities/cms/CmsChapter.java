@@ -32,8 +32,6 @@ public class CmsChapter implements java.io.Serializable {
 	private Integer id;
 	@MyColumn(title = "内容", condition = true)
 	private int contentId;
-	@MyColumn(title = "分类ID", condition = true)
-	private Integer categoryId;
 	@MyColumn(title = "标题", condition = true, like = true)
 	private String title;
 	@MyColumn(title = "图片", condition = true)
@@ -74,11 +72,10 @@ public class CmsChapter implements java.io.Serializable {
 		this.description = description;
 	}
 
-	public CmsChapter(int contentId, Integer categoryId, String title, String image, Date publishDate, Date createDate,
+	public CmsChapter(int contentId, String title, String image, Date publishDate, Date createDate,
 			String description, String extend1, String extend2, String extend3, String extend4, String modelExtend1,
 			String modelExtend2, String modelExtend3, String modelExtend4) {
 		this.contentId = contentId;
-		this.categoryId = categoryId;
 		this.title = title;
 		this.image = image;
 		this.publishDate = publishDate;
@@ -112,15 +109,6 @@ public class CmsChapter implements java.io.Serializable {
 
 	public void setContentId(int contentId) {
 		this.contentId = contentId;
-	}
-
-	@Column(name = "category_id")
-	public Integer getCategoryId() {
-		return this.categoryId;
-	}
-
-	public void setCategoryId(Integer categoryId) {
-		this.categoryId = categoryId;
 	}
 
 	@Column(name = "title", nullable = false, length = 200)
