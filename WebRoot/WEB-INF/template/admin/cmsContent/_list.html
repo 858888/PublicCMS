@@ -70,12 +70,30 @@
 			</tr>
 		</thead>
 		<tbody>
+			<#assign userIds=''/>
+			<#assign categoryIds=''/>
+			<#assign modelIds=''/>
+			<#list t_page.list as a>
+				<#assign userIds=userIds+a.userId/>
+				<#assign categoryIds=categoryIds+a.categoryId/>
+				<#assign modelIds=modelIds+a.modelId/>
+				<#if a_has_next>
+					<#assign userIds=userIds+','/>
+					<#assign categoryIds=userIds+','/>
+					<#assign modelIds=userIds+','/>
+				</#if>
+			</#list>
+			
+			<@d_systemUser ids=userIds><#assign userMap=t_map/></@d_systemUser>
+			<@d_category ids=categoryIds><#assign categoryMap=t_map/></@d_category>
+			<@d_model ids=modelIds><#assign modelMap=t_map/></@d_model>
+			
 			<#list t_page.list as a>
 			<tr target="sid" rel="${a.id}">
 				<td>${(a.isCopied?string('[转载]',''))!}${a.title!}${(a.isDisable?string('[已删除]',''))!}</td>
-				<td><@d_systemUser id=a.userId>${(t_bean.name)!}</@d_systemUser></td>
-				<td><@d_category id=a.categoryId>${(t_bean.name)!}</@d_category></td>
-				<td><@d_model id=a.modelId>${(t_bean.name)!}</@d_model></td>
+				<td>${(userMap[a.userId?string].name)!}</td>
+				<td>${(categoryMap[a.categoryId?string].name)!}</td>
+				<td>${(modelMap[a.modelId?string].name)!}</td>
 				<td>${a.scores!}</td>
 				<td>${a.comments!}</td>
 				<td>${a.clicks!}</td>

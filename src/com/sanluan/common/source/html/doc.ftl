@@ -21,8 +21,9 @@ menu项:
 			t_page:分页信息，totalCount：总条数，totalPage：总页数，pageSize每页数据条数，pageNo当前页数
 			t_page.t_list: List<${entityName}>对象 使用<#noparse><#list t_list as a></#list></#noparse> 遍历数据
 	单条记录查询：
-		${"<@d_"+entityName?replace('Cms','')?uncap_first+" id=id></@d_"+entityName?replace('Cms','')?uncap_first+">"}
+		${"<@d_"+entityName?replace('Cms','')?uncap_first+" id=id ids=ids></@d_"+entityName?replace('Cms','')?uncap_first+">"}
 		结果：
-			t_bean:属性参考字段列表
+			id不为空时：t_bean:属性参考字段列表
+			id为空切ids不为空时：t_map:{key:id,value:bean}其中bean属性参考字段列表
 -- ${entityName} end --
 

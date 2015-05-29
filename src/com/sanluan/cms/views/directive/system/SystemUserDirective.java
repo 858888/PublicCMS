@@ -1,6 +1,9 @@
 package com.sanluan.cms.views.directive.system;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -27,6 +30,16 @@ public class SystemUserDirective extends BaseDirective {
 			bean.setPassword(null);
 			bean.setAuthToken(null);
 			handler.put("bean", bean).renderIfNotNull(bean);
+		} else {
+			Integer[] ids = handler.getIntegerArray("ids");
+			if (null != ids && 0 < ids.length) {
+				List<SystemUser> beanList = service.getEntitys(ids);
+				Map<String, SystemUser> map = new HashMap<String, SystemUser>();
+				for (SystemUser bean : beanList) {
+					map.put(String.valueOf(bean.getId()), bean);
+				}
+				handler.put("map", map).renderIfNotNull(map);
+			}
 		}
 	}
 
