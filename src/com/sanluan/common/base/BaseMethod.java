@@ -69,7 +69,7 @@ public abstract class BaseMethod implements TemplateMethodModelEx {
 	 * @return
 	 * @throws TemplateModelException
 	 */
-	public static Integer getInt(int index, List<TemplateModel> arguments) throws TemplateModelException {
+	public static Integer getInteger(int index, List<TemplateModel> arguments) throws TemplateModelException {
 		TemplateModel model = arguments.get(index);
 		if (null == model) {
 			return null;
@@ -125,7 +125,7 @@ public abstract class BaseMethod implements TemplateMethodModelEx {
 	 * @return
 	 * @throws TemplateModelException
 	 */
-	public static Integer[] getIntArray(int index, List<TemplateModel> arguments) throws TemplateModelException {
+	public static Integer[] getIntegerArray(int index, List<TemplateModel> arguments) throws TemplateModelException {
 		String[] arr = getStringArray(index, arguments);
 		if (null != arr) {
 			Integer[] ids = new Integer[arr.length];
@@ -187,7 +187,7 @@ public abstract class BaseMethod implements TemplateMethodModelEx {
 	 * @return
 	 * @throws TemplateModelException
 	 */
-	public static Boolean getBool(int index, List<TemplateModel> arguments) throws TemplateModelException {
+	public static Boolean getBoolean(int index, List<TemplateModel> arguments) throws TemplateModelException {
 		TemplateModel model = arguments.get(index);
 		if (null == model) {
 			return null;

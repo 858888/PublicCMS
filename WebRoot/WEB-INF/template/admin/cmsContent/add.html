@@ -9,7 +9,6 @@
 					<input name="categoryId" type="hidden" value="${(a.categoryId)!categoryId!}"/>
 					<@d_category id=(a.categoryId)!categoryId!><#assign category=t_bean/></@d_category>
 					<input class="required readonly" readonly="readonly" name="categoryName" type="text" size="10" value="${(category.name)!}"/>
-					<a class="btnLook" href="cmsCategory/lookup.html?queryCategoryId=${(a.categoryId)!}" lookupGroup="">选择</a>
 				</dd>
 			</dl>
 			<dl>
@@ -22,19 +21,19 @@
 			</dl>
 			<dl class="nowrap">
 				<dt>标题：</dt>
-				<dd><input class="required" name="title" type="text" size="30" value="${(a.title)!}"/></dd>
+				<dd><input class="required" name="title" type="text" style="width: 100%;" value="${(a.title)!}"/></dd>
 			</dl>
 			<dl>
 				<dt>来源：</dt>
-				<dd><input class="required" name="source" type="text" size="10" value="${(a.source)!}"/></dd>
+				<dd><input class="required" name="source" type="text" size="20" value="${(a.source)!}"/></dd>
 			</dl>
 			<dl>
 				<dt>作者：</dt>
-				<dd><input class="required" name="author" type="text" size="10" value="${(a.author)!}"/></dd>
+				<dd><input class="required" name="author" type="text" size="20" value="${(a.author)!}"/></dd>
 			</dl>
 			<dl>
 				<dt>编辑：</dt>
-				<dd><input class="required" name="editor" type="text" size="10" value="${(a.editor)!}"/></dd>
+				<dd><input class="required" name="editor" type="text" size="20" value="${(a.editor)!}"/></dd>
 			</dl>
 			<dl>
 				<dt>地址：</dt>
@@ -42,15 +41,18 @@
 			</dl>
 			<dl class="nowrap">
 				<dt>描述：</dt>
-				<dd><textarea name="description" class="required" cols="80" rows="4">${(a.description)!}</textarea></dd>
+				<dd><textarea name="description" class="required" style="width: 100%;" rows="8">${(a.description)!}</textarea></dd>
 			</dl>
 			<dl class="nowrap">
 				<dt>正文：</dt>
-				<dd><textarea name="txt" class="required editor" cols="80" rows="8">${m_getContent((a.id)!)!}</textarea></dd>
+				<dd><textarea name="txt" class="required editor" style="width: 100%;" rows="20">${m_getContent((a.id)!)!}</textarea></dd>
 			</dl>
 			<dl class="nowrap">
 				<dt>封面：</dt>
-				<dd><input class="required" name="cover" type="text" size="30" value="${(a.cover)!}"/></dd>
+				<dd>
+					<input class="readonly" name="cover" value="${(a.cover)!}" readonly="readonly" type="text"/>
+					<a class="btnAttach" href="file/upload.html?field=cover" lookupGroup="" width="560" height="300" title="附件">附件</a>
+				</dd>
 			</dl>
 			<dl>
 				<dt>发布日期：</dt>
@@ -60,7 +62,7 @@
 				<dt>创建日期：</dt>
 				<dd><input class="required date" name="createDate" type="text" size="30" dateFmt="yyyy-MM-dd HH:mm:ss" value="${(a.createDate)!}"/></dd>
 			</dl>
-	<@d_categoryExtendList extendType=1 cateoryId=category.id>
+	<@d_categoryExtendList extendType=1 cateoryId=(category.id)!>
 		<#list t_page.list as e>
 			<dl  class="nowrap">
 				<dt>${e.name}：</dt>
@@ -71,7 +73,7 @@
 			</dl>
 		</#list>
 	</@d_categoryExtendList>
-	<@d_modelExtendList extendType=1 modelId=model.id>
+	<@d_modelExtendList extendType=1 modelId=(model.id)!>
 		<#list t_page.list as e>
 			<dl  class="nowrap">
 				<dt>${e.name}：</dt>

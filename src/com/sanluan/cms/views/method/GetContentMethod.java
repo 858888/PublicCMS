@@ -26,11 +26,13 @@ public class GetContentMethod extends BaseMethod {
 	@SuppressWarnings("unchecked")
 	@Override
 	public Object exec(@SuppressWarnings("rawtypes") List arguments) throws TemplateModelException {
-		CmsContentAttribute bean = service.getEntity(getInt(0, arguments));
-		if (null != bean)
-			return bean.getText();
-		else
-			return null;
+		Integer id = getInteger(0, arguments);
+		if (null != id) {
+			CmsContentAttribute bean = service.getEntity(id);
+			if (null != bean)
+				return bean.getText();
+		}
+		return null;
 	}
 
 	@Autowired

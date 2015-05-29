@@ -34,6 +34,7 @@ public class StaticComponent {
 	private String staticFileDirectory;
 	private String templateLoaderPath;
 	private String templateDataPath;
+	private String uploadPath;
 
 	private ObjectMapper objectMapper = new ObjectMapper();
 	private ResourceLoader resourceLoader = new DefaultResourceLoader();
@@ -112,7 +113,7 @@ public class StaticComponent {
 	public String getDataFilePath(String templatePath) {
 		if (null == templateDataPath) {
 			try {
-				templateDataPath = resourceLoader.getResource("/data/").getFile().getAbsolutePath();
+				templateDataPath = resourceLoader.getResource("../data/").getFile().getAbsolutePath() + "/";
 			} catch (IOException e) {
 			}
 		}
@@ -122,7 +123,7 @@ public class StaticComponent {
 	public String getHtmlFilePath(String filePath) {
 		if (null == staticFileDirectory) {
 			try {
-				staticFileDirectory = resourceLoader.getResource("/static/").getFile().getAbsolutePath();
+				staticFileDirectory = resourceLoader.getResource("../../static/").getFile().getAbsolutePath() + "/";
 			} catch (IOException e) {
 			}
 		}
@@ -132,11 +133,21 @@ public class StaticComponent {
 	public String getTemplateFilePath(String templatePath) {
 		if (null == templateLoaderPath) {
 			try {
-				templateLoaderPath = resourceLoader.getResource("/template/").getFile().getAbsolutePath();
+				templateLoaderPath = resourceLoader.getResource("../template/web/").getFile().getAbsolutePath() + "/";
 			} catch (IOException e) {
 			}
 		}
 		return templateLoaderPath + templatePath;
+	}
+
+	public String getUploadFilePath(String filePath) {
+		if (null == uploadPath) {
+			try {
+				uploadPath = resourceLoader.getResource("../../resource/upload/").getFile().getAbsolutePath() + "/";
+			} catch (IOException e) {
+			}
+		}
+		return uploadPath + filePath;
 	}
 
 	/**
@@ -189,6 +200,17 @@ public class StaticComponent {
 			templateDataPath += "/";
 		}
 		this.templateDataPath = templateDataPath;
+	}
+
+	/**
+	 * @param uploadPath
+	 *            the uploadPath to set
+	 */
+	public void setUploadPath(String uploadPath) {
+		if (null != uploadPath && !(uploadPath.endsWith("/") || uploadPath.endsWith("\\"))) {
+			uploadPath += "/";
+		}
+		this.uploadPath = uploadPath;
 	}
 
 }

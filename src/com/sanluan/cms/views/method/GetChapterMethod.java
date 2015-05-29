@@ -26,8 +26,13 @@ public class GetChapterMethod extends BaseMethod {
 	@SuppressWarnings("unchecked")
 	@Override
 	public Object exec(@SuppressWarnings("rawtypes") List arguments) throws TemplateModelException {
-		CmsChapterAttribute bean = service.getEntity(getInt(0, arguments));
-		return bean.getText();
+		Integer id = getInteger(0, arguments);
+		if (null != id) {
+			CmsChapterAttribute bean = service.getEntity(id);
+			if (null != bean)
+				return bean.getText();
+		}
+		return null;
 	}
 
 	@Autowired
