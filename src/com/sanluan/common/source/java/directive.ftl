@@ -3,6 +3,9 @@ package ${base}.${directivePack};
 // Generated ${.now} by SourceMaker
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -25,6 +28,16 @@ public class ${entityName}Directive extends BaseDirective {
 		if (null != id) {
 			${entityName} bean = service.getEntity(id);
 			handler.put("bean", bean).renderIfNotNull(bean);
+		} else {
+			Integer[] ids = handler.getIntegerArray("ids");
+			if (null != ids && 0 < ids.length) {
+				List<${entityName}> beanList = service.getEntitys(ids);
+				Map<String, ${entityName}> map = new HashMap<String, ${entityName}>();
+				for (${entityName} bean : beanList) {
+					map.put(String.valueOf(bean.getId()), bean);
+				}
+				handler.put("map", map).renderIfNotNull(map);
+			}
 		}
 	}
 

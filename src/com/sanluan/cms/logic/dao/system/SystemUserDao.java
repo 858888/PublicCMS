@@ -57,27 +57,10 @@ public class SystemUserDao extends BaseDao<SystemUser> {
 		return getPage(queryMaker, pageNo, pageSize);
 	}
 
-	public SystemUser findByName(String name) {
-		QueryHandler queryMaker = getQueryMaker("from SystemUser bean where bean.name = :name").setParameter("name", name);
-		return getEntity(queryMaker);
-	}
-
-	public SystemUser findByNickName(String nickName) {
-		QueryHandler queryMaker = getQueryMaker("from SystemUser bean where bean.nickName = :nickName").setParameter("nickName",
-				nickName);
-		return getEntity(queryMaker);
-	}
-
 	public SystemUser findByEmail(String email) {
 		QueryHandler queryMaker = getQueryMaker(
 				"from SystemUser bean where bean.email = :email and bean.emailChecked = :emailChecked ").setParameter("email",
 				email).setParameter("emailChecked", true);
-		return getEntity(queryMaker);
-	}
-
-	public SystemUser findByAuthToken(String authToken) {
-		QueryHandler queryMaker = getQueryMaker("from SystemUser bean where bean.authToken = :authToken").setParameter("authToken",
-				authToken);
 		return getEntity(queryMaker);
 	}
 

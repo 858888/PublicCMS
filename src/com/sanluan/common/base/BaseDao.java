@@ -89,6 +89,36 @@ public abstract class BaseDao<E> {
 		return (E) getSession().get(getEntityClass(), id);
 	}
 
+	/**
+	 * @param id
+	 * @return
+	 */
+	public E getEntity(Serializable id, String pk) {
+		QueryHandler queryMaker = getQueryMaker("from").append(getEntityClass().getSimpleName()).append("bean");
+		queryMaker.condition("bean." + pk).append("= :id").setParameter("id", id);
+		return getEntity(queryMaker);
+	}
+
+	/**
+	 * @param ids
+	 * @return
+	 */
+	public List<E> getEntitys(Serializable[] ids) {
+		return getEntitys(ids, "id");
+	}
+
+	/**
+	 * @param ids
+	 * @param pk
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public List<E> getEntitys(Serializable[] ids, String pk) {
+		QueryHandler queryMaker = getQueryMaker("from").append(getEntityClass().getSimpleName()).append("bean");
+		queryMaker.condition("bean." + pk).append("in (:ids)").setParameter("ids", ids);
+		return (List<E>) getList(queryMaker);
+	}
+
 	protected abstract E init(E entity);
 
 	/**

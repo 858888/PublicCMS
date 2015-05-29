@@ -41,11 +41,11 @@ public class SystemUserService extends BaseService<SystemUser, SystemUserDao> {
 	}
 
 	public SystemUser findByName(String name) {
-		return dao.findByName(name);
+		return dao.getEntity(name, "name");
 	}
 
 	public SystemUser findByNickName(String nickName) {
-		return dao.findByNickName(nickName);
+		return dao.getEntity(nickName, "nickName");
 	}
 
 	public SystemUser findByEmail(String email) {
@@ -53,7 +53,7 @@ public class SystemUserService extends BaseService<SystemUser, SystemUserDao> {
 	}
 
 	public SystemUser findByAuthToken(String authToken) {
-		return dao.findByAuthToken(authToken);
+		return dao.getEntity(authToken, "authToken");
 	}
 
 	public void updatePassword(Integer id, String ip, String password) {

@@ -3,6 +3,9 @@ package com.sanluan.cms.views.directive.cms;
 // Generated 2015-5-10 17:54:56 by SourceMaker
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -23,6 +26,16 @@ public class CmsCategoryDirective extends BaseDirective {
 		if (null != id) {
 			CmsCategory bean = service.getEntity(id);
 			handler.put("bean", bean).renderIfNotNull(bean);
+		} else {
+			Integer[] ids = handler.getIntegerArray("ids");
+			if (null != ids && 0 < ids.length) {
+				List<CmsCategory> beanList = service.getEntitys(ids);
+				Map<String, CmsCategory> map = new HashMap<String, CmsCategory>();
+				for (CmsCategory bean : beanList) {
+					map.put(String.valueOf(bean.getId()), bean);
+				}
+				handler.put("map", map).renderIfNotNull(map);
+			}
 		}
 	}
 

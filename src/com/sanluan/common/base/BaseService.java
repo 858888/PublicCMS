@@ -1,10 +1,10 @@
 package com.sanluan.common.base;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.transaction.annotation.Transactional;
-
 
 /**
  * @author zhangxd
@@ -23,7 +23,32 @@ public abstract class BaseService<E, D extends BaseDao<E>> {
 	public E getEntity(Serializable id) {
 		return getDao().getEntity(id);
 	}
-	
+
+	/**
+	 * @param id
+	 * @param pk
+	 * @return
+	 */
+	public E getEntity(Serializable id, String pk) {
+		return getDao().getEntity(id, pk);
+	}
+
+	/**
+	 * @param id
+	 * @return
+	 */
+	public List<E> getEntitys(Serializable[] ids, String pk) {
+		return getDao().getEntitys(ids, pk);
+	}
+
+	/**
+	 * @param id
+	 * @return
+	 */
+	public List<E> getEntitys(Serializable[] ids) {
+		return getDao().getEntitys(ids);
+	}
+
 	/**
 	 * @param id
 	 * @return
