@@ -45,6 +45,10 @@
 				<dd><textarea name="description" class="required" cols="80" rows="4">${(a.description)!}</textarea></dd>
 			</dl>
 			<dl class="nowrap">
+				<dt>正文：</dt>
+				<dd><textarea name="txt" class="required editor" cols="80" rows="8">${m_getContent((a.id)!)!}</textarea></dd>
+			</dl>
+			<dl class="nowrap">
 				<dt>封面：</dt>
 				<dd><input class="required" name="cover" type="text" size="30" value="${(a.cover)!}"/></dd>
 			</dl>

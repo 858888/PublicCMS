@@ -11,11 +11,12 @@ import com.sanluan.cms.common.tools.UserUtils;
 import com.sanluan.cms.entities.cms.CmsCategory;
 import com.sanluan.cms.entities.cms.CmsCategoryModel;
 import com.sanluan.cms.entities.cms.CmsContent;
+import com.sanluan.cms.entities.cms.CmsContentAttribute;
 import com.sanluan.cms.logic.component.StaticComponent;
 import com.sanluan.cms.logic.service.cms.CmsCategoryModelService;
 import com.sanluan.cms.logic.service.cms.CmsCategoryService;
+import com.sanluan.cms.logic.service.cms.CmsContentAttributeService;
 import com.sanluan.cms.logic.service.cms.CmsContentService;
-import com.sanluan.cms.logic.service.cms.CmsModelService;
 import com.sanluan.common.base.BaseController;
 
 @Controller
@@ -24,26 +25,36 @@ public class CmsContentController extends BaseController {
 	@Autowired
 	private CmsContentService service;
 	@Autowired
-	private CmsModelService modelService;
-	@Autowired
 	private CmsCategoryModelService categoryModelService;
 	@Autowired
 	private CmsCategoryService categoryService;
 	@Autowired
+	private CmsContentAttributeService attributeService;
+	@Autowired
 	private StaticComponent staticComponent;
 
 	@RequestMapping(value = { "save" + DO_SUFFIX })
-	public String save(CmsContent entity, HttpServletRequest request, ModelMap model) {
+	public String save(CmsContent entity, String txt, HttpServletRequest request, ModelMap model) {
 		entity.setUserId(UserUtils.getAdminFromSession(request).getId());
 		if (null != entity.getId()) {
 			service.update(entity.getId(), entity);
 		} else {
-			service.save(entity);
+			entity = service.save(entity);
+		}
+		CmsContentAttribute attribute = attributeService.getEntity(entity.getId());
+		if (null != attribute) {
+			attribute.setText(txt);
+			attributeService.update(attribute.getContentId(), attribute);
+		} else {
+			attribute = new CmsContentAttribute();
+			attribute.setContentId(entity.getId());
+			attribute.setText(txt);
+			attributeService.save(attribute);
 		}
 		CmsCategory cmsCategory = categoryService.getEntity(entity.getCategoryId());
 		CmsCategoryModel categoryModel = categoryModelService.getEntity(entity.getModelId(), entity.getCategoryId());
-		if (null != categoryModel
-				&& virifyCustom("static",
+		if (virifyNotEmpty("categoryModel", categoryModel, model)
+				|| virifyCustom("static",
 						!staticComponent.createStaticFile(categoryModel.getTemplatePath(), cmsCategory.getContentPath(), model),
 						model)) {
 			return "common/ajaxError";

@@ -17,16 +17,16 @@ public class SystemUserDao extends BaseDao<SystemUser> {
 				String orderField, String orderType, int pageNo, int pageSize) {
 		QueryHandler queryMaker = getQueryMaker("from SystemUser bean");
 		if (notEmpty(startDateRegistered)) {
-			queryMaker.condition("bean.dateRegistered >= :startDateRegistered").setParameter("startDateRegistered", startDateRegistered);
+			queryMaker.condition("bean.dateRegistered < :startDateRegistered").setParameter("startDateRegistered", startDateRegistered);
 		}
 		if (notEmpty(endDateRegistered)) {
-			queryMaker.condition("bean.dateRegistered < :endDateRegistered").setParameter("endDateRegistered", tomorrow(endDateRegistered));
+			queryMaker.condition("bean.dateRegistered <= :endDateRegistered").setParameter("endDateRegistered", endDateRegistered);
 		}
 		if (notEmpty(startLastLoginDate)) {
-			queryMaker.condition("bean.lastLoginDate >= :startLastLoginDate").setParameter("startLastLoginDate", startLastLoginDate);
+			queryMaker.condition("bean.lastLoginDate < :startLastLoginDate").setParameter("startLastLoginDate", startLastLoginDate);
 		}
 		if (notEmpty(endLastLoginDate)) {
-			queryMaker.condition("bean.lastLoginDate < :endLastLoginDate").setParameter("endLastLoginDate", tomorrow(endLastLoginDate));
+			queryMaker.condition("bean.lastLoginDate <= :endLastLoginDate").setParameter("endLastLoginDate", endLastLoginDate);
 		}
 		if (notEmpty(superuserAccess)) {
 			queryMaker.condition("bean.superuserAccess = :superuserAccess").setParameter("superuserAccess", superuserAccess);

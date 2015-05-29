@@ -15,6 +15,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.sanluan.common.source.entity.MyColumn;
 
 /**
@@ -35,6 +37,7 @@ public class LogEmailCheck implements java.io.Serializable {
 	@MyColumn(title = "验证码", like = true)
 	private String code;
 	@MyColumn(title = "创建日期", condition = true, order = true)
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date createDate;
 	@MyColumn(title = "验证通过", condition = true)
 	private boolean checked;

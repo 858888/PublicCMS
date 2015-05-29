@@ -24,10 +24,10 @@ public class LogLoginDao extends BaseDao<LogLogin> {
 			queryMaker.condition("bean.name like :name").setParameter("name", like(name));
 		}
 		if (notEmpty(startCreateDate)) {
-			queryMaker.condition("bean.createDate >= :startCreateDate").setParameter("startCreateDate", startCreateDate);
+			queryMaker.condition("bean.createDate < :startCreateDate").setParameter("startCreateDate", startCreateDate);
 		}
 		if (notEmpty(endCreateDate)) {
-			queryMaker.condition("bean.createDate < :endCreateDate").setParameter("endCreateDate", tomorrow(endCreateDate));
+			queryMaker.condition("bean.createDate <= :endCreateDate").setParameter("endCreateDate", endCreateDate);
 		}
 		if (notEmpty(ip)) {
 			queryMaker.condition("bean.ip like :ip").setParameter("ip", like(ip));

@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.sanluan.common.source.entity.MyColumn;
 
 /**
@@ -36,6 +38,7 @@ public class LogLogin implements java.io.Serializable {
 	@MyColumn(title = "登录结果", condition = true)
 	private boolean result;
 	@MyColumn(title = "登录日期", condition = true, order = true)
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date createDate;
 	@MyColumn(title = "错误密码")
 	private String errorPassword;

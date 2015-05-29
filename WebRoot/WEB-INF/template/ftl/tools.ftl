@@ -38,6 +38,30 @@
 		</#if>
 	</@d_categoryList>
 </#macro>
+<#macro inputType value>
+<select class="combox" name="inputType">
+	<#list ['text','number','file','password','textarea'] as a>
+	<option value="${a}" ${(value??&&a==value)?string(' selected="true"','')}>
+		<#switch extend.inputType>
+			<#case 'number'>
+				数字
+				<#break>
+			<#case 'file'>
+				文件
+				<#break>
+			<#case 'password'>
+				密码
+				<#break>
+			<#case 'textarea'>
+				文本域
+				<#break>
+			<#default>
+				输入框
+		</#switch>
+	</option>
+	</#list>
+</select>
+</#macro>
 <#macro input extend value>
 <#switch extend.inputType>
 	<#case 'number'>

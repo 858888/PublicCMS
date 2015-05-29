@@ -18,10 +18,10 @@ public class LogEmailCheckDao extends BaseDao<LogEmailCheck> {
 			queryMaker.condition("bean.userId = :userId").setParameter("userId", userId);
 		}
 		if (notEmpty(startCreateDate)) {
-			queryMaker.condition("bean.createDate >= :startCreateDate").setParameter("startCreateDate", startCreateDate);
+			queryMaker.condition("bean.createDate < :startCreateDate").setParameter("startCreateDate", startCreateDate);
 		}
 		if (notEmpty(endCreateDate)) {
-			queryMaker.condition("bean.createDate < :endCreateDate").setParameter("endCreateDate", tomorrow(endCreateDate));
+			queryMaker.condition("bean.createDate <= :endCreateDate").setParameter("endCreateDate", endCreateDate);
 		}
 		if (notEmpty(checked)) {
 			queryMaker.condition("bean.checked = :checked").setParameter("checked", checked);

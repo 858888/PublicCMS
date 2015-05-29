@@ -21,10 +21,6 @@ public class CmsContentAttribute implements java.io.Serializable {
 	private int contentId;
 	private String data;
 	private String text;
-	private String text1;
-	private String text2;
-	private String text3;
-	private String text4;
 	private int wordCount;
 
 	public CmsContentAttribute() {
@@ -35,15 +31,11 @@ public class CmsContentAttribute implements java.io.Serializable {
 		this.wordCount = wordCount;
 	}
 
-	public CmsContentAttribute(int contentId, String data, String text, String text1, String text2, String text3, String text4,
+	public CmsContentAttribute(int contentId, String data, String text,
 			int wordCount) {
 		this.contentId = contentId;
 		this.data = data;
 		this.text = text;
-		this.text1 = text1;
-		this.text2 = text2;
-		this.text3 = text3;
-		this.text4 = text4;
 		this.wordCount = wordCount;
 	}
 
@@ -73,42 +65,6 @@ public class CmsContentAttribute implements java.io.Serializable {
 
 	public void setText(String text) {
 		this.text = text;
-	}
-
-	@Column(name = "text1", length = 65535)
-	public String getText1() {
-		return this.text1;
-	}
-
-	public void setText1(String text1) {
-		this.text1 = text1;
-	}
-
-	@Column(name = "text2", length = 65535)
-	public String getText2() {
-		return this.text2;
-	}
-
-	public void setText2(String text2) {
-		this.text2 = text2;
-	}
-
-	@Column(name = "text3", length = 65535)
-	public String getText3() {
-		return this.text3;
-	}
-
-	public void setText3(String text3) {
-		this.text3 = text3;
-	}
-
-	@Column(name = "text4", length = 65535)
-	public String getText4() {
-		return this.text4;
-	}
-
-	public void setText4(String text4) {
-		this.text4 = text4;
 	}
 
 	@Column(name = "word_count", nullable = false)

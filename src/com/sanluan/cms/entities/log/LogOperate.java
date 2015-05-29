@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.sanluan.common.source.entity.MyColumn;
 
 /**
@@ -33,6 +35,7 @@ public class LogOperate implements java.io.Serializable {
 	@MyColumn(title = "操作", condition = true)
 	private String operate;
 	@MyColumn(title = "操作日期", condition = true, order = true)
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date createDate;
 	@MyColumn(title = "内容", condition = true, like = true)
 	private String content;

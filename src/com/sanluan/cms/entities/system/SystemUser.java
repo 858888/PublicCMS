@@ -15,6 +15,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.sanluan.common.source.entity.MyColumn;
 
 /**
@@ -45,12 +47,14 @@ public class SystemUser implements java.io.Serializable {
 	private boolean disable;
 	private String authToken;
 	@MyColumn(title = "上次登录日期", condition = true, order = true)
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date lastLoginDate;
 	@MyColumn(title = "上次登录IP")
 	private String lastLoginIp;
 	@MyColumn(title = "登录次数", order = true)
 	private int loginCount;
 	@MyColumn(title = "注册日期", condition = true, order = true)
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date dateRegistered;
 
 	public SystemUser() {

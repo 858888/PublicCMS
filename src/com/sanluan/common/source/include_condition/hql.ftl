@@ -1,10 +1,10 @@
 <#list conditionList as a>
 	<#if "Date"=a.type>
 		if (notEmpty(start${a.name?cap_first})) {
-			queryMaker.condition("bean.${a.name} >= :start${a.name?cap_first}").setParameter("start${a.name?cap_first}", start${a.name?cap_first});
+			queryMaker.condition("bean.${a.name} > :start${a.name?cap_first}").setParameter("start${a.name?cap_first}", start${a.name?cap_first});
 		}
 		if (notEmpty(end${a.name?cap_first})) {
-			queryMaker.condition("bean.${a.name} < :end${a.name?cap_first}").setParameter("end${a.name?cap_first}", tomorrow(end${a.name?cap_first}));
+			queryMaker.condition("bean.${a.name} <= :end${a.name?cap_first}").setParameter("end${a.name?cap_first}", end${a.name?cap_first});
 		}
 	<#else>
 		if (notEmpty(${a.name})) {

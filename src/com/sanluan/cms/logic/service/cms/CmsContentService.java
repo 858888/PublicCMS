@@ -2,6 +2,7 @@ package com.sanluan.cms.logic.service.cms;
 
 // Generated 2015-5-8 16:50:23 by SourceMaker
 
+import java.io.Serializable;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,13 @@ public class CmsContentService extends BaseService<CmsContent, CmsContentDao> {
 		return dao.getPage(modelExtend3, modelExtend4, status, extend1, categoryId, extend3, extend2, extend4, isDisable,
 				modelId, title, userId, modelExtend2, startPublishDate, endPublishDate, modelExtend1, orderField, orderType,
 				pageNo, pageSize);
+	}
+
+	@Override
+	public CmsContent delete(Serializable id) {
+		CmsContent entity = getEntity(id);
+		entity.setIsDisable(true);
+		return entity;
 	}
 
 	@Override

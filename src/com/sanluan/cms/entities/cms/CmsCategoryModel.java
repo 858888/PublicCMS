@@ -29,14 +29,17 @@ public class CmsCategoryModel implements java.io.Serializable {
 	private int modelId;
 	@MyColumn(title = "模板路径")
 	private String templatePath;
+	@MyColumn(title = "章节板路径")
+	private String chapterTemplatePath;
 
 	public CmsCategoryModel() {
 	}
 
-	public CmsCategoryModel(int categoryId, int modelId, String templatePath) {
+	public CmsCategoryModel(int categoryId, int modelId, String templatePath, String chapterTemplatePath) {
 		this.categoryId = categoryId;
 		this.modelId = modelId;
 		this.templatePath = templatePath;
+		this.chapterTemplatePath = chapterTemplatePath;
 	}
 
 	@Id
@@ -75,6 +78,15 @@ public class CmsCategoryModel implements java.io.Serializable {
 
 	public void setTemplatePath(String templatePath) {
 		this.templatePath = templatePath;
+	}
+
+	@Column(name = "chapter_template_path", length = 200)
+	public String getChapterTemplatePath() {
+		return this.chapterTemplatePath;
+	}
+
+	public void setChapterTemplatePath(String chapterTemplatePath) {
+		this.chapterTemplatePath = chapterTemplatePath;
 	}
 
 }

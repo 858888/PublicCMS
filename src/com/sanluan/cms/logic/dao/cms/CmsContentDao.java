@@ -58,10 +58,10 @@ public class CmsContentDao extends BaseDao<CmsContent> {
 			queryMaker.condition("bean.modelExtend2 = :modelExtend2").setParameter("modelExtend2", modelExtend2);
 		}
 		if (notEmpty(startPublishDate)) {
-			queryMaker.condition("bean.publishDate >= :startPublishDate").setParameter("startPublishDate", startPublishDate);
+			queryMaker.condition("bean.publishDate < :startPublishDate").setParameter("startPublishDate", startPublishDate);
 		}
 		if (notEmpty(endPublishDate)) {
-			queryMaker.condition("bean.publishDate < :endPublishDate").setParameter("endPublishDate", tomorrow(endPublishDate));
+			queryMaker.condition("bean.publishDate <= :endPublishDate").setParameter("endPublishDate", endPublishDate);
 		}
 		if (notEmpty(modelExtend1)) {
 			queryMaker.condition("bean.modelExtend1 = :modelExtend1").setParameter("modelExtend1", modelExtend1);

@@ -41,6 +41,8 @@ public class CmsCategory implements java.io.Serializable {
 	private String listPath;
 	@MyColumn(title = "内容路径")
 	private String contentPath;
+	@MyColumn(title = "章节路径")
+	private String chapterPath;
 	@MyColumn(title = "每页数据")
 	private Integer pageSize;
 	@MyColumn(title = "是否删除", condition = true)
@@ -60,18 +62,19 @@ public class CmsCategory implements java.io.Serializable {
 	}
 
 	public CmsCategory(String name, String templatePath, String path, String listTemplatePath, String listPath,
-			String contentPath, boolean isDisable, int contents) {
+			String contentPath, String chapterPath, boolean isDisable, int contents) {
 		this.name = name;
 		this.path = path;
 		this.listPath = listPath;
 		this.contentPath = contentPath;
+		this.chapterPath = chapterPath;
 		this.isDisable = isDisable;
 		this.contents = contents;
 	}
 
 	public CmsCategory(String name, Integer parentId, String childIds, String englishName, String templatePath, String path,
-			String listTemplatePath, String listPath, String contentPath, Integer pageSize, boolean isDisable, int contents,
-			String extend1, String extend2, String extend3, String extend4) {
+			String listTemplatePath, String listPath, String contentPath, String chapterPath, Integer pageSize,
+			boolean isDisable, int contents, String extend1, String extend2, String extend3, String extend4) {
 		this.name = name;
 		this.parentId = parentId;
 		this.childIds = childIds;
@@ -81,6 +84,7 @@ public class CmsCategory implements java.io.Serializable {
 		this.listTemplatePath = listTemplatePath;
 		this.listPath = listPath;
 		this.contentPath = contentPath;
+		this.chapterPath = chapterPath;
 		this.pageSize = pageSize;
 		this.isDisable = isDisable;
 		this.contents = contents;
@@ -136,7 +140,7 @@ public class CmsCategory implements java.io.Serializable {
 	public void setEnglishName(String englishName) {
 		this.englishName = englishName;
 	}
-	
+
 	@Column(name = "template_path", nullable = false, length = 255)
 	public String getTemplatePath() {
 		return templatePath;
@@ -164,7 +168,6 @@ public class CmsCategory implements java.io.Serializable {
 		this.listTemplatePath = listTemplatePath;
 	}
 
-	
 	@Column(name = "list_path", nullable = false, length = 500)
 	public String getListPath() {
 		return this.listPath;
@@ -181,6 +184,15 @@ public class CmsCategory implements java.io.Serializable {
 
 	public void setContentPath(String contentPath) {
 		this.contentPath = contentPath;
+	}
+
+	@Column(name = "chapter_path", nullable = false, length = 500)
+	public String getChapterPath() {
+		return this.chapterPath;
+	}
+
+	public void setChapterPath(String chapterPath) {
+		this.chapterPath = chapterPath;
 	}
 
 	@Column(name = "page_size")

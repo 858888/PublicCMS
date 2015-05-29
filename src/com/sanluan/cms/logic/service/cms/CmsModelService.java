@@ -3,6 +3,8 @@ package com.sanluan.cms.logic.service.cms;
 // Generated 2015-5-8 16:50:23 by SourceMaker
 
 
+import java.io.Serializable;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +24,13 @@ public class CmsModelService extends BaseService<CmsModel, CmsModelDao> {
 	@Transactional(readOnly = true)
 	public PageHandler getPage(Boolean isDisable, int pageNo, int pageSize) {
 		return dao.getPage(isDisable, pageNo, pageSize);
+	}
+	
+	@Override
+	public CmsModel delete(Serializable id) {
+		CmsModel entity = getEntity(id);
+		entity.setIsDisable(true);
+		return entity;
 	}
 
 	@Override

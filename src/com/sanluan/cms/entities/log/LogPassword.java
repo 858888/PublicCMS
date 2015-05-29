@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.sanluan.common.source.entity.MyColumn;
 
 /**
@@ -32,6 +34,7 @@ public class LogPassword implements java.io.Serializable {
 	@MyColumn(title = "IP", condition = true, like = true)
 	private String ip;
 	@MyColumn(title = "修改日期", condition = true, order = true)
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date createDate;
 	@MyColumn(title = "旧密码")
 	private String oldPassword;
