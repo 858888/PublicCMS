@@ -34,10 +34,16 @@ public class CmsContentController extends BaseController {
 	private StaticComponent staticComponent;
 
 	@RequestMapping(value = { "save" + DO_SUFFIX })
-	public String save(CmsContent entity, String txt, HttpServletRequest request, ModelMap model) {
+	public String save(CmsContent entity, String txt, Boolean draft, HttpServletRequest request, ModelMap model) {
 		entity.setUserId(UserUtils.getAdminFromSession(request).getId());
+		if (null != draft && draft) {
+			entity.setStatus(0);
+		} else {
+			entity.setStatus(2);
+		}
 		if (null != entity.getId()) {
-			service.update(entity.getId(), entity);
+			service.update(entity.getId(), entity, new String[] { "userId", "createDate", "clicks", "comments", "scores",
+					"chapters" });
 		} else {
 			entity = service.save(entity);
 		}
@@ -51,30 +57,31 @@ public class CmsContentController extends BaseController {
 			attribute.setWordCount(null == txt ? 0 : txt.length());
 			attributeService.save(attribute);
 		}
-		model.clear();
-		model.put("content", entity);
-		CmsCategory cmsCategory = categoryService.getEntity(entity.getCategoryId());
-		CmsCategoryModel categoryModel = categoryModelService.getEntity(entity.getModelId(), entity.getCategoryId());
-		if (virifyNotEmpty("categoryModel", categoryModel, model)
-				|| virifyCustom("static",
-						!staticComponent.createStaticFile(categoryModel.getTemplatePath(), cmsCategory.getContentPath(), model),
-						model)) {
-			return "common/ajaxError";
-		}
-		return "common/ajaxDone";
+		return publish(entity.getId(), request, model);
 	}
 
 	@RequestMapping(value = { "static" + DO_SUFFIX })
 	public String publish(Integer id, HttpServletRequest request, ModelMap model) {
 		CmsContent entity = service.getEntity(id);
-		if (null != entity) {
+		if (null != entity && 1 == entity.getStatus()) {
+			model.put("content", entity);
 			CmsCategoryModel categoryModel = categoryModelService.getEntity(entity.getModelId(), entity.getCategoryId());
 			CmsCategory cmsCategory = categoryService.getEntity(entity.getCategoryId());
-			if (virifyCustom("static",
+			if ((virifyNotEmpty("categoryModel", categoryModel, model) || virifyCustom("static",
 					!staticComponent.createStaticFile(categoryModel.getTemplatePath(), cmsCategory.getContentPath(), model),
-					model)) {
+					model))) {
 				return "common/ajaxError";
 			}
+		}
+		return "common/ajaxDone";
+	}
+
+	@RequestMapping(value = { "check" + DO_SUFFIX })
+	public String check(Integer id, HttpServletRequest request, ModelMap model) {
+		CmsContent entity = service.getEntity(id);
+		if (null != entity && 2 == entity.getStatus()) {
+			service.check(entity.getId());
+			return publish(entity.getId(), request, model);
 		}
 		return "common/ajaxDone";
 	}

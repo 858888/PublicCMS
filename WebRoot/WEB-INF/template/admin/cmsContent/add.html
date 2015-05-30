@@ -56,11 +56,10 @@
 			</dl>
 			<dl>
 				<dt>发布日期：</dt>
-				<dd><input class="required date" name="publishDate" type="text" size="30" dateFmt="yyyy-MM-dd HH:mm:ss" value="${(a.publishDate)!}"/></dd>
-			</dl>
-			<dl>
-				<dt>创建日期：</dt>
-				<dd><input class="required date" name="createDate" type="text" size="30" dateFmt="yyyy-MM-dd HH:mm:ss" value="${(a.createDate)!}"/></dd>
+				<dd>
+					<input class="required date" name="publishDate" type="text" size="20" dateFmt="yyyy-MM-dd HH:mm:ss" value="${(a.publishDate)!}"/>
+					<a class="inputDateButton" href="javascript:;">选择</a>
+				</dd>
 			</dl>
 	<@d_categoryExtendList extendType=1 cateoryId=(category.id)!>
 		<#list t_page.list as e>
@@ -86,6 +85,9 @@
 	</@d_modelExtendList>		</div>
 		<div class="formBar">
 			<ul>
+				<li>
+					<input type="checkbox" name="draft" />保存为草稿
+				</li>
 				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
 				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
 			</ul>

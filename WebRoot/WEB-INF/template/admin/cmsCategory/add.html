@@ -3,46 +3,96 @@
 	<form method="post" action="cmsCategory/save.do?callbackType=closeCurrent&navTabId=cmsCategory" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
 		<input name="id" type="hidden" value="${id!}" />
 		<div class="pageFormContent" layoutH="57">
-			<dl class="nowrap">
-				<dt>父分类：</dt>
-				<dd>
-					<input name="parentId" type="hidden" value="${(a.parentId)!parentId!}" />
-					<@d_category id=(a.parentId)!parentId!><#assign category=t_bean/></@d_category>
-					<input class="readonly" name="categoryName" readonly="readonly" type="text" size="10" value="${(category.name)!}"/>
-					<a class="btnLook" href="cmsCategory/lookup.html?queryCategoryId=${(a.categoryId)!}" lookupGroup="">选择</a>
-				</dd>
-			</dl>
-			<dl class="nowrap">
-				<dt>名称：</dt>
-				<dd><input class="required" name="name" type="text" size="30" value="${(a.name)!}"/></dd>
-			</dl>
-			<dl class="nowrap">
-				<dt>英文名：</dt>
-				<dd><input class="required" name="englishName" type="text" size="30" value="${(a.englishName)!}"/></dd>
-			</dl>
-			<dl class="nowrap">
-				<dt>模板路径：</dt>
-				<dd>
-					<input class="text" name="templatePath" type="text" size="80" value="${(a.templatePath)!}"/>
-					<a class="btnLook" href="template/lookup.html?field=templatePath&value=${(a.templatePath)!}" lookupGroup="">选择</a>
-				</dd>
-			</dl>
-			<dl class="nowrap">
-				<dt>路径：</dt>
-				<dd><input class="text" name="path" type="text" size="80" value="${(a.path)!}"/></dd>
-			</dl>
-			<dl class="nowrap">
-				<dt>内容页路径：</dt>
-				<dd><input class="required" name="contentPath" type="text" size="80" value="${(a.contentPath)!(category.contentPath)!}"/></dd>
-			</dl>
-			<dl class="nowrap">
-				<dt>章节页路径：</dt>
-				<dd><input class="text" name="chapterPath" type="text" size="80" value="${(a.chapterPath)!(category.chapterPath)!}"/></dd>
-			</dl>
-			<dl>
-				<dt>每页数据：</dt>
-				<dd><input class="required" name="pageSize" type="text" size="4" value="${(a.pageSize)!(category.pageSize)!}"/></dd>
-			</dl>
+			<fieldset>
+				<legend>分类属性</legend>
+				<dl class="nowrap">
+					<dt>父分类：</dt>
+					<dd>
+						<input name="parentId" type="hidden" value="${(a.parentId)!parentId!}" />
+						<@d_category id=(a.parentId)!parentId!><#assign category=t_bean/></@d_category>
+						<input class="readonly" name="categoryName" readonly="readonly" type="text" size="10" value="${(category.name)!}"/>
+						<a class="btnLook" href="cmsCategory/lookup.html?queryCategoryId=${(a.categoryId)!}" lookupGroup="">选择</a>
+					</dd>
+				</dl>
+				<dl class="nowrap">
+					<dt>名称：</dt>
+					<dd><input class="required" name="name" type="text" size="30" value="${(a.name)!}"/></dd>
+				</dl>
+				<dl class="nowrap">
+					<dt>英文名：</dt>
+					<dd><input class="required" name="englishName" type="text" size="30" value="${(a.englishName)!}"/></dd>
+				</dl>
+				<dl class="nowrap">
+					<dt>模板路径：</dt>
+					<dd>
+						<input class="text" name="templatePath" type="text" size="80" value="${(a.templatePath)!}"/>
+						<a class="btnLook" href="template/lookup.html?field=templatePath&value=${(a.templatePath)!}" lookupGroup="">选择</a>
+					</dd>
+				</dl>
+				<dl class="nowrap">
+					<dt>路径：</dt>
+					<dd><input class="text" name="path" type="text" size="80" value="${(a.path)!}"/></dd>
+				</dl>
+				<dl class="nowrap">
+					<dt>内容页路径：</dt>
+					<dd><input class="required" name="contentPath" type="text" size="80" value="${(a.contentPath)!(category.contentPath)!}"/></dd>
+				</dl>
+				<dl class="nowrap">
+					<dt>章节页路径：</dt>
+					<dd><input class="text" name="chapterPath" type="text" size="80" value="${(a.chapterPath)!(category.chapterPath)!}"/></dd>
+				</dl>
+				<dl>
+					<dt>每页数据：</dt>
+					<dd><input class="required" name="pageSize" type="text" size="4" value="${(a.pageSize)!(category.pageSize)!}"/></dd>
+				</dl>
+			</fieldset>
+			<fieldset>
+				<legend>模型</legend>
+		<#if id?has_content>
+			<#assign modelIds=[]/>
+			<#assign templatePaths=[]/>
+			<#assign chapterTemplatePaths=[]/>
+			<@d_categoryModelList categoryId=id>
+				<#list t_page.list as a>
+					<#assign modelIds=modelIds+[a.modelId]/>
+					<#assign templatePaths=templatePaths+[a.templatePath!'']/>
+					<#assign chapterTemplatePaths=chapterTemplatePaths+[a.chapterTemplatePath!'']/>
+				</#list>
+			</@d_categoryModelList>
+		</#if>
+		<@d_modelList isDisable=queryIsDisable>
+			<#list t_page.list as a>
+				<dl class="nowrap">
+				<#if modelIds??&&modelIds?seq_contains(a.id)>
+					<#assign modelIndex=modelIds?seq_index_of(a.id)/>
+					<dt><input name="model_${a.id}" onclick="if($(this).is(':checked')){$(this).parent().next().find('input[name^=templatePath_]').addClass('required').addClass('valid')}else{$(this).parent().next().find('input[name^=templatePath_]').removeClass('required').removeClass('valid')}" type="checkbox" checked="true"/>${a.name!}:</dt>
+					<dd>
+						<p>
+							<label>内容模板路径：</label><input class="required" name="templatePath_${a.id}" type="text" size="30" value="${templatePaths[modelIndex]!}"/>
+							<a class="btnLook" href="template/lookup.html?field=templatePath_${a.id}&value=<${templatePaths[modelIndex]!}" lookupGroup="">选择</a>
+						</p>
+						<p>
+							<label>章节模板路径：</label><input class="text" name="chapterTemplatePath_${a.id}" type="text" size="30" value="${chapterTemplatePaths[modelIndex]!}"/>
+							<a class="btnLook" href="template/lookup.html?field=chapterTemplatePath_${a.id}&value=${chapterTemplatePaths[modelIndex]!}" lookupGroup="">选择</a>
+						</p>
+					</dd>
+				<#else>
+					<dt><input name="model_${a.id}" onclick="if($(this).is(':checked')){$(this).parent().next().find('input[name^=templatePath_]').addClass('required').addClass('valid')}else{$(this).parent().next().find('input[name^=templatePath_]').removeClass('required').removeClass('valid')}" type="checkbox"/>${a.name!}:</dt>
+					<dd>
+						<p>
+							<label>内容模板路径：</label><input class="text" name="templatePath_${a.id}" type="text" size="30" value="${(a.templatePath)!}"/>
+							<a class="btnLook" href="template/lookup.html?field=templatePath_${a.id}&value=${(a.templatePath)!}" lookupGroup="">选择</a>
+						</p>
+						<p>
+							<label>章节模板路径：</label><input class="text" name="chapterTemplatePath_${a.id}" type="text" size="30" value="${(a.chapterTemplatePath)!}"/>
+							<a class="btnLook" href="template/lookup.html?field=chapterTemplatePath_${a.id}&value=${(a.chapterTemplatePath)!}" lookupGroup="">选择</a>
+						</p>
+					</dd>
+				</#if>
+				</dl>
+			</#list>
+		</@d_modelList>
+			</fieldset>
 		</div>
 		<div class="formBar">
 			<ul>

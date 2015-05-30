@@ -49,7 +49,21 @@
 <div class="pageContent">
 	<div class="panelBar">
 		<ul class="toolBar">
-			<li><a class="add" href="cmsContent/selectModel.html?categoryId=${queryCategoryId!}" mask="true" width="300" height="400" target="dialog"><span>添加</span></a></li>
+<#if queryCategoryId??>
+	<@d_categoryModelList categoryId=queryCategoryId>
+		<#assign modelIds=''/>
+		<#list t_page.list as a>
+			<#assign modelIds=modelIds+a.modelId/>
+			<#if a_has_next>
+				<#assign modelIds=userIds+','/>
+			</#if>
+		</#list>
+		<@d_model ids=modelIds><#assign modelMap=t_map/></@d_model>
+		<#list t_page.list as a>
+			<li><a class="add" href="cmsContent/add.html?categoryId=${queryCategoryId}&modelId=${a.modelId}" rel="cmsContentAdd" target="navTab"><span>添加${(modelMap[a.modelId?string].name)!}</span></a></li>
+		</#list>
+	</@d_categoryModelList>
+</#if>
 			<li><a class="edit" href="cmsContent/add.html?id={sid}" target="navTab" rel="cmsContentAdd"  title="修改内容"><span>修改</span></a></li>
 			<li><a class="delete" href="cmsContent/delete.do?id={sid}" title="确定要删除该条记录吗?" target="ajaxTodo"><span>删除</span></a></li>
 		</ul>

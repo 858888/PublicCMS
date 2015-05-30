@@ -25,6 +25,12 @@ public class CmsCategoryService extends BaseService<CmsCategory, CmsCategoryDao>
 			Boolean isDisable, int pageNo, int pageSize) {
 		return dao.getPage(parentId, extend1, name, extend3, extend2, extend4, isDisable, pageNo, pageSize);
 	}
+	
+	public CmsCategory updateChildIds(Serializable id,String childIds) {
+		CmsCategory entity = getEntity(id);
+		entity.setChildIds(childIds);
+		return entity;
+	}
 
 	@Override
 	public CmsCategory delete(Serializable id) {

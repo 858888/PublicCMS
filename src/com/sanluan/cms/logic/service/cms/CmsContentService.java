@@ -31,6 +31,12 @@ public class CmsContentService extends BaseService<CmsContent, CmsContentDao> {
 				pageNo, pageSize);
 	}
 
+	public CmsContent check(Serializable id) {
+		CmsContent entity = getEntity(id);
+		entity.setStatus(1);
+		return entity;
+	}
+
 	@Override
 	public CmsContent delete(Serializable id) {
 		CmsContent entity = getEntity(id);

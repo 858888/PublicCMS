@@ -2,6 +2,7 @@ package com.sanluan.cms.logic.service.cms;
 
 // Generated 2015-5-8 16:50:23 by SourceMaker
 
+import java.io.Serializable;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +24,13 @@ public class CmsCategoryModelService extends BaseService<CmsCategoryModel, CmsCa
 	public PageHandler getPage(Integer modelId, Integer categoryId, int pageNo, int pageSize) {
 		return dao.getPage(modelId, categoryId, pageNo, pageSize);
 	}
-	
+
+	public CmsCategoryModel update(Serializable id, String templatePath, String chapterTemplatePath) {
+		CmsCategoryModel entity = getEntity(id);
+		entity.setTemplatePath(templatePath);
+		entity.setChapterTemplatePath(chapterTemplatePath);
+		return entity;
+	}
 
 	@Transactional(readOnly = true)
 	public CmsCategoryModel getEntity(int modelId, int categoryId) {

@@ -5,7 +5,8 @@
 	<div class="accordionContent">
 		<ul class="tree treeFolder">
 			<li><a href="systemUser/password.html" target="dialog" width="500" height="300">修改密码</a></li>
-			<li><a href="cmsContent/list.html?queryUserId=${admin.id}" target="navTab" rel="cmsContent">我发布的内容</a></li>
+			<li><a href="cmsContent/list.html?queryUserId=${admin.id}" target="navTab" rel="cmsContent">我的已发布</a></li>
+			<li><a href="cmsContent/list.html?queryUserId=${admin.id}&queryStatus=2" target="navTab" rel="cmsContent">我的待审核</a></li>
 			<li><a href="cmsContent/list.html?queryUserId=${admin.id}&queryStatus=0" target="navTab" rel="cmsContent">我的草稿</a></li>
 		</ul>
 	</div>
