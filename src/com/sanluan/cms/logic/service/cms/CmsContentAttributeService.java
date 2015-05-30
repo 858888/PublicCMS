@@ -2,6 +2,7 @@ package com.sanluan.cms.logic.service.cms;
 
 // Generated 2015-5-8 16:50:23 by SourceMaker
 
+import java.io.Serializable;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,19 @@ public class CmsContentAttributeService extends BaseService<CmsContentAttribute,
 	@Transactional(readOnly = true)
 	public PageHandler getPage(int pageNo, int pageSize) {
 		return dao.getPage(pageNo, pageSize);
+	}
+
+	public CmsContentAttribute updateTxt(Serializable id, String txt) {
+		CmsContentAttribute entity = getEntity(id);
+		entity.setText(txt);
+		entity.setWordCount(null == txt ? 0 : txt.length());
+		return entity;
+	}
+
+	public CmsContentAttribute updateData(Serializable id, String data) {
+		CmsContentAttribute entity = getEntity(id);
+		entity.setData(data);
+		return entity;
 	}
 
 	@Override

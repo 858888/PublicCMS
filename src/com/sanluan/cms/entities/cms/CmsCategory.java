@@ -134,7 +134,7 @@ public class CmsCategory implements java.io.Serializable {
 		this.englishName = englishName;
 	}
 
-	@Column(name = "template_path", nullable = false, length = 255)
+	@Column(name = "template_path", length = 255)
 	public String getTemplatePath() {
 		return templatePath;
 	}
@@ -143,7 +143,7 @@ public class CmsCategory implements java.io.Serializable {
 		this.templatePath = templatePath;
 	}
 
-	@Column(name = "path", nullable = false, length = 500)
+	@Column(name = "path", length = 500)
 	public String getPath() {
 		return this.path;
 	}
@@ -161,7 +161,7 @@ public class CmsCategory implements java.io.Serializable {
 		this.contentPath = contentPath;
 	}
 
-	@Column(name = "chapter_path", nullable = false, length = 500)
+	@Column(name = "chapter_path", length = 500)
 	public String getChapterPath() {
 		return this.chapterPath;
 	}

@@ -43,14 +43,15 @@ public class CmsContentController extends BaseController {
 		}
 		CmsContentAttribute attribute = attributeService.getEntity(entity.getId());
 		if (null != attribute) {
-			attribute.setText(txt);
-			attributeService.update(attribute.getContentId(), attribute);
+			attributeService.updateTxt(attribute.getContentId(), txt);
 		} else {
 			attribute = new CmsContentAttribute();
 			attribute.setContentId(entity.getId());
 			attribute.setText(txt);
+			attribute.setWordCount(null == txt ? 0 : txt.length());
 			attributeService.save(attribute);
 		}
+		model.clear();
 		model.put("content", entity);
 		CmsCategory cmsCategory = categoryService.getEntity(entity.getCategoryId());
 		CmsCategoryModel categoryModel = categoryModelService.getEntity(entity.getModelId(), entity.getCategoryId());

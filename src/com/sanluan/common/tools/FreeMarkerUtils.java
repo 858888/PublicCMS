@@ -65,8 +65,6 @@ public class FreeMarkerUtils {
 	public static String makeStringByString(String templateContent, Configuration config, Map<String, Object> model)
 			throws IOException, TemplateException {
 		Template t = new Template(String.valueOf(templateContent.hashCode()), templateContent, config);
-		java.io.StringWriter writer = new java.io.StringWriter();
-		t.process(null, writer);
-		return writer.toString();
+		return FreeMarkerTemplateUtils.processTemplateIntoString(t, model);
 	}
 }

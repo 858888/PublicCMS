@@ -22,19 +22,26 @@
 			</dl>
 			<dl class="nowrap">
 				<dt>模板路径：</dt>
-				<dd><input class="required" name="templatePath" type="text" size="80" value="${(a.templatePath)!}"/></dd>
+				<dd>
+					<input class="text" name="templatePath" type="text" size="80" value="${(a.templatePath)!}"/>
+					<a class="btnLook" href="template/lookup.html?field=templatePath&value=${(a.templatePath)!}" lookupGroup="">选择</a>
+				</dd>
 			</dl>
 			<dl class="nowrap">
 				<dt>路径：</dt>
-				<dd><input class="required" name="path" type="text" size="80" value="${(a.path)!}"/></dd>
+				<dd><input class="text" name="path" type="text" size="80" value="${(a.path)!}"/></dd>
 			</dl>
 			<dl class="nowrap">
 				<dt>内容页路径：</dt>
-				<dd><input class="required" name="contentPath" type="text" size="80" value="${(a.contentPath)!}"/></dd>
+				<dd><input class="required" name="contentPath" type="text" size="80" value="${(a.contentPath)!(category.contentPath)!}"/></dd>
+			</dl>
+			<dl class="nowrap">
+				<dt>章节页路径：</dt>
+				<dd><input class="text" name="chapterPath" type="text" size="80" value="${(a.chapterPath)!(category.chapterPath)!}"/></dd>
 			</dl>
 			<dl>
 				<dt>每页数据：</dt>
-				<dd><input class="required" name="pageSize" type="text" size="4" value="${(a.pageSize)!}"/></dd>
+				<dd><input class="required" name="pageSize" type="text" size="4" value="${(a.pageSize)!(category.pageSize)!}"/></dd>
 			</dl>
 		</div>
 		<div class="formBar">

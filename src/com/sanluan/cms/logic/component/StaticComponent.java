@@ -48,7 +48,7 @@ public class StaticComponent {
 		try {
 			if (StringUtils.isNotBlank(filePath)) {
 				model = (ModelMap) model.clone();
-				filePath=FreeMarkerUtils.makeStringByString(filePath, getConfiguration(), model);
+				filePath = FreeMarkerUtils.makeStringByString(filePath, getConfiguration(), model);
 				FreeMarkerUtils.makeFileByFile(templatePath, getHtmlFilePath(filePath), getConfiguration(), model);
 			}
 			return true;
@@ -158,12 +158,10 @@ public class StaticComponent {
 		if (null == configuration) {
 			try {
 				configuration = freeMarkerConfigurer.getConfiguration();
-				if (StringUtils.isNotBlank(templateLoaderPath)) {
-					configuration = (Configuration) configuration.clone();
-					configuration.setDirectoryForTemplateLoading(new File(templateLoaderPath));
-					configuration.setAutoImports(new HashMap<String, String>());
-					configuration.setAutoIncludes(new ArrayList<String>());
-				}
+				configuration = (Configuration) configuration.clone();
+				configuration.setDirectoryForTemplateLoading(new File(getTemplateFilePath("")));
+				configuration.setAutoImports(new HashMap<String, String>());
+				configuration.setAutoIncludes(new ArrayList<String>());
 			} catch (IOException e) {
 			}
 		}
