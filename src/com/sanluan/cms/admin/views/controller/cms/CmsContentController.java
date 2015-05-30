@@ -51,6 +51,7 @@ public class CmsContentController extends BaseController {
 			attribute.setText(txt);
 			attributeService.save(attribute);
 		}
+		model.put("content", entity);
 		CmsCategory cmsCategory = categoryService.getEntity(entity.getCategoryId());
 		CmsCategoryModel categoryModel = categoryModelService.getEntity(entity.getModelId(), entity.getCategoryId());
 		if (virifyNotEmpty("categoryModel", categoryModel, model)

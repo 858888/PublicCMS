@@ -35,10 +35,6 @@ public class CmsCategory implements java.io.Serializable {
 	private String templatePath;
 	@MyColumn(title = "路径")
 	private String path;
-	@MyColumn(title = "列表模板路径")
-	private String listTemplatePath;
-	@MyColumn(title = "列表路径")
-	private String listPath;
 	@MyColumn(title = "内容路径")
 	private String contentPath;
 	@MyColumn(title = "章节路径")
@@ -61,11 +57,10 @@ public class CmsCategory implements java.io.Serializable {
 	public CmsCategory() {
 	}
 
-	public CmsCategory(String name, String templatePath, String path, String listTemplatePath, String listPath,
-			String contentPath, String chapterPath, boolean isDisable, int contents) {
+	public CmsCategory(String name, String templatePath, String path, String contentPath, String chapterPath, boolean isDisable,
+			int contents) {
 		this.name = name;
 		this.path = path;
-		this.listPath = listPath;
 		this.contentPath = contentPath;
 		this.chapterPath = chapterPath;
 		this.isDisable = isDisable;
@@ -73,16 +68,14 @@ public class CmsCategory implements java.io.Serializable {
 	}
 
 	public CmsCategory(String name, Integer parentId, String childIds, String englishName, String templatePath, String path,
-			String listTemplatePath, String listPath, String contentPath, String chapterPath, Integer pageSize,
-			boolean isDisable, int contents, String extend1, String extend2, String extend3, String extend4) {
+			String contentPath, String chapterPath, Integer pageSize, boolean isDisable, int contents, String extend1,
+			String extend2, String extend3, String extend4) {
 		this.name = name;
 		this.parentId = parentId;
 		this.childIds = childIds;
 		this.englishName = englishName;
 		this.templatePath = templatePath;
 		this.path = path;
-		this.listTemplatePath = listTemplatePath;
-		this.listPath = listPath;
 		this.contentPath = contentPath;
 		this.chapterPath = chapterPath;
 		this.pageSize = pageSize;
@@ -157,24 +150,6 @@ public class CmsCategory implements java.io.Serializable {
 
 	public void setPath(String path) {
 		this.path = path;
-	}
-
-	@Column(name = "list_template_path", nullable = false, length = 255)
-	public String getListTemplatePath() {
-		return listTemplatePath;
-	}
-
-	public void setListTemplatePath(String listTemplatePath) {
-		this.listTemplatePath = listTemplatePath;
-	}
-
-	@Column(name = "list_path", nullable = false, length = 500)
-	public String getListPath() {
-		return this.listPath;
-	}
-
-	public void setListPath(String listPath) {
-		this.listPath = listPath;
 	}
 
 	@Column(name = "content_path", nullable = false, length = 500)

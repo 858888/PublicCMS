@@ -13,7 +13,7 @@
 		<@d_model ids=modelIds><#assign modelMap=t_map/></@d_model>
 		<#if t_page.totalCount gt 0>
 			<#list t_page.list as a>
-				<h2><a href="cmsContent/add.html?categoryId=${categoryId}&modelId=${a.modelId}" target="navTab">添加${(modelMap[a.modelId?string].name)!}</a></h2>
+				<h2><a href="cmsContent/add.html?categoryId=${categoryId}&modelId=${a.modelId}" rel="cmsContentAdd" target="navTab">添加${(modelMap[a.modelId?string].name)!}</a></h2>
 			</#list>
 		<#else>
 			<h2>该分类没有映射模型</h2>

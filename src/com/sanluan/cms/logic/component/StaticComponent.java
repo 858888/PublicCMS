@@ -48,6 +48,7 @@ public class StaticComponent {
 		try {
 			if (StringUtils.isNotBlank(filePath)) {
 				model = (ModelMap) model.clone();
+				filePath=FreeMarkerUtils.makeStringByString(filePath, getConfiguration(), model);
 				FreeMarkerUtils.makeFileByFile(templatePath, getHtmlFilePath(filePath), getConfiguration(), model);
 			}
 			return true;

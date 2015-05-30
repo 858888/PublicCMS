@@ -1,15 +1,29 @@
 <@d_model id=id><#assign a=t_bean/></@d_model>
 <div class="pageContent">
-	<form method="post" action="cmsModel/save.do?callbackType=closeCurrent" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+	<form method="post" action="cmsModel/save.do?callbackType=closeCurrent&navTabId=cmsModel" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
 		<input name="id" type="hidden" value="${id!}" />
 		<div class="pageFormContent" layoutH="57">
 			<dl>
-				<dt>名称：</dt>
+				<dt>内容模型名称：</dt>
 				<dd><input class="required" name="name" type="text" size="30" value="${(a.name)!}"/></dd>
 			</dl>
+			<dl class="nowrap">
+				<dt>内容页面模板路径：</dt>
+				<dd>
+					<input class="required" name="templatePath" type="text" size="30" value="${(a.templatePath)!}"/>
+					<a class="btnLook" href="template/lookup.html?field=templatePath&value=${(a.templatePath)!}" lookupGroup="">选择</a>
+				</dd>
+			</dl>
 			<dl>
-				<dt>模板路径：</dt>
-				<dd><input class="required" name="templatePath" type="text" size="30" value="${(a.templatePath)!}"/></dd>
+				<dt>章节模型名称：</dt>
+				<dd><input class="text" name="chapterName" type="text" size="30" value="${(a.chapterName)!}"/></dd>
+			</dl>
+			<dl class="nowrap">
+				<dt>章节页面模板路径：</dt>
+				<dd>
+					<input class="text" name="chapterTemplatePath" type="text" size="30" value="${(a.chapterTemplatePath)!}"/>
+					<a class="btnLook" href="template/lookup.html?field=chapterTemplatePath&value=${(a.chapterTemplatePath)!}" lookupGroup="">选择</a>
+				</dd>
 			</dl>
 		</div>
 		<div class="formBar">

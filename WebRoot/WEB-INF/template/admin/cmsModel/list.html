@@ -19,16 +19,18 @@
 <div class="pageContent">
 	<div class="panelBar">
 		<ul class="toolBar">
-			<li><a class="add" href="cmsModel/add.html" target="dialog"><span>添加</span></a></li>
-			<li><a class="edit" href="cmsModel/add.html?id={sid}" target="dialog"><span>修改</span></a></li>
+			<li><a class="add" href="cmsModel/add.html" target="navTab" rel="cmsModelAdd" title="添加模型"><span>添加</span></a></li>
+			<li><a class="edit" href="cmsModel/add.html?id={sid}" target="navTab" rel="cmsModelAdd"  title="修改模型"><span>修改</span></a></li>
 			<li><a class="delete" href="cmsModel/delete.do?id={sid}" title="确定要删除该条记录吗?" target="ajaxTodo"><span>删除</span></a></li>
 		</ul>
 	</div>
 	<table class="table" width="100%" layoutH="137">
 		<thead>
 			<tr>
-				<th>名称</th>
-				<th>模板路径</th>
+				<th>内容模型名称</th>
+				<th>内容页面模板路径</th>
+				<th>章节模型名称</th>
+				<th>章节页面模板路径</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -36,6 +38,8 @@
 			<tr target="sid" rel="${a.id}">
 				<td>${a.name!}</td>
 				<td>${a.templatePath!}</td>
+				<td>${a.chapterName!}</td>
+				<td>${a.chapterTemplatePath!}</td>
 			</tr>
 			</#list>
 		</tbody>
