@@ -425,11 +425,10 @@ body { overflow:hidden;}
 #container { position:absolute; top:38px; left:205px;}
 #splitBar { display:block; overflow:hidden; width:5px; cursor:col-resize; position:absolute; top:38px; left:200px; z-index:20;}
 #splitBarProxy { display:none; overflow:hidden; width:3px; border-style:solid; border-width:1px; cursor:col-resize; position:absolute; top:55px; left:200px; z-index:20;}
-#footer {position:absolute; bottom:0; left:0; text-align:center; width:100%; height:21px; padding:0 5px;z-index:-1}
+#footer { position:absolute; bottom:0; left:0; text-align:center; width:100%; height:21px; padding:0 5px;z-index:-1}
 
-.toggleCollapse { display:block; overflow:hidden; height:26px; border-style:solid; border-width:1px 1px 0 1px; background-repeat:repeat-x;}
-.toggleCollapse h2 { float:left; padding-left:8px; line-height:26px;}
-.toggleCollapse div { float:right; display:block; overflow:hidden; width:25px; height:25px; text-indent:-100px; background-position:100% -47px; cursor:pointer;}
+.toggleCollapse { position: absolute; bottom: 0px; display:block; overflow:hidden; background-repeat:repeat-x;}
+.toggleCollapse div {display:block; overflow:hidden; width:25px; height:25px; text-indent:-100px; background-position:100% -47px; cursor:pointer;}
 .toggleCollapse div:hover { background-position:100% -97px;}
 
 #sidebar_s .collapse { height:430px; cursor:pointer;}
