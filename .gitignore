@@ -7,4 +7,5 @@
 .setting/
 .gradle/
 *.sh
+/build/
 /bin/
