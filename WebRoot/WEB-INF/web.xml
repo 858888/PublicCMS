@@ -7,6 +7,10 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/config/spring/*-context.xml</param-value>
 	</context-param>
+	<filter-mapping>  
+	    <filter-name>shiroFilter</filter-name>  
+	    <url-pattern>*.do</url-pattern>  
+	</filter-mapping>
 	<filter>
 		<filter-name>encoding</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
