@@ -29,6 +29,7 @@ import freemarker.template.TemplateScalarModel;
 public class DirectiveHandler {
 	private Environment environment;
 	private Map<String, TemplateModel> parameters;
+	private TemplateModel[] loopVars;
 	private TemplateDirectiveBody templateDirectiveBody;
 	private Map<String, Object> map = new HashMap<String, Object>();
 
@@ -37,9 +38,10 @@ public class DirectiveHandler {
 	 * @param parameters
 	 * @param templateDirectiveBody
 	 */
-	public DirectiveHandler(Environment environment, Map<String, TemplateModel> parameters,
+	public DirectiveHandler(Environment environment, Map<String, TemplateModel> parameters,TemplateModel[] loopVars,
 			TemplateDirectiveBody templateDirectiveBody) {
 		this.environment = environment;
+		this.loopVars = loopVars;
 		this.parameters = parameters;
 		this.templateDirectiveBody = templateDirectiveBody;
 	}
@@ -450,5 +452,13 @@ public class DirectiveHandler {
 	 */
 	public TemplateDirectiveBody getTemplateDirectiveBody() {
 		return templateDirectiveBody;
+	}
+
+	public TemplateModel[] getLoopVars() {
+		return loopVars;
+	}
+
+	public void setLoopVars(TemplateModel[] loopVars) {
+		this.loopVars = loopVars;
 	}
 }

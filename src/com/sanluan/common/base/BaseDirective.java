@@ -19,9 +19,9 @@ public abstract class BaseDirective implements TemplateDirectiveModel {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public void execute(Environment environment, @SuppressWarnings("rawtypes") Map parameters, TemplateModel[] templateModel,
+	public void execute(Environment environment, @SuppressWarnings("rawtypes") Map parameters, TemplateModel[] loopVars,
 			TemplateDirectiveBody templateDirectiveBody) throws TemplateException, IOException {
-		execute(new DirectiveHandler(environment, parameters, templateDirectiveBody));
+		execute(new DirectiveHandler(environment, parameters,loopVars, templateDirectiveBody));
 	}
 
 	public abstract void execute(DirectiveHandler handler) throws TemplateException, IOException;
