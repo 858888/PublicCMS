@@ -27,10 +27,6 @@ import com.sanluan.common.base.BaseController;
 import com.sanluan.common.tools.RequestUtils;
 import com.sanluan.common.tools.VerificationUtils;
 
-/**
- * @author zhangxd
- * 
- */
 @Controller
 public class Login extends BaseController {
 

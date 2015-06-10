@@ -1,7 +1,6 @@
 package com.sanluan.cms.logic.component;
 
 import static com.sanluan.common.constants.CommonConstants.NUMBER_PATTERN;
-import static com.sanluan.common.constants.CommonConstants.PATH_DELIMITER;
 import static com.sanluan.common.constants.FreeMakerConstants.CACHE_VAR;
 import static com.sanluan.common.constants.FreeMakerConstants.CONTEXT_BASE;
 import static com.sanluan.common.constants.FreeMakerConstants.CONTEXT_INCLUDE;
@@ -52,8 +51,8 @@ public class CacheComponent {
 	 */
 	public String getFilePath(String path, HttpServletRequest request, HttpServletResponse response, ModelMap model) {
 		String templatePath = path;
-		int dirEndIndex = path.lastIndexOf(PATH_DELIMITER);
-		String lastPath = path.substring(dirEndIndex + PATH_DELIMITER.length(), path.length());
+		int dirEndIndex = path.lastIndexOf("/");
+		String lastPath = path.substring(dirEndIndex + 1, path.length());
 		if (dirEndIndex > 0) {
 			if (virifyNotNumber(lastPath)) {
 				templatePath = path;
@@ -70,7 +69,7 @@ public class CacheComponent {
 			String paramterName = parameters.nextElement();
 			if (!paramterName.startsWith("spm")) {
 				if (0 == sb.length()) {
-					sb.append(PATH_DELIMITER);
+					sb.append("/");
 				} else {
 					sb.append("&");
 				}

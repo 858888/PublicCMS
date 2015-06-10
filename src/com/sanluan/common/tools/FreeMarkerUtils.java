@@ -42,9 +42,9 @@ public class FreeMarkerUtils {
 			Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(destFile, append), "utf-8"));
 			t.process(model, out);
 			out.close();
-			log.info(destFilePath + "	保存成功！");
+			log.info(destFilePath + "	saved！");
 		} else {
-			log.error(destFilePath + "	已经存在！");
+			log.error(destFilePath + "	already exists！");
 		}
 	}
 

@@ -14,7 +14,6 @@ public class CommonConstants {
 	public static final String COOKIES_USER = "C_USER";
 
 	public static final String UTF8 = "utf-8";
-	public static final String PATH_DELIMITER = "/";
 	public static final String FORM_SUFFIX = ".do";
 	public static final String AJAX_SUFFIX = ".json";
 	public static final String REQUEST_SUFFIX = ".html";

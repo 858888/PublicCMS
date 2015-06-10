@@ -6,7 +6,6 @@ import static com.sanluan.common.constants.CommonConstants.FORM_SUFFIX;
 import static com.sanluan.common.constants.CommonConstants.MOBILE_PATTERN;
 import static com.sanluan.common.constants.CommonConstants.NICKNAME_PATTERN;
 import static com.sanluan.common.constants.CommonConstants.NUMBER_PATTERN;
-import static com.sanluan.common.constants.CommonConstants.PATH_DELIMITER;
 import static com.sanluan.common.constants.CommonConstants.REQUEST_SUFFIX;
 import static com.sanluan.common.constants.CommonConstants.USERNAME_PATTERN;
 import static org.springframework.web.servlet.view.UrlBasedViewResolver.FORWARD_URL_PREFIX;
@@ -27,7 +26,6 @@ public abstract class BaseController {
 	protected static final String MESSAGE = "message";
 	protected static final String SUCCESS = "success";
 	protected static final String ERROR = "error";
-	protected static final String DELIMITER = PATH_DELIMITER;
 	protected static final String REDIRECT = REDIRECT_URL_PREFIX;
 	protected static final String FORWARD = FORWARD_URL_PREFIX;
 
