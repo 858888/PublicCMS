@@ -1,11 +1,2 @@
-/src/com/sanluan/common/source/
-*.war
-*.ear
-.project
-.classpath
-.freemarker-ide.xml
-.setting/
-.gradle/
-*.sh
 /build/
 /bin/
