@@ -2,6 +2,7 @@
 	<wb-module deploy-name="PublicCMS">
 		<wb-resource deploy-path="/WEB-INF/classes" source-path="src"/>
 		<wb-resource deploy-path="/" source-path="WebRoot"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
 		<dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/F:/Users/Administrator/.gradle/caches/modules-2/files-2.1/org.freemarker/freemarker/2.3.22/473d784b3cd2dcb6d49a287ded0542b7862c7d68/freemarker-2.3.22.jar">
 			<dependency-type>uses</dependency-type>
 		</dependent-module>
